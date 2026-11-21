@@ -62,7 +62,7 @@ export const contentDefaults: ContentDefault[] = [
   { key: "highlight.2.title", group: "Home: highlights", label: "Highlight 2 title", en: "Family size", ar: "حجم العائلة" },
   { key: "highlight.2.text", group: "Home: highlights", label: "Highlight 2 text", en: "Biryani and grill platters made for sharing", ar: "برياني وأطباق مشاوي للمشاركة" },
   { key: "highlight.3.title", group: "Home: highlights", label: "Highlight 3 title", en: "Order on WhatsApp", ar: "اطلب عبر واتساب" },
-  { key: "highlight.3.text", group: "Home: highlights", label: "Highlight 3 text", en: "Build your order here, send it in one tap", ar: "جهّز طلبك هنا وأرسله بضغطة واحدة" },
+  { key: "highlight.3.text", group: "Home: highlights", label: "Highlight 3 text", en: "Takeaway or delivery, sent in one tap", ar: "استلام أو توصيل، بضغطة واحدة" },
   { key: "highlight.4.title", group: "Home: highlights", label: "Highlight 4 title", en: "Catering", ar: "خدمات الضيافة" },
   { key: "highlight.4.text", group: "Home: highlights", label: "Highlight 4 text", en: "Food for gatherings, large and small", ar: "طعام للتجمعات الكبيرة والصغيرة" },
 
@@ -125,8 +125,8 @@ export const contentDefaults: ContentDefault[] = [
   { key: "about.dining.title", group: "About", label: "Block 2 title", en: "The dining experience", ar: "تجربة الطعام" },
   {
     key: "about.dining.text", group: "About", label: "Block 2 text", multiline: true,
-    en: "Come in for a meal, collect a takeaway, or order ahead on WhatsApp. Family-size biryani and grill platters are made for sharing.",
-    ar: "تفضّل لتناول وجبتك، أو استلم طلبك سفري، أو اطلب مسبقاً عبر واتساب. البرياني وأطباق المشاوي بحجم العائلة مُعدّة للمشاركة.",
+    en: "Come in for a meal, collect a takeaway, or order delivery on WhatsApp. Family-size biryani and grill platters are made for sharing.",
+    ar: "تفضّل لتناول وجبتك، أو استلم طلبك سفري، أو اطلب التوصيل عبر واتساب. البرياني وأطباق المشاوي بحجم العائلة مُعدّة للمشاركة.",
   },
   { key: "about.gather.title", group: "About", label: "Block 3 title", en: "For gatherings", ar: "للتجمعات" },
   {

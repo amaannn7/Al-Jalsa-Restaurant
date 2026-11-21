@@ -1,9 +1,10 @@
 # Launch checklist
 
 ## 1. Confirm with the restaurant (shown as reminders in Admin → Overview)
-- [ ] Do you deliver yourselves? If yes: the fee (or leave empty for "confirmed by the restaurant")
-      and the delivery area (Admin → Restaurant details → Delivery note). If not, untick Delivery.
-- [ ] Facebook page https://www.facebook.com/aljalsarestaurant/ is yours. TikTok / Snapchat links.
+- [x] Delivery offered (confirmed 22 Nov 2026).
+- [ ] Delivery fee (or leave empty for "confirmed by the restaurant") and delivery area
+      (Admin → Restaurant details → Delivery fee / Delivery note).
+- [x] Facebook page https://www.facebook.com/aljalsarestaurant/ confirmed. TikTok / Snapchat links, if any.
 - [ ] Price conflicts on the printed menu: Methi Chaman (18 or 26?) and Green Salad (6 or 10?).
 - [ ] Descriptions for Mutton Fry and Matka Kheer (the printed ones belong to other dishes).
 - [ ] Whether the 6 dishes on the old Ninja listing but not on the printed menu are still served.

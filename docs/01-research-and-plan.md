@@ -18,12 +18,12 @@ needs the restaurant's confirmation, and the design decisions behind the site.
 | WhatsApp number for orders | +966 56 671 5786 | Restaurant's buffet posters (printed with the WhatsApp icon) | Verified |
 | Opening hours | Sat to Wed 6 AM to 1 AM; Thu and Fri 6 AM to 2 AM | Supplied by client (Google Maps) | Verified by client |
 | Google Maps link | https://share.google/Q3kOWnG8Lw7v25VOw (knowledge-graph id /g/11x73bjxj3) | Client brief | Verified |
-| Facebook | https://www.facebook.com/aljalsarestaurant/ | Web search result | **Needs confirmation** |
+| Facebook | https://www.facebook.com/aljalsarestaurant/ | Confirmed by the restaurant (22 Nov 2026) | Verified |
 | Email | aljalsarestaurant.sa@gmail.com | Third-party listing | **Needs confirmation** (not shown on the site until confirmed) |
 | Instagram | https://www.instagram.com/aljalsarestaurant/ | Supplied by client | Verified |
 | TikTok, Snapchat | Not found | - | Add in admin if they exist |
 | Google reviews | 8 reviews | Screenshots supplied by client, typed verbatim | Verified; overall rating not supplied |
-| Delivery | Listed on Ninja (Al Murabba branch) and HungerStation | ananinja.com, hungerstation.com | Verified that delivery apps list it. Own delivery via WhatsApp and its fee: **needs confirmation** |
+| Delivery | The restaurant delivers (also listed on Ninja and HungerStation) | Confirmed by the restaurant (22 Nov 2026) | Verified. Delivery fee and area: **needs confirmation** |
 | Catering packages | None published | - | Configurable in admin; hidden until added |
 | History, founding year, awards | None published | - | Not stated anywhere on the site |
 
@@ -127,8 +127,8 @@ and the same under `/ar`. `/admin` (login, dashboard, menu, categories, settings
 catering packages, reviews, enquiries, users).
 
 ## 7. Open questions for the client
-1. Do you deliver yourselves (not only through apps)? If yes, the delivery fee and area.
-2. Is facebook.com/aljalsarestaurant yours? TikTok / Snapchat?
+1. The delivery fee and delivery area.
+2. TikTok / Snapchat links, if any.
 3. The two price conflicts on the printed menu (Methi Chaman, Green Salad).
 4. Descriptions for Mutton Fry and Matka Kheer.
 5. Original photo files (the printed menu photos are small) and photos for the 77 dishes without one.

@@ -41,6 +41,7 @@ export const settingsDefaults: SiteSettingsData = {
   googleRating: null,
   googleReviewCount: null,
   ratingCheckedOn: null,
-  // WhatsApp +966 56 671 5786 is printed with the WhatsApp icon on the restaurant's buffet posters.
-  unconfirmed: ["socials.facebook", "deliveryEnabled", "deliveryFeeHalalas"],
+  // Confirmed by the restaurant: WhatsApp (buffet posters), Facebook page, and that they deliver.
+  // The delivery fee is not known yet, so customers see "confirmed by the restaurant".
+  unconfirmed: ["deliveryFeeHalalas"],
 };
