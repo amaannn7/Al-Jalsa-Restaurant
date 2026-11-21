@@ -1,0 +1,207 @@
+// Al Jalsa Restaurant data model. Prices are stored as integers in halalas (1 SAR = 100).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Category {
+  id            String     @id @default(cuid())
+  slug          String     @unique
+  nameEn        String
+  nameAr        String
+  descriptionEn String?
+  descriptionAr String?
+  sortOrder     Int        @default(0)
+  isActive      Boolean    @default(true)
+  items         MenuItem[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model MenuItem {
+  id            String        @id @default(cuid())
+  slug          String        @unique
+  category      Category      @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  categoryId    String
+  nameEn        String
+  nameAr        String        @default("")
+  descriptionEn String        @default("")
+  descriptionAr String        @default("")
+  imageUrl      String?
+  cutoutUrl     String?
+  cutoutWhole   Boolean       @default(false)
+  isFeatured    Boolean       @default(false)
+  isPopular     Boolean       @default(false)
+  isAvailable   Boolean       @default(true)
+  isActive      Boolean       @default(true)
+  sortOrder     Int           @default(0)
+  source        String?
+  variants      MenuVariant[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([categoryId, sortOrder])
+}
+
+model MenuVariant {
+  id           String   @id @default(cuid())
+  item         MenuItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId       String
+  nameEn       String   @default("")
+  nameAr       String   @default("")
+  /// null means the price is not confirmed and is shown as "price on request"
+  priceHalalas Int?
+  /// Calories as printed on the menu (null when not given)
+  calories     Int?
+  sortOrder    Int      @default(0)
+
+  @@index([itemId])
+}
+
+/// Single row (id = 1) holding restaurant details editable in the admin.
+model SiteSettings {
+  id                 Int       @id @default(1)
+  nameEn             String
+  nameAr             String
+  phone              String
+  whatsapp           String
+  email              String?
+  addressEn          String
+  addressAr          String
+  mapsUrl            String
+  mapsEmbedQuery     String
+  /// [{ day: 0-6 (0 = Sunday), open: "06:00", close: "01:00", closed: boolean }]
+  hours              Json
+  /// { facebook, instagram, tiktok, snapchat, x, google }
+  socials            Json
+  takeawayEnabled    Boolean   @default(true)
+  deliveryEnabled    Boolean   @default(true)
+  deliveryFeeHalalas Int?
+  deliveryNoteEn     String    @default("")
+  deliveryNoteAr     String    @default("")
+  /// Shows the lunch buffet section (details are edited under Website text > Buffet)
+  buffetEnabled      Boolean   @default(true)
+  googleRating       Float?
+  googleReviewCount  Int?
+  ratingCheckedOn    String?
+  /// Field names still awaiting confirmation from the restaurant, shown in the admin.
+  unconfirmed        String[]  @default([])
+  updatedAt          DateTime  @updatedAt
+}
+
+/// Editable bilingual copy, addressed by key (for example "home.hero.title").
+model ContentBlock {
+  key       String   @id
+  group     String   @default("general")
+  label     String   @default("")
+  en        String   @default("")
+  ar        String   @default("")
+  multiline Boolean  @default(false)
+  sortOrder Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+model CateringPackage {
+  id            String   @id @default(cuid())
+  nameEn        String
+  nameAr        String
+  descriptionEn String   @default("")
+  descriptionAr String   @default("")
+  /// One item per line
+  includesEn    String   @default("")
+  includesAr    String   @default("")
+  priceHalalas  Int?
+  priceNoteEn   String   @default("")
+  priceNoteAr   String   @default("")
+  minGuests     Int?
+  imageUrl      String?
+  sortOrder     Int      @default(0)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+/// Customer reviews, typed verbatim from the source. Never edited for wording.
+model Review {
+  id        String   @id @default(cuid())
+  author    String
+  text      String
+  rating    Int?
+  source    String   @default("Google")
+  dateText  String?
+  lang      String   @default("en")
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  url       String
+  altEn     String
+  altAr     String
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+enum EnquiryType {
+  CATERING
+  MEETING
+  ORDER
+  CONTACT
+}
+
+enum EnquiryStatus {
+  NEW
+  CONTACTED
+  CLOSED
+}
+
+model Enquiry {
+  id        String        @id @default(cuid())
+  type      EnquiryType
+  status    EnquiryStatus @default(NEW)
+  name      String
+  phone     String
+  email     String?
+  payload   Json
+  message   String
+  locale    String        @default("en")
+  notes     String        @default("")
+  createdAt DateTime      @default(now())
+
+  @@index([type, createdAt])
+}
+
+enum AdminRole {
+  OWNER
+  EDITOR
+}
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String
+  passwordHash String
+  role         AdminRole @default(EDITOR)
+  isActive     Boolean   @default(true)
+  /// Incremented to invalidate existing sessions (password change, deactivation).
+  sessionVersion Int     @default(1)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+}
+
+model LoginAttempt {
+  id        String   @id @default(cuid())
+  key       String
+  success   Boolean
+  createdAt DateTime @default(now())
+
+  @@index([key, createdAt])
+}

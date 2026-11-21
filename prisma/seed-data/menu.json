@@ -1,0 +1,3294 @@
+{
+ "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+ "categories": [
+  {
+   "slug": "appetizers",
+   "nameEn": "Appetizers",
+   "nameAr": "المقبلات",
+   "descriptionEn": "Soups, salads and starters.",
+   "descriptionAr": "شوربات وسلطات ومقبلات.",
+   "sortOrder": 0
+  },
+  {
+   "slug": "kebab",
+   "nameEn": "Kebab & Grill",
+   "nameAr": "المشويات",
+   "descriptionEn": "Dastare Kabab: kebabs, tikka, tandoori chicken and grill platters.",
+   "descriptionAr": "كباب وتكا ودجاج تندوري وأطباق مشاوي.",
+   "sortOrder": 1
+  },
+  {
+   "slug": "jalsa-special-chicken",
+   "nameEn": "Jalsa Special: Chicken",
+   "nameAr": "جلسة الخاصة: الدجاج",
+   "descriptionEn": "Jalsa-e-Khas chicken curries, from butter chicken to tikka masala.",
+   "descriptionAr": "أطباق الدجاج الخاصة، من الدجاج بالزبدة إلى تكا ماسالا.",
+   "sortOrder": 2
+  },
+  {
+   "slug": "jalsa-special-mutton",
+   "nameEn": "Jalsa Special: Mutton",
+   "nameAr": "جلسة الخاصة: اللحم",
+   "descriptionEn": "Jalsa-e-Khas mutton curries, rogan josh, maharaja and more.",
+   "descriptionAr": "أطباق اللحم الخاصة، روغن جوش ومهراجا وغيرها.",
+   "sortOrder": 3
+  },
+  {
+   "slug": "pakistani",
+   "nameEn": "Pakistani Dishes",
+   "nameAr": "الأطباق الباكستانية",
+   "descriptionEn": "Dastar-e-Pakistan: karahi, handi, haleem and nihari.",
+   "descriptionAr": "كراهي وهاندي وحليم ونهاري.",
+   "sortOrder": 4
+  },
+  {
+   "slug": "chinese",
+   "nameEn": "Chinese Dishes",
+   "nameAr": "الأطباق الصينية",
+   "descriptionEn": "Dastar-e-Cheen: Indo-Chinese chicken, prawns, fish and noodles.",
+   "descriptionAr": "أطباق هندية صينية: دجاج وروبيان وسمك ونودلز.",
+   "sortOrder": 5
+  },
+  {
+   "slug": "vegetables",
+   "nameEn": "Vegetables",
+   "nameAr": "الخضروات",
+   "descriptionEn": "Shahi Sabziyan: paneer, daal and seasonal vegetables.",
+   "descriptionAr": "بانير ودال وخضار موسمية.",
+   "sortOrder": 6
+  },
+  {
+   "slug": "rice",
+   "nameEn": "Rice",
+   "nameAr": "الأرز",
+   "descriptionEn": "Zaiqa-e-Chawal: biryani by the plate or family pack, fried rice and more.",
+   "descriptionAr": "برياني بالطبق أو بحجم العائلة، وأرز مقلي وغيره.",
+   "sortOrder": 7
+  },
+  {
+   "slug": "bread",
+   "nameEn": "Bread",
+   "nameAr": "الخبز",
+   "descriptionEn": "Rotiyan: naan, roti and paratha from the tandoor.",
+   "descriptionAr": "نان وروتي وبراتا من التنور.",
+   "sortOrder": 8
+  },
+  {
+   "slug": "desserts",
+   "nameEn": "Desserts",
+   "nameAr": "الحلويات",
+   "descriptionEn": "Mitha-e-Khas: rabdi, kheer, kulfi, gulab jamun and more.",
+   "descriptionAr": "رابدي وكهير وكلفي وجلاب جامن وغيرها.",
+   "sortOrder": 9
+  },
+  {
+   "slug": "beverages",
+   "nameEn": "Beverages",
+   "nameAr": "المشروبات",
+   "descriptionEn": "Lassi, karak and Kashmiri tea, soft drinks and water.",
+   "descriptionAr": "لسي وشاي كرك وشاي كشميري ومشروبات غازية وماء.",
+   "sortOrder": 10
+  },
+  {
+   "slug": "mojitos",
+   "nameEn": "Mojitos",
+   "nameAr": "موهيتو",
+   "descriptionEn": "Lemonade and fruit mojitos with mint and lime.",
+   "descriptionAr": "ليمونادة وموهيتو بالفواكه مع النعناع والليمون.",
+   "sortOrder": 11
+  }
+ ],
+ "items": [
+  {
+   "slug": "corn-soup",
+   "category": "appetizers",
+   "nameEn": "Corn Soup (Veg / Non-Veg)",
+   "nameAr": "شوربة الذرة (دجاج / خضار)",
+   "descriptionEn": "Warm and comforting soup made with sweet corn, vegetables or chicken",
+   "descriptionAr": "شوربة دافئة ولذيذة من الذرة الحلوة مع خضروات أو دجاج",
+   "imageUrl": "/images/menu/corn-soup.webp",
+   "cutoutUrl": "/images/menu/cut/corn-soup.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 280,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chicken-hot-n-sour-soup",
+   "category": "appetizers",
+   "nameEn": "Chicken Hot N Sour Soup",
+   "nameAr": "شوربة الدجاج الحارة والحامضة",
+   "descriptionEn": "Spicy and tangy chicken soup with vegetables, soy sauce, and vinegar",
+   "descriptionAr": "شوربة دجاج حارة مع خضروات وصلصة الصويا والخل",
+   "imageUrl": "/images/menu/chicken-hot-n-sour-soup.webp",
+   "cutoutUrl": "/images/menu/cut/chicken-hot-n-sour-soup.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "cream-of-mushroom-soup",
+   "category": "appetizers",
+   "nameEn": "Cream of Mushroom Soup",
+   "nameAr": "شوربة كريمة الفطر",
+   "descriptionEn": "Rich and creamy mushroom soup infused with herbs",
+   "descriptionAr": "شوربة فطر كريمية وغنية بالنكهات",
+   "imageUrl": "/images/menu/cream-of-mushroom-soup.webp",
+   "cutoutUrl": "/images/menu/cut/cream-of-mushroom-soup.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 280,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chicken-manchow-soup",
+   "category": "appetizers",
+   "nameEn": "Chicken Manchow Soup",
+   "nameAr": "شوربة مانتشاو",
+   "descriptionEn": "Spicy Indo-Chinese soup with vegetables, chicken and crispy noodles",
+   "descriptionAr": "شوربة هندية صينية حارة مع خضروات ونودلز مقرمشة",
+   "imageUrl": "/images/menu/chicken-manchow-soup.webp",
+   "cutoutUrl": "/images/menu/cut/chicken-manchow-soup.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "lentil-soup",
+   "category": "appetizers",
+   "nameEn": "Lentil Soup",
+   "nameAr": "شوربة عدس",
+   "descriptionEn": "Warm, creamy lentil soup — simple, nutritious and comforting.",
+   "descriptionAr": "شوربة عدس دافئة، ناعمة ومغذية - بسيطة ومريحة.",
+   "imageUrl": "/images/menu/lentil-soup.webp",
+   "cutoutUrl": "/images/menu/cut/lentil-soup.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "seafood-soup",
+   "category": "appetizers",
+   "nameEn": "Seafood Soup",
+   "nameAr": "شوربة مأكولات بحرية",
+   "descriptionEn": "Warm, comforting seafood soup — rich broth with fish and shellfish.",
+   "descriptionAr": "شوربة مأكولات بحرية دافئة – مرق غني مع سمك ومحار.",
+   "imageUrl": "/images/menu/seafood-soup.webp",
+   "cutoutUrl": "/images/menu/cut/seafood-soup.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "russian-salad",
+   "category": "appetizers",
+   "nameEn": "Russian Salad",
+   "nameAr": "سلطة روسية",
+   "descriptionEn": "Creamy vegetable salad with mayo and fruity.",
+   "descriptionAr": "سلطة خضار كريمية بالمايونيز مع لمسة فاكهية.",
+   "imageUrl": "/images/menu/russian-salad.webp",
+   "cutoutUrl": "/images/menu/cut/russian-salad.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1400,
+     "calories": 200,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "green-salad",
+   "category": "appetizers",
+   "nameEn": "Green Salad",
+   "nameAr": "سلطة خضراء",
+   "descriptionEn": "Fresh seasonal greens and vegetables",
+   "descriptionAr": "خضروات طازجة من الموسم",
+   "imageUrl": "/images/menu/green-salad.webp",
+   "cutoutUrl": "/images/menu/cut/green-salad.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 600,
+     "calories": 80,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "paneer-pakoda",
+   "category": "appetizers",
+   "nameEn": "Paneer Pakoda",
+   "nameAr": "بانير باكودا",
+   "descriptionEn": "Fried paneer fritters coated in seasoned gram flour batter.",
+   "descriptionAr": "جبن بانير مقلي في خليط من دقيق الحمص المتبل",
+   "imageUrl": "/images/menu/paneer-pakoda.webp",
+   "cutoutUrl": "/images/menu/cut/paneer-pakoda.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 8,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "honey-chilli-potato",
+   "category": "appetizers",
+   "nameEn": "Honey Chilli Potato",
+   "nameAr": "بطاطا بالعسل والفلفل الحار",
+   "descriptionEn": "Crispy fried potatoes tossed in sweet and spicy honey chilli sauce",
+   "descriptionAr": "بطاطا مقلية مقرمشة مع صلصة عسل وفلفل حار",
+   "imageUrl": "/images/menu/honey-chilli-potato.webp",
+   "cutoutUrl": "/images/menu/cut/honey-chilli-potato.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 9,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 480,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chicken-lollipop",
+   "category": "appetizers",
+   "nameEn": "Chicken Lollipop (Dry / Wet)",
+   "nameAr": "دجاج لولي بوب",
+   "descriptionEn": "Crispy fried chicken drumsticks tossed in spicy sauce, served with a side of tangy dip.",
+   "descriptionAr": "أفخاذ دجاج مقلية مقرمشة ممزوجة بصلصة حارة، تقدم مع طبق جانبي من الصلصة اللاذعة.",
+   "imageUrl": "/images/menu/chicken-lollipop.webp",
+   "cutoutUrl": "/images/menu/cut/chicken-lollipop.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 10,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 2200,
+     "calories": 480,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "tikka-roll",
+   "category": "appetizers",
+   "nameEn": "Tikka Roll",
+   "nameAr": "تكا رول",
+   "descriptionEn": "Tender marinated chicken wrapped in soft flatbread with flavorful sauce.",
+   "descriptionAr": "دجاج متبل طري ملفوف في خبز طري مع صلصة مليئة بالنكهة.",
+   "imageUrl": "/images/menu/tikka-roll.webp",
+   "cutoutUrl": "/images/menu/cut/tikka-roll.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 11,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 280,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chicken-popcorn",
+   "category": "appetizers",
+   "nameEn": "Chicken Popcorn with French Fries",
+   "nameAr": "دجاج بوب كارن / بطاطا مقلية",
+   "descriptionEn": "Crispy bite-sized chicken with fries. Golden, tasty, and perfect for snacking.",
+   "descriptionAr": "قطع دجاج مقرمشة مع بطاطس مقلية ذهبية، لذيذة، ومثالية كوجبة خفيفة.",
+   "imageUrl": "/images/menu/chicken-popcorn.webp",
+   "cutoutUrl": "/images/menu/cut/chicken-popcorn.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 12,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 280,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "spring-rolls",
+   "category": "appetizers",
+   "nameEn": "Spring Rolls (Veg / Non-Veg)",
+   "nameAr": "سبرنج رول (دجاج / خضار)",
+   "descriptionEn": "Crispy rolls wrapped in noodles filled with spiced veggies or chicken",
+   "descriptionAr": "لفائف مقرمشة محشوة بالخضروات أو الدجاج ومغلفة بالنودلز",
+   "imageUrl": "/images/menu/spring-rolls.webp",
+   "cutoutUrl": "/images/menu/cut/spring-rolls.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 13,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 280,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "crispy-corn",
+   "category": "appetizers",
+   "nameEn": "Crispy Corn",
+   "nameAr": "كرسبي كارن",
+   "descriptionEn": "Crispy fried corn tossed in tangy, spicy sauce. Crunchy, bold, and flavorful.",
+   "descriptionAr": "ذرة مقلية مقرمشة بصلصة حارة ومنعشة. مقرمشة ولذيذة وغنية بالنكهة.",
+   "imageUrl": "/images/menu/crispy-corn.webp",
+   "cutoutUrl": "/images/menu/cut/crispy-corn.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 14,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mutton-sheekh-kabab",
+   "category": "kebab",
+   "nameEn": "Mutton Sheekh Kabab",
+   "nameAr": "شيش كباب لحم",
+   "descriptionEn": "Minced mutton blended with aromatic spices, skewered and grilled to perfection",
+   "descriptionAr": "لحم مفروم ممزوج بتوابل عطرية، مشوي على السيخ حتى النضج التام",
+   "imageUrl": "/images/menu/mutton-sheekh-kabab.webp",
+   "cutoutUrl": "/images/menu/cut/mutton-sheekh-kabab.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4200,
+     "calories": 750,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "bihari-kabab",
+   "category": "kebab",
+   "nameEn": "Bihari Kabab",
+   "nameAr": "بهاري كباب",
+   "descriptionEn": "Juicy lamb skewers marinated in spices and herbs, grilled to perfection, served with 2 crispy puris.",
+   "descriptionAr": "سيخ من لحم الضأن العصاري متبل بالتوابل والأعشاب، مشوي إلى الكمال، يقدم مع ٢ من البوري المقرمش.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4200,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "banjara-kabab",
+   "category": "kebab",
+   "nameEn": "Banjara Kabab",
+   "nameAr": "كباب بنجارا",
+   "descriptionEn": "Spicy chicken kababs infused with rustic Indian flavors",
+   "descriptionAr": "كباب دجاج حار بنكهات هندية تقليدية",
+   "imageUrl": "/images/menu/banjara-kabab.webp",
+   "cutoutUrl": "/images/menu/cut/banjara-kabab.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3800,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "tangdi-kabab",
+   "category": "kebab",
+   "nameEn": "Tangdi Kabab",
+   "nameAr": "كباب تانجدي",
+   "descriptionEn": "Tender skewered meat grilled with aromatic spices. Smoky, juicy, and full of flavor.",
+   "descriptionAr": "لحم مشوي على أسياخ مع توابل عطرية، مدخن، طري، ولذيذ.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "sikandari-kabab",
+   "category": "kebab",
+   "nameEn": "Sikandari Kabab",
+   "nameAr": "كباب سكندري",
+   "descriptionEn": "A royal preparation of kababs marinated in rich spices and grilled",
+   "descriptionAr": "تحضير ملكي لكباب متبل بتوابل غنية ومشوي بإتقان",
+   "imageUrl": "/images/menu/sikandari-kabab.webp",
+   "cutoutUrl": "/images/menu/cut/sikandari-kabab.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4200,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chicken-tandoori",
+   "category": "kebab",
+   "nameEn": "Chicken Tandoori",
+   "nameAr": "دجاج تندوري",
+   "descriptionEn": "Chicken marinated in yogurt and traditional spices, roasted in a clay oven",
+   "descriptionAr": "دجاج متبل باللبن والتوابل التقليدية، مشوي في فرن التندور",
+   "imageUrl": "/images/menu/chicken-tandoori.webp",
+   "cutoutUrl": "/images/menu/cut/chicken-tandoori.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Half",
+     "nameAr": "نصف",
+     "priceHalalas": 2500,
+     "calories": 350,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Full",
+     "nameAr": "كامل",
+     "priceHalalas": 4500,
+     "calories": 750,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "fish-tikka",
+   "category": "kebab",
+   "nameEn": "Fish Tikka",
+   "nameAr": "سمك تكا",
+   "descriptionEn": "Boneless fish chunks marinated in traditional spices and grilled",
+   "descriptionAr": "قطع فيليه سمك متبلة بالتوابل التقليدية ومشوية",
+   "imageUrl": "/images/menu/fish-tikka.webp",
+   "cutoutUrl": "/images/menu/cut/fish-tikka.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4500,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "lasooni-fish-tikka",
+   "category": "kebab",
+   "nameEn": "Lasooni Fish Tikka",
+   "nameAr": "سمك تكا بالثوم",
+   "descriptionEn": "Fish tikka with a bold garlic marinade, grilled to perfection",
+   "descriptionAr": "سمك مشوي بتتبيلة غنية بالثوم",
+   "imageUrl": "/images/menu/lasooni-fish-tikka.webp",
+   "cutoutUrl": "/images/menu/cut/lasooni-fish-tikka.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4500,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "shahi-bbq-platter",
+   "category": "kebab",
+   "nameEn": "Shahi B.B.Q Platter",
+   "nameAr": "طبق مشاوي شاهي مشكل",
+   "descriptionEn": "A royal mix of Seekh Kebab, Fish Tikka, Malai Boti, and Chicken Boti. Flavorful, creamy, and perfectly grilled.",
+   "descriptionAr": "مزيج ملكي من سيخ كباب، سمك تكا، مالاي بوتي، ودجاج بوتي. لذيذ، كريمي، ومشوي بإتقان.",
+   "imageUrl": "/images/menu/bbq-mix-platter.webp",
+   "cutoutUrl": "/images/menu/cut/bbq-mix-platter.webp",
+   "cutoutWhole": true,
+   "isFeatured": true,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 8,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Half",
+     "nameAr": "نصف",
+     "priceHalalas": 5800,
+     "calories": 850,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Full",
+     "nameAr": "كامل",
+     "priceHalalas": 11000,
+     "calories": 1650,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "bbq-mix-chicken-platter",
+   "category": "kebab",
+   "nameEn": "BBQ Mix Chicken Platter",
+   "nameAr": "طبق مشاوي مشكل دجاج",
+   "descriptionEn": "A grand assortment of grilled chicken.",
+   "descriptionAr": "تشكيلة فاخرة من الدجاج المشوي.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 9,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Half",
+     "nameAr": "نصف",
+     "priceHalalas": 4800,
+     "calories": 850,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Full",
+     "nameAr": "كامل",
+     "priceHalalas": 9000,
+     "calories": 1650,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "tandoori-prawns",
+   "category": "kebab",
+   "nameEn": "Tandoori Prawns",
+   "nameAr": "روبيان تندوري",
+   "descriptionEn": "Juicy prawns marinated in tandoori masala and grilled over flame",
+   "descriptionAr": "روبيان طري متبل بماسالا التندوري ومشوي على اللهب",
+   "imageUrl": "/images/menu/tandoori-prawns.webp",
+   "cutoutUrl": "/images/menu/cut/tandoori-prawns.webp",
+   "cutoutWhole": true,
+   "isFeatured": true,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 10,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 5400,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "multani-paneer-tikka",
+   "category": "kebab",
+   "nameEn": "Multani Paneer Tikka",
+   "nameAr": "بانير تيكا ملتاني",
+   "descriptionEn": "Cottage cheese marinated in Multani spices and grilled golden",
+   "descriptionAr": "جبن بانير متبل بتوابل ملتان ومشوي حتى يأخذ اللون الذهبي.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 11,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "malai-paneer-tikka",
+   "category": "kebab",
+   "nameEn": "Malai Paneer Tikka",
+   "nameAr": "بانير تيكا بالمالاي",
+   "descriptionEn": "Soft paneer cubes in a creamy, mildly spiced marinade, grilled gently",
+   "descriptionAr": "مكعبات بانير طرية في تتبيلة كريمية خفيفة، مشوية بلطف",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 12,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "butter-chicken",
+   "category": "jalsa-special-chicken",
+   "nameEn": "Butter Chicken",
+   "nameAr": "دجاج بالزبدة",
+   "descriptionEn": "Tender chicken in creamy tomato-butter sauce",
+   "descriptionAr": "دجاج طري في صلصة الطماطم والزبدة الكريمية",
+   "imageUrl": "/images/menu/butter-chicken.webp",
+   "cutoutUrl": "/images/menu/cut/butter-chicken.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "achari-chicken",
+   "category": "jalsa-special-chicken",
+   "nameEn": "Achari Chicken",
+   "nameAr": "دجاج اشاري",
+   "descriptionEn": "Tender chicken marinated in tangy pickling spices with a spicy kick.",
+   "descriptionAr": "دجاج طري متبل بتوابل المخلل الحامضة مع نكهة حارة",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chicken-jelfrezi",
+   "category": "jalsa-special-chicken",
+   "nameEn": "Chicken Jelfrezi",
+   "nameAr": "دجاج جيلفريزي",
+   "descriptionEn": "Spicy stir-fried chicken with peppers and onions in a bold sauce.",
+   "descriptionAr": "دجاج مقلي سريعا مع فلفل وبصل في صلصة حارة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chicken-kabab-masala",
+   "category": "jalsa-special-chicken",
+   "nameEn": "Chicken Kabab Masala",
+   "nameAr": "دجاج كباب مسالا",
+   "descriptionEn": "Tender chicken kebabs simmered in rich, spiced masala gravy.",
+   "descriptionAr": "كباب دجاج طري في صلصة ماسالا غنية بالتوابل.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chicken-fry",
+   "category": "jalsa-special-chicken",
+   "nameEn": "Chicken Fry",
+   "nameAr": "دجاج فرائي",
+   "descriptionEn": "Crispy, golden-fried chicken with flavorful spices.",
+   "descriptionAr": "دجاج مقلي ذهبي مقرمش مع توابل لذيذة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "murgh-mastaan",
+   "category": "jalsa-special-chicken",
+   "nameEn": "Murgh Mastaan",
+   "nameAr": "مرغ مستان",
+   "descriptionEn": "Flavorful chicken delicacy with a royal touch",
+   "descriptionAr": "دجاج لذيذ بطابع ملكي خاص",
+   "imageUrl": "/images/menu/murgh-mastaan.webp",
+   "cutoutUrl": "/images/menu/cut/murgh-mastaan.webp",
+   "cutoutWhole": true,
+   "isFeatured": true,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "murgh-lajawab",
+   "category": "jalsa-special-chicken",
+   "nameEn": "Murgh Lajawab",
+   "nameAr": "مرغ لاجواب",
+   "descriptionEn": "Chicken in exotic spices and rich gravy",
+   "descriptionAr": "دجاج مطهو مع توابل غنية ومذاق لا يُقاوم",
+   "imageUrl": "/images/menu/murgh-lajawab.webp",
+   "cutoutUrl": "/images/menu/cut/murgh-lajawab.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "tawa-murgh",
+   "category": "jalsa-special-chicken",
+   "nameEn": "Tawa Murgh",
+   "nameAr": "تاوه مرغ",
+   "descriptionEn": "Chicken cooked on tawa with bold spices.",
+   "descriptionAr": "دجاج مطبوخ على تاوه مع توابل قوية.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "tangdi-masala",
+   "category": "jalsa-special-chicken",
+   "nameEn": "Tangdi Masala",
+   "nameAr": "تانجدي ماسالا",
+   "descriptionEn": "Spiced grilled chicken drumsticks.",
+   "descriptionAr": "أفخاذ دجاج مشوية ومتبلة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 8,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "tikka-masala",
+   "category": "jalsa-special-chicken",
+   "nameEn": "Tikka Masala",
+   "nameAr": "دجاج تكا ماسالا",
+   "descriptionEn": "Grilled chicken in creamy spiced tomato gravy.",
+   "descriptionAr": "دجاج مشوي في صلصة طماطم كريمية متبلة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 9,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3600,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mutton-maharaja",
+   "category": "jalsa-special-mutton",
+   "nameEn": "Mutton Maharaja",
+   "nameAr": "لحم غنم مهراجا",
+   "descriptionEn": "Royal-style mutton cooked with spices and dry fruits",
+   "descriptionAr": "طبق ملكي من لحم الغنم مع التوابل والمكسرات",
+   "imageUrl": "/images/menu/mutton-maharaja.webp",
+   "cutoutUrl": "/images/menu/cut/mutton-maharaja.webp",
+   "cutoutWhole": true,
+   "isFeatured": true,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4400,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "achari-mutton",
+   "category": "jalsa-special-mutton",
+   "nameEn": "Achari Mutton",
+   "nameAr": "لحم اشاري",
+   "descriptionEn": "Tender mutton marinated in tangy pickling spices with a spicy kick.",
+   "descriptionAr": "لحم طري متبل بتوابل المخلل الحامضة مع نكهة حارة",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4200,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mutton-fry",
+   "category": "jalsa-special-mutton",
+   "nameEn": "Mutton Fry",
+   "nameAr": "لحم فرائي",
+   "descriptionEn": "",
+   "descriptionAr": "",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4200,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mutton-marag",
+   "category": "jalsa-special-mutton",
+   "nameEn": "Mutton Marag (Thu, Fri, Sat)",
+   "nameAr": "لحم مرق (الخميس / الجمعة / السبت)",
+   "descriptionEn": "Spicy mutton stew with aromatic flavors.",
+   "descriptionAr": "حساء لحم ضأن حار بنكهات عطرية.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4600,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mutton-rogan-josh",
+   "category": "jalsa-special-mutton",
+   "nameEn": "Mutton Rogan Josh",
+   "nameAr": "لحم روغن جوش",
+   "descriptionEn": "Classic Kashmiri mutton curry with rich red gravy",
+   "descriptionAr": "طبق لحم غنم كشميري تقليدي بصلصة حمراء",
+   "imageUrl": "/images/menu/mutton-rogan-josh.webp",
+   "cutoutUrl": "/images/menu/cut/mutton-rogan-josh.webp",
+   "cutoutWhole": true,
+   "isFeatured": true,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4200,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "seekh-kabab-masala",
+   "category": "jalsa-special-mutton",
+   "nameEn": "Seekh Kabab Masala",
+   "nameAr": "سيخ كبابا ماسالا",
+   "descriptionEn": "Grilled minced meat in flavorful masala gravy.",
+   "descriptionAr": "لحم مفروم مشوي في صلصة ماسالا لذيذة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4400,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "bhuna-gosht-kalimirch",
+   "category": "jalsa-special-mutton",
+   "nameEn": "Bhuna Gosht Kalimirch",
+   "nameAr": "بهونا جوشت كاليميرتش",
+   "descriptionEn": "Tender mutton in a spicy black pepper masala.",
+   "descriptionAr": "لحم ضأن طري في ماسالا الفلفل الأسود الحار.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4200,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "reshmi-damka-gosht",
+   "category": "jalsa-special-mutton",
+   "nameEn": "Reshmi Damka Gosht",
+   "nameAr": "ريشمي دمكا غوشت",
+   "descriptionEn": "Slow-cooked silky mutton in creamy sauce",
+   "descriptionAr": "لحم غنم مطبوخ ببطء في صلصة كريمية ناعمة",
+   "imageUrl": "/images/menu/reshmi-damka-gosht.webp",
+   "cutoutUrl": "/images/menu/cut/reshmi-damka-gosht.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4200,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "lasooni-gosht",
+   "category": "jalsa-special-mutton",
+   "nameEn": "Lasooni Gosht",
+   "nameAr": "لحم لسوني",
+   "descriptionEn": "Garlic-infused mutton curry",
+   "descriptionAr": "لحم غنم مطهو مع الثوم",
+   "imageUrl": "/images/menu/lasooni-gosht.webp",
+   "cutoutUrl": "/images/menu/cut/lasooni-gosht.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 8,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4000,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "shahi-paya",
+   "category": "jalsa-special-mutton",
+   "nameEn": "Shahi Paya",
+   "nameAr": "أقدام",
+   "descriptionEn": "Slow-cooked mutton trotters in spiced gravy.",
+   "descriptionAr": "أقدام لحم ضأن مطهوة ببطء في صلصة متبلة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 9,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 2600,
+     "calories": 350,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mutton-karahi",
+   "category": "pakistani",
+   "nameEn": "Mutton Karahi",
+   "nameAr": "لحم كراهي",
+   "descriptionEn": "Tender mutton cooked in a rich tomato and spice gravy",
+   "descriptionAr": "لحم طري مطبوخ في صلصة الطماطم والتوابل",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Half",
+     "nameAr": "نصف",
+     "priceHalalas": 6000,
+     "calories": 1000,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Full",
+     "nameAr": "كامل",
+     "priceHalalas": 11000,
+     "calories": 2050,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "mutton-white-karahi",
+   "category": "pakistani",
+   "nameEn": "Mutton White Karahi",
+   "nameAr": "لحم ابيض كراهي",
+   "descriptionEn": "Tender mutton in a creamy, yogurt and cream gravy with mild spices.",
+   "descriptionAr": "لحم ضأن طري في صلصة كريمية من الزبادي والقشدة مع توابل ناعمة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Half",
+     "nameAr": "نصف",
+     "priceHalalas": 6000,
+     "calories": 1000,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Full",
+     "nameAr": "كامل",
+     "priceHalalas": 11000,
+     "calories": 2050,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "chicken-karahi",
+   "category": "pakistani",
+   "nameEn": "Chicken Karahi",
+   "nameAr": "دجاج كراهي",
+   "descriptionEn": "Royal silky chicken curry",
+   "descriptionAr": "دجاج طري مطهو بتوابل كراهي الباكستانية",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Half",
+     "nameAr": "نصف",
+     "priceHalalas": 4500,
+     "calories": 575,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Full",
+     "nameAr": "كامل",
+     "priceHalalas": 8500,
+     "calories": 1050,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "mutton-makhni-handi",
+   "category": "pakistani",
+   "nameEn": "Mutton Makhni Handi",
+   "nameAr": "لحم ماخني هاندي",
+   "descriptionEn": "Royal-style mutton cooked in a creamy, spiced gravy",
+   "descriptionAr": "لحم ضأن على الطريقة الملكية مطهو في صلصة كريمية متبلة",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 6000,
+     "calories": 550,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chicken-makhni-handi",
+   "category": "pakistani",
+   "nameEn": "Chicken Makhni Handi",
+   "nameAr": "دجاج ماخني هاندي",
+   "descriptionEn": "Delicious chicken curry made with yogurt and ground spices",
+   "descriptionAr": "كاري دجاج لذيذ محضر بالزبادي والتوابل المطحونة",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4500,
+     "calories": 650,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mutton-haleem",
+   "category": "pakistani",
+   "nameEn": "Mutton Haleem",
+   "nameAr": "لحم حليم",
+   "descriptionEn": "Hearty, slow-cooked mutton haleem a creamy blend of meat, lentils & wheat.",
+   "descriptionAr": "لحم حليم غني ومطبوخ ببطء مع العدس والقمح.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3000,
+     "calories": 650,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "lahori-chana",
+   "category": "pakistani",
+   "nameEn": "Lahori Chana",
+   "nameAr": "لاهوري شانا",
+   "descriptionEn": "Chickpeas in rich, flavorful Lahori-style gravy.",
+   "descriptionAr": "حمص في صلصة غنية ولذيذة على طريقة لاهور.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 550,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "nihari",
+   "category": "pakistani",
+   "nameEn": "Nihari",
+   "nameAr": "نهاري",
+   "descriptionEn": "Slow-cooked beef stew with deep spices and a rich texture",
+   "descriptionAr": "يخنة لحم بقر مطهوة ببطء وغنية بالنكهات",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3000,
+     "calories": 550,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "nalli-nihari",
+   "category": "pakistani",
+   "nameEn": "Nalli Nihari",
+   "nameAr": "نلي نهاري",
+   "descriptionEn": "Slow-cooked beef stew with deep spices and a rich texture",
+   "descriptionAr": "يخنة لحم بقر مطهوة ببطء وغنية بالنكهات",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 8,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4500,
+     "calories": 550,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "kung-pao-chicken",
+   "category": "chinese",
+   "nameEn": "Kung Pao Chicken",
+   "nameAr": "دجاج كونغ باو",
+   "descriptionEn": "Spicy stir-fried chicken with peanuts and vegetables",
+   "descriptionAr": "دجاج مقلي حار مع الفول السوداني والخضار",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3400,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "panko-chicken",
+   "category": "chinese",
+   "nameEn": "Panko Chicken",
+   "nameAr": "دجاج بانكو",
+   "descriptionEn": "Crispy fried chicken coated with panko crumbs",
+   "descriptionAr": "دجاج مقلي مقرمش مغطى بفتات بانكو",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "majestic-kaju-chicken",
+   "category": "chinese",
+   "nameEn": "Majestic Kaju Chicken",
+   "nameAr": "دجاج كاجو ميجستك",
+   "descriptionEn": "Tender chicken cooked in a rich, creamy cashew nut sauce with aromatic spices",
+   "descriptionAr": "دجاج طري مطبوخ في صلصة كاجو كريمية غنية مع التوابل العطرية",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3400,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chinese-platter",
+   "category": "chinese",
+   "nameEn": "Chinese Platter",
+   "nameAr": "صحن صيني مشوي",
+   "descriptionEn": "Spicy mix of Chicken 65, Mongolian, and Chilli Fish. A sizzling, flavorful combo.",
+   "descriptionAr": "مزيج حار من دجاج ٦٥، منغولي، وسمك بالفلفل. تشكيلة شهية ومميزة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 5200,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chilli-chicken-paneer",
+   "category": "chinese",
+   "nameEn": "Chilli Chicken / Paneer",
+   "nameAr": "دجاج بالفلفل الحار / بانير",
+   "descriptionEn": "Spicy Indo-Chinese style chicken or paneer with capsicum and onions",
+   "descriptionAr": "طبق حار على الطريقة الصينية الهندية مع الفلفل والبصل",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Chicken",
+     "nameAr": "دجاج",
+     "priceHalalas": 3800,
+     "calories": 220,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Paneer",
+     "nameAr": "بانير",
+     "priceHalalas": 3200,
+     "calories": 350,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "mongolian-chicken",
+   "category": "chinese",
+   "nameEn": "Mongolian Chicken",
+   "nameAr": "دجاج منغولي",
+   "descriptionEn": "Sautéed chicken in soy-based sauce. Also available in vegetarian option",
+   "descriptionAr": "دجاج مقلي مع صوص الصويا. يوجد خيار نباتي",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3600,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "manchurian",
+   "category": "chinese",
+   "nameEn": "Manchurian (Chicken / Veg)",
+   "nameAr": "منشوريا (دجاج / خضار)",
+   "descriptionEn": "Indo-Chinese style dumplings cooked in a tangy, spicy sauce",
+   "descriptionAr": "كرات مقلية في صوص حار على الطريقة الهندية الصينية",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Chicken",
+     "nameAr": "دجاج",
+     "priceHalalas": 3600,
+     "calories": 220,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Veg",
+     "nameAr": "خضار",
+     "priceHalalas": 3200,
+     "calories": 350,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "dynamite-chicken",
+   "category": "chinese",
+   "nameEn": "Dynamite Chicken",
+   "nameAr": "دجاج ديناميت",
+   "descriptionEn": "Grilled chicken topped with spicy dynamite mayo. Bold, creamy, and flavorful.",
+   "descriptionAr": "دجاج مشوي مع مايونيز ديناميت حار. قوي، كريمي، ولذيذ.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3800,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "dynamite-prawn",
+   "category": "chinese",
+   "nameEn": "Dynamite Prawn",
+   "nameAr": "روبيان ديناميت",
+   "descriptionEn": "Crispy prawns with tangy, spicy sauce. Topped with fiery dynamite mayo.",
+   "descriptionAr": "روبيان مقرمش بصلصة حارة ومنعشة مغطى بصلصة ديناميت نارية.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 8,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4600,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "loose-prawn",
+   "category": "chinese",
+   "nameEn": "Loose Prawn (Dhaba Style)",
+   "nameAr": "روبيان مقلي",
+   "descriptionEn": "Tender prawns with light spices. Juicy, simple, and flavorful.",
+   "descriptionAr": "روبيان طري مع توابل خفيفة. لذيذ، بسيط، وشهي.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 9,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4900,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "noodles",
+   "category": "chinese",
+   "nameEn": "Noodles (Schezwan, Chilli Garlic, Soft)",
+   "nameAr": "نودلز (سيتشوان، ثوم حار، سنغافورية)",
+   "descriptionEn": "Fried noodles in a choice of flavours.",
+   "descriptionAr": "نودلز مقلية بنكهات متنوعة",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 10,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3500,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "chicken-65",
+   "category": "chinese",
+   "nameEn": "Chicken 65",
+   "nameAr": "دجاج ٦٥",
+   "descriptionEn": "Deep-fried spicy chicken with curry leaves & spices",
+   "descriptionAr": "دجاج أو بانير مقلي حار مع أوراق الكاري والتوابل",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 11,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3600,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "paneer-65",
+   "category": "chinese",
+   "nameEn": "Paneer 65",
+   "nameAr": "بانير ٦٥",
+   "descriptionEn": "Crispy, spicy fried paneer bites with flavorful Indian spices.",
+   "descriptionAr": "قطع بانير مقلية مقرمشة وحارة متبلة بالتوابل الهندية اللذيذة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 12,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 3200,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "phuket-fish",
+   "category": "chinese",
+   "nameEn": "Phuket Fish",
+   "nameAr": "أسماك بوكيت",
+   "descriptionEn": "Crispy fried fish served with a classic sweet and tangy chili dipping sauce. A satisfying crunch!",
+   "descriptionAr": "سمك مقلي مقرمش يقدم مع صلصة الفلفل الحار الحلوة والحامضة الكلاسيكية",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 13,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4800,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "apollo-fish",
+   "category": "chinese",
+   "nameEn": "Apollo Fish",
+   "nameAr": "سمك أبولو",
+   "descriptionEn": "Crispy fish fillets in spicy, tangy marinade. Served fresh and full of flavor.",
+   "descriptionAr": "شرائح سمك مقرمشة بتتبيلة حارة ومنعشة تقدم طازجة ولذيذة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 14,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 4200,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "methi-chaman",
+   "category": "vegetables",
+   "nameEn": "Methi Chaman",
+   "nameAr": "ميثي تشمن",
+   "descriptionEn": "A Kashmiri dish with fenugreek leaves and paneer",
+   "descriptionAr": "طبق كشميري مع أوراق الحلبة والبانير.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 550,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mixed-sabzi",
+   "category": "vegetables",
+   "nameEn": "Mixed Sabzi",
+   "nameAr": "خضار مشكلة",
+   "descriptionEn": "Seasonal vegetables cooked with spices",
+   "descriptionAr": "خضروات موسمية مطهوة مع التوابل",
+   "imageUrl": "/images/menu/mixed-vegetables.webp",
+   "cutoutUrl": "/images/menu/cut/mixed-vegetables.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 550,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "aalo-gobi",
+   "category": "vegetables",
+   "nameEn": "Aalo Gobi",
+   "nameAr": "القرنبيط مع البطاطس",
+   "descriptionEn": "Potato and cauliflower curry, seasoned with turmeric and coriander.",
+   "descriptionAr": "كاري البطاطس والقرنبيط، متبل بالكركم والكزبرة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 550,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "daal-mash",
+   "category": "vegetables",
+   "nameEn": "Daal Mash",
+   "nameAr": "دال ماش",
+   "descriptionEn": "A flavorful blend of lentils, spices, and aromatics, tempered and fresh herbs.",
+   "descriptionAr": "مزيج لذيذ من العدس والتوابل والتوابل العطرية، والأعشاب الطازجة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "daal-chana",
+   "category": "vegetables",
+   "nameEn": "Daal Chana",
+   "nameAr": "دال شانا",
+   "descriptionEn": "A flavorful blend of lentils, spices, and aromatics, tempered and fresh herbs.",
+   "descriptionAr": "مزيج لذيذ من العدس والتوابل والتوابل العطرية، والأعشاب الطازجة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "daal-tadka",
+   "category": "vegetables",
+   "nameEn": "Daal Tadka",
+   "nameAr": "دال تاركا",
+   "descriptionEn": "A flavorful blend of lentils, spices, and aromatics, tempered with sizzling ghee and fresh herbs.",
+   "descriptionAr": "مزيج لذيذ من العدس والتوابل والتوابل العطرية، مع السمن الساخن والأعشاب الطازجة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "daal-makni",
+   "category": "vegetables",
+   "nameEn": "Daal Makni",
+   "nameAr": "دال مخني",
+   "descriptionEn": "Creamy black lentils slow-cooked with butter and cream",
+   "descriptionAr": "عدس أسود مطهو ببطء مع الزبدة والكريمة",
+   "imageUrl": "/images/menu/daal-makni.webp",
+   "cutoutUrl": "/images/menu/cut/daal-makni.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "shahi-jalfrezi",
+   "category": "vegetables",
+   "nameEn": "Shahi Jalfrezi",
+   "nameAr": "شاهي جالفريزي",
+   "descriptionEn": "Royal-style mixed veg stir-fry with spices",
+   "descriptionAr": "خضروات مشكلة مطهية على الطريقة الملكية مع التوابل",
+   "imageUrl": "/images/menu/shahi-jalfrezi.webp",
+   "cutoutUrl": "/images/menu/cut/shahi-jalfrezi.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 450,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "palak-paneer",
+   "category": "vegetables",
+   "nameEn": "Palak Paneer",
+   "nameAr": "سبانخ بنير",
+   "descriptionEn": "Cottage cheese cubes in creamy spinach gravy",
+   "descriptionAr": "مكعبات الجبن القريش في صلصة السبانخ الكريمية",
+   "imageUrl": "/images/menu/palak-paneer.webp",
+   "cutoutUrl": "/images/menu/cut/palak-paneer.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 8,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 2200,
+     "calories": 250,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "paneer-tikka-masala",
+   "category": "vegetables",
+   "nameEn": "Paneer Tikka Masala",
+   "nameAr": "بانير تكا ماسالا",
+   "descriptionEn": "Grilled paneer in creamy, spiced tomato gravy. Rich, flavorful, and aromatic.",
+   "descriptionAr": "بانير مشوي بصلصة طماطم كريمية متبلة. غني بالنكهة والعطر.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 9,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 2400,
+     "calories": 650,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "paneer-butter-masala",
+   "category": "vegetables",
+   "nameEn": "Paneer Butter Masala",
+   "nameAr": "ماسالا زبدة بانير",
+   "descriptionEn": "Paneer in rich tomato-butter gravy",
+   "descriptionAr": "جبن بانير في صلصة طماطم وزبدة غنية",
+   "imageUrl": "/images/menu/paneer-butter-masala.webp",
+   "cutoutUrl": "/images/menu/cut/paneer-butter-masala.webp",
+   "cutoutWhole": true,
+   "isFeatured": true,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 10,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 2400,
+     "calories": 650,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mutton-dum-biryani",
+   "category": "rice",
+   "nameEn": "Mutton Dum Biryani",
+   "nameAr": "لحم دوم برياني",
+   "descriptionEn": "Fragrant basmati rice cooked with tender mutton in traditional dum style",
+   "descriptionAr": "أرز برياني باللحم المطبوخ على البخار (دم)",
+   "imageUrl": "/images/menu/mutton-dum-biryani.webp",
+   "cutoutUrl": "/images/menu/cut/mutton-dum-biryani.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Regular",
+     "nameAr": "عادي",
+     "priceHalalas": 3800,
+     "calories": 650,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Family Pack",
+     "nameAr": "عائلة",
+     "priceHalalas": 7600,
+     "calories": 1350,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "shahi-chicken-biryani",
+   "category": "rice",
+   "nameEn": "Shahi Chicken Biryani",
+   "nameAr": "شاهي دجاج برياني",
+   "descriptionEn": "Royal-style chicken biryani cooked with aromatic spices and herbs",
+   "descriptionAr": "برياني دجاج على الطريقة الملكية",
+   "imageUrl": "/images/menu/shahi-chicken-biryani.webp",
+   "cutoutUrl": "/images/menu/cut/shahi-chicken-biryani.webp",
+   "cutoutWhole": true,
+   "isFeatured": true,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Regular",
+     "nameAr": "عادي",
+     "priceHalalas": 3200,
+     "calories": 650,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Family Pack",
+     "nameAr": "عائلة",
+     "priceHalalas": 6200,
+     "calories": 650,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "zeera-rice",
+   "category": "rice",
+   "nameEn": "Zeera Rice",
+   "nameAr": "أرز بالكمون",
+   "descriptionEn": "Simple cumin-flavored basmati rice",
+   "descriptionAr": "أرز مطهو مع الكمون",
+   "imageUrl": "/images/menu/zeera-rice.webp",
+   "cutoutUrl": "/images/menu/cut/zeera-rice.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 650,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "schezwan-rice",
+   "category": "rice",
+   "nameEn": "Schezwan Rice (Veg / Chicken)",
+   "nameAr": "أرز شيزوان (الخضار / دجاج)",
+   "descriptionEn": "Spicy, tangy stir-fried rice tossed with vibrant vegetables and bold Schezwan sauce.",
+   "descriptionAr": "أرز شيزوان حار وحامض مقلي مع خضراوات ملونة وصلصة شيزوان القوية.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 2800,
+     "calories": 650,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "biryani-rice",
+   "category": "rice",
+   "nameEn": "Biryani Rice",
+   "nameAr": "أرز برياني",
+   "descriptionEn": "Chicken biryani cooked with aromatic spices and herbs.",
+   "descriptionAr": "برياني دجاج مطبوخ مع توابل وأعشاب عطرية.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1500,
+     "calories": 650,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "steamed-rice",
+   "category": "rice",
+   "nameEn": "Steamed Rice",
+   "nameAr": "أرز بسمتي",
+   "descriptionEn": "Fragrant, long-grain Basmati rice, perfectly cooked for a light and fluffy texture.",
+   "descriptionAr": "أرز بسمتي عطري، طويل الحبة، مطبوخ بشكل مثالي للحصول على ملمس خفيف ورقيق.",
+   "imageUrl": "/images/menu/plain-steam-rice.webp",
+   "cutoutUrl": "/images/menu/cut/plain-steam-rice.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 600,
+     "calories": 650,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "fried-rice",
+   "category": "rice",
+   "nameEn": "Fried Rice (Chicken, Veg, Seafood)",
+   "nameAr": "أرز مقلي (دجاج / خضار / بحري)",
+   "descriptionEn": "Choice of fried rice: chicken, vegetable, or seafood",
+   "descriptionAr": "أرز مقلي متنوع بالنكهات: دجاج، خضار، أو مأكولات بحرية",
+   "imageUrl": "/images/menu/fried-rice.webp",
+   "cutoutUrl": "/images/menu/cut/fried-rice.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Chicken",
+     "nameAr": "دجاج",
+     "priceHalalas": 2800,
+     "calories": 650,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Veg",
+     "nameAr": "خضار",
+     "priceHalalas": 2400,
+     "calories": 650,
+     "sortOrder": 1
+    },
+    {
+     "nameEn": "Seafood",
+     "nameAr": "بحري",
+     "priceHalalas": 3200,
+     "calories": 650,
+     "sortOrder": 2
+    }
+   ]
+  },
+  {
+   "slug": "beef-pulao",
+   "category": "rice",
+   "nameEn": "Beef Pulao (Friday Special)",
+   "nameAr": "لحم بقر بولاو (الجمعة الخاصة)",
+   "descriptionEn": "Spicy and flavorful pulao prepared with authentic and juicy beef.",
+   "descriptionAr": "بولاو حار ولذيذ مُعد من لحم البقر العصير الأصيل.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "Single",
+     "nameAr": "فردي",
+     "priceHalalas": 3000,
+     "calories": 575,
+     "sortOrder": 0
+    },
+    {
+     "nameEn": "Full",
+     "nameAr": "كامل",
+     "priceHalalas": 6000,
+     "calories": 1050,
+     "sortOrder": 1
+    }
+   ]
+  },
+  {
+   "slug": "wheat-tandoori-roti",
+   "category": "bread",
+   "nameEn": "Wheat Tandoori Roti",
+   "nameAr": "خبز التندوري",
+   "descriptionEn": "Whole wheat roti baked in clay oven. Crispy, fresh, and flavorful.",
+   "descriptionAr": "خبز قمح كامل مخبوز في فرن طيني، مقرمش، طازج، ولذيذ.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 100,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "butter-naan",
+   "category": "bread",
+   "nameEn": "Butter Naan",
+   "nameAr": "نان بالزبدة",
+   "descriptionEn": "Pillowy soft naan, fresh from the tandoor and brushed with golden butter",
+   "descriptionAr": "نان طري يخرج ساخنا من التنور، يُدهن بالزبدة الذهبية ويكمل أي طبق رئيسي",
+   "imageUrl": "/images/menu/butter-naan.webp",
+   "cutoutUrl": "/images/menu/cut/butter-naan.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 250,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "plain-naan",
+   "category": "bread",
+   "nameEn": "Plain Naan",
+   "nameAr": "نان سادة",
+   "descriptionEn": "Traditional tandoori flatbread, light and fluffy with a smoky touch",
+   "descriptionAr": "خبز تنوري تقليدي، خفيف وهش مع لمسة مشوية لذيذة",
+   "imageUrl": "/images/menu/plain-naan.webp",
+   "cutoutUrl": "/images/menu/cut/plain-naan.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 200,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "garlic-naan",
+   "category": "bread",
+   "nameEn": "Garlic Naan",
+   "nameAr": "نان بالثوم",
+   "descriptionEn": "A flavorful twist on the classic – naan topped with aromatic garlic and melted butter",
+   "descriptionAr": "نان شهي مزين بالثوم الطازج والزبدة الذائبة ليمنح نكهة قوية ومميزة",
+   "imageUrl": "/images/menu/garlic-naan.webp",
+   "cutoutUrl": "/images/menu/cut/garlic-naan.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 300,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "kalongi-naan",
+   "category": "bread",
+   "nameEn": "Kalongi Naan",
+   "nameAr": "كالونجي نان",
+   "descriptionEn": "Soft naan topped with black cumin seeds. Fresh, aromatic, and flavorful.",
+   "descriptionAr": "خبز نان طري مع بذور الكمون الأسود، عطري، طازج، ولذيذ.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 250,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "coriander-naan",
+   "category": "bread",
+   "nameEn": "Coriander Naan",
+   "nameAr": "نان الكزبرة",
+   "descriptionEn": "Soft, fluffy Indian bread infused with fresh coriander",
+   "descriptionAr": "خبز هندي طري ورقيق مع الكزبرة الطازجة",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 250,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "roghni-naan",
+   "category": "bread",
+   "nameEn": "Roghni Naan",
+   "nameAr": "روغني نان",
+   "descriptionEn": "Soft, fluffy naan topped with sesame seeds and a hint of butter",
+   "descriptionAr": "خبز نان ناعم ورقيق مغطى ببذور السمسم مع لمسة من الزبدة",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 200,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "assorted-naan-basket",
+   "category": "bread",
+   "nameEn": "Assorted Naan Basket",
+   "nameAr": "صحن مشكل خبز",
+   "descriptionEn": "A mixture of Butter Naan, Garlic Naan, Laccha Paratha & Coriander Naan.",
+   "descriptionAr": "صحن من زبدة نان، نان الثوم، لاتشا باراتا وكزبرة نان",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1000,
+     "calories": 500,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "romali-roti",
+   "category": "bread",
+   "nameEn": "Romali Roti",
+   "nameAr": "خبز رومالي",
+   "descriptionEn": "Paper-thin, silky soft roti folded like a handkerchief – a true Mughlai delight",
+   "descriptionAr": "خبز رقيق جدا كالمنديل، ناعم الملمس ويذوب في الفم - من أطايب المطبخ المغولي",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 8,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 200,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "kulcha",
+   "category": "bread",
+   "nameEn": "Kulcha (Plain / Butter)",
+   "nameAr": "كلشا (سادة / بالزبدة)",
+   "descriptionEn": "Thick and soft North Indian bread, served plain or finished with a buttery glaze",
+   "descriptionAr": "خبز سميك وطري من شمال الهند، يقدم سادة أو مع لمسة زبدة",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 9,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 250,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "laccha-paratha",
+   "category": "bread",
+   "nameEn": "Laccha Paratha",
+   "nameAr": "براتا ملففة",
+   "descriptionEn": "Flaky, golden layers of pan-fried dough – crisp on the outside, tender inside",
+   "descriptionAr": "طبقات مقرمشة من العجين المقلي، ذهبية اللون، مقرمشة من الخارج وطرية من الداخل",
+   "imageUrl": "/images/menu/laccha-paratha.webp",
+   "cutoutUrl": "/images/menu/cut/laccha-paratha.webp",
+   "cutoutWhole": true,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 10,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 300,
+     "calories": 320,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "shahi-rabdi",
+   "category": "desserts",
+   "nameEn": "Shahi Rabdi",
+   "nameAr": "شاهي رابدي",
+   "descriptionEn": "Rich and creamy milk-based dessert, slow-cooked and sweetened",
+   "descriptionAr": "حلوى غنية ودسمة مصنوعة من الحليب، مطهوة ببطء ومحلاة",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1800,
+     "calories": 280,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "apricot-pudding",
+   "category": "desserts",
+   "nameEn": "Apricot Pudding",
+   "nameAr": "بودنغ المشمش",
+   "descriptionEn": "Soft, sweet pudding made with dried apricots",
+   "descriptionAr": "بودنغ طري وحلو مصنوع من المشمش المجفف",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1600,
+     "calories": 280,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "gulab-jamun",
+   "category": "desserts",
+   "nameEn": "Gulab Jamun",
+   "nameAr": "جلاب جامن",
+   "descriptionEn": "Deep-fried milk dumplings soaked in rose-flavored syrup",
+   "descriptionAr": "زلابية حليب مقلية مغموسة في شراب بنكهة الورد",
+   "imageUrl": "/images/menu/gulab-jamun.webp",
+   "cutoutUrl": "/images/menu/cut/gulab-jamun.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1000,
+     "calories": 180,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "gajar-ka-halwa",
+   "category": "desserts",
+   "nameEn": "Gajar Ka Halwa",
+   "nameAr": "حلوى الجزر",
+   "descriptionEn": "Carrot-based sweet pudding cooked in milk and ghee",
+   "descriptionAr": "بودنغ حلو مصنوع من الجزر، مطبوخ في الحليب والسمن",
+   "imageUrl": "/images/menu/gajar-ka-halwa.webp",
+   "cutoutUrl": "/images/menu/cut/gajar-ka-halwa.webp",
+   "cutoutWhole": true,
+   "isFeatured": true,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1500,
+     "calories": 380,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "matka-kheer",
+   "category": "desserts",
+   "nameEn": "Matka Kheer",
+   "nameAr": "ماتكا كهير",
+   "descriptionEn": "",
+   "descriptionAr": "",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1500,
+     "calories": 380,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "matka-kulfi",
+   "category": "desserts",
+   "nameEn": "Matka Kulfi",
+   "nameAr": "ماتكا كُلفي",
+   "descriptionEn": "Creamy, dense matka kulfi made by simmering milk with cardamom and nuts.",
+   "descriptionAr": "حلوى كُلفي كريمية وكثيفة محضرة بتكثيف الحليب مع الهيل والمكسرات.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1500,
+     "calories": 180,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "shahi-tukda",
+   "category": "desserts",
+   "nameEn": "Shahi Tukda",
+   "nameAr": "شاهي توكرا",
+   "descriptionEn": "Mughlai bread pudding with rich saffron and cardamom-flavored milk",
+   "descriptionAr": "بودنغ خبز مغلاي مع حليب بنكهة الزعفران والهيل",
+   "imageUrl": "/images/menu/shahi-tukda.webp",
+   "cutoutUrl": "/images/menu/cut/shahi-tukda.webp",
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1400,
+     "calories": 180,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mughlai-meetha-pan",
+   "category": "desserts",
+   "nameEn": "Mughlai Meetha Pan",
+   "nameAr": "بان مغلاي حلو",
+   "descriptionEn": "Sweet betel leaf preparation with aromatic fillings",
+   "descriptionAr": "تحضير أوراق التنبول الحلوة مع حشوات عطرية",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 600,
+     "calories": 80,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "strawberry-lassi",
+   "category": "beverages",
+   "nameEn": "Strawberry Lassi",
+   "nameAr": "لاسّي بالفراولة",
+   "descriptionEn": "Yogurt drink with sweet strawberries. Cool, fruity, and refreshing.",
+   "descriptionAr": "مشروب زبادي مع فراولة حلوة، بارد، فاكهي، ومنعش.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1400,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "mango-lassi",
+   "category": "beverages",
+   "nameEn": "Mango Lassi",
+   "nameAr": "مانجو لسي",
+   "descriptionEn": "A sweet and creamy yogurt-based drink blended with juicy mango puree.",
+   "descriptionAr": "مشروب حلو وكريمي على أساس الزبادي ممزوج بلب المانجو العصيري.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1400,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "pistachio-lassi",
+   "category": "beverages",
+   "nameEn": "Pistachio Lassi",
+   "nameAr": "بستاشيو لسي",
+   "descriptionEn": "A creamy and nutty yoghurt drink infused with the flavour of pistachios.",
+   "descriptionAr": "مشروب زبادي كريمي بنكهة البندق الغنية الممزوجة بنفحات الفستق.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1400,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "punjabi-sweet-lassi",
+   "category": "beverages",
+   "nameEn": "Punjabi Sweet Lassi",
+   "nameAr": "بنجابي لسي",
+   "descriptionEn": "Refreshing Lasi- hint of mint and ginger with a pinch of salt.",
+   "descriptionAr": "لبن مثلج منعش نكهة النعناع والزنجبيل مع رشة ملح.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1200,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "kinza-drink",
+   "category": "beverages",
+   "nameEn": "Kinza Drink",
+   "nameAr": "مشروب غازي",
+   "descriptionEn": "Refreshing carbonated soft drink available in citrus, lemon, cola and orange flavors.",
+   "descriptionAr": "مشروب غازي منعش بنكهة الليمون والحمضيات والكولا والبرتقال.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 300,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "karak-tea",
+   "category": "beverages",
+   "nameEn": "Karak Tea",
+   "nameAr": "شاي كرك",
+   "descriptionEn": "Strong, creamy milk tea brewed with black tea leaves and cardamom for a bold flavor.",
+   "descriptionAr": "شاي بالحليب قوي وكريمي محضر من أوراق الشاي الأسود والهيل لنكهة قوية.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 300,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "kashmiri-tea",
+   "category": "beverages",
+   "nameEn": "Kashmiri Tea",
+   "nameAr": "شاي كشميري",
+   "descriptionEn": "Aromatic pink Kashmiri tea with creamy texture and traditional spices.",
+   "descriptionAr": "شاي كشميري زهري عطري بنكهة التوابل وقوام كريمي.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 6,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 500,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "water",
+   "category": "beverages",
+   "nameEn": "Water",
+   "nameAr": "ماء",
+   "descriptionEn": "Pure, refreshing water — essential and hydrating.",
+   "descriptionAr": "ماء نقي ومنعش – أساسي ومرطب.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 7,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 100,
+     "calories": null,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "classic-lemonade",
+   "category": "mojitos",
+   "nameEn": "Classic Lemonade",
+   "nameAr": "ليمونادة كلاسيكية",
+   "descriptionEn": "Lemon, sugar, and water—sweet, citrusy, and refreshing. Perfect for hot days.",
+   "descriptionAr": "ليمون، سكر، وماء - حلو ومنعش، مثالي للأيام الحارة.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 0,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1000,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "lemon-mint",
+   "category": "mojitos",
+   "nameEn": "Lemon Mint",
+   "nameAr": "ليمون ونعناع",
+   "descriptionEn": "Lemon with mint and lime. Cool, fruity, and perfect for summer.",
+   "descriptionAr": "ليمون مع نعناع، منعش وفاكهي للصيف.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 1,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1200,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "watermelon-mint-burst",
+   "category": "mojitos",
+   "nameEn": "Watermelon Mint Burst",
+   "nameAr": "موهيتو البطيخ",
+   "descriptionEn": "Juicy watermelon with mint and lime. Cool, fruity, and perfect for summer.",
+   "descriptionAr": "بطيخ طازج مع النعناع والليمون، منعش وفاكهي للصيف.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 2,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1200,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "berry-bliss",
+   "category": "mojitos",
+   "nameEn": "Berry Bliss",
+   "nameAr": "بيري بليس",
+   "descriptionEn": "Fresh strawberries with mint and lime. Fruity, zesty, and chilled.",
+   "descriptionAr": "فراولة طازجة مع النعناع والليمون، منعش ولذيذ.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 3,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1200,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "tangy-peach-splash",
+   "category": "mojitos",
+   "nameEn": "Tangy Peach Splash",
+   "nameAr": "موهيتو الخوخ",
+   "descriptionEn": "Peach, orange, and lemonade blend. Sweet, tangy, and summery.",
+   "descriptionAr": "مزيج من الخوخ والبرتقال والليمونادة. حلو ومنعش.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 4,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1200,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  },
+  {
+   "slug": "virgin-blue-lagoon",
+   "category": "mojitos",
+   "nameEn": "Virgin Blue Lagoon",
+   "nameAr": "بلو لاجون",
+   "descriptionEn": "Lemon-lime soda with pineapple & blue curaçao. Tropical, fruity, and chilled.",
+   "descriptionAr": "صودا الليمون مع الأناناس والكوراساو الأزرق، استوائي ومنعش.",
+   "imageUrl": null,
+   "cutoutUrl": null,
+   "cutoutWhole": false,
+   "isFeatured": false,
+   "isPopular": false,
+   "isAvailable": true,
+   "sortOrder": 5,
+   "source": "Printed menu supplied by the restaurant (22 Nov 2026), prices include VAT",
+   "variants": [
+    {
+     "nameEn": "",
+     "nameAr": "",
+     "priceHalalas": 1200,
+     "calories": 220,
+     "sortOrder": 0
+    }
+   ]
+  }
+ ]
+}

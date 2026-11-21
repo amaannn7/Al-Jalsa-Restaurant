@@ -1,0 +1,325 @@
+{
+ "banjara-kabab": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.131
+ },
+ "bbq-mix-platter": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0.006
+ },
+ "butter-chicken": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.054
+ },
+ "butter-naan": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "chatpata-baby-corn": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.626
+ },
+ "chicken-hot-n-sour-soup": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "chicken-manchow-soup": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0.018
+ },
+ "chicken-tandoori": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.037
+ },
+ "corn-soup": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "cream-of-mushroom-soup": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.178
+ },
+ "daal-makni": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "fish-tikka": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.048
+ },
+ "french-fries": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "fried-rice": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.174
+ },
+ "gajar-ka-halwa": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "garlic-naan": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "green-salad": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0.014
+ },
+ "gulab-jamun": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.021
+ },
+ "honey-chilli-potato": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "laccha-paratha": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "lasooni-fish-tikka": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.293
+ },
+ "lasooni-gosht": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "mixed-vegetables": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "mughlai-meetha-pan": {
+  "photo": false
+ },
+ "murgh-lajawab": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "murgh-mastaan": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "mutton-dum-biryani": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.076
+ },
+ "mutton-kashmiri": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "mutton-maharaja": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "mutton-rogan-josh": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "mutton-sheekh-kabab": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.287
+ },
+ "nauratan-khorma": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.228
+ },
+ "palak-paneer": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "paneer-butter-masala": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "paneer-pakoda": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "plain-naan": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "plain-steam-rice": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "reshmi-damka-gosht": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.502
+ },
+ "russian-salad": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.196
+ },
+ "shahi-chicken-biryani": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "shahi-jalfrezi": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.064
+ },
+ "shahi-murgh-makhmali": {
+  "photo": false
+ },
+ "shahi-tukda": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.049
+ },
+ "sikandari-kabab": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.169
+ },
+ "spring-rolls": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0.007
+ },
+ "tandoori-prawns": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "tikka-roll": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "veg-bhutani": {
+  "photo": true,
+  "cutout": true,
+  "whole": false,
+  "edgeRatio": 0.125
+ },
+ "zeera-rice": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0
+ },
+ "chicken-lollipop": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0,
+  "source": "printed menu photo page (low resolution)"
+ },
+ "chicken-popcorn": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0,
+  "source": "printed menu photo page (low resolution)"
+ },
+ "crispy-corn": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0,
+  "source": "printed menu photo page (low resolution)"
+ },
+ "lentil-soup": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0,
+  "source": "printed menu photo page (low resolution)"
+ },
+ "seafood-soup": {
+  "photo": true,
+  "cutout": true,
+  "whole": true,
+  "edgeRatio": 0,
+  "source": "printed menu photo page (low resolution)"
+ }
+}
