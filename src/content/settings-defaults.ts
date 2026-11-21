@@ -35,13 +35,14 @@ export const settingsDefaults: SiteSettingsData = {
   takeawayEnabled: true,
   deliveryEnabled: true,
   deliveryFeeHalalas: null,
-  deliveryNoteEn: "",
-  deliveryNoteAr: "",
+  // The fee depends on the area; customers ask on WhatsApp, like the other enquiries.
+  deliveryNoteEn: "Delivery charges depend on your area. Send us a message on WhatsApp to ask, and we will confirm the charge with your order.",
+  deliveryNoteAr: "تختلف رسوم التوصيل حسب منطقتك. أرسل لنا رسالة عبر واتساب للاستفسار، وسنؤكد الرسوم مع طلبك.",
   buffetEnabled: true,
   googleRating: null,
   googleReviewCount: null,
   ratingCheckedOn: null,
-  // Confirmed by the restaurant: WhatsApp (buffet posters), Facebook page, and that they deliver.
-  // The delivery fee is not known yet, so customers see "confirmed by the restaurant".
-  unconfirmed: ["deliveryFeeHalalas"],
+  // Confirmed by the restaurant: WhatsApp (buffet posters), Facebook page, delivery. The delivery fee is
+  // confirmed per order on WhatsApp, so it stays empty and customers see "confirmed by the restaurant".
+  unconfirmed: [],
 };

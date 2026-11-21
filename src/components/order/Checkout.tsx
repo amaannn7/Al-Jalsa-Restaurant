@@ -233,6 +233,16 @@ export function Checkout({
                   <motion.div key="addr" initial={reduce ? false : { height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                     <TextArea id="address" label={c.address} required rows={3} placeholder={c.addressPlaceholder} autoComplete="street-address" error={e("address")} />
                     {deliveryNote ? <p className="meta mt-2">{deliveryNote}</p> : null}
+                    {deliveryFeeHalalas == null ? (
+                      <a
+                        href={waLink(whatsapp, locale === "ar" ? "مرحباً، كم رسوم التوصيل إلى منطقتي؟" : "Hello, what is the delivery charge to my area?")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="action link-underline mt-2 inline-flex items-center gap-2 text-gold"
+                      >
+                        <IconWhatsApp size={15} /> {locale === "ar" ? "اسأل عن رسوم التوصيل" : "Ask about the delivery charge"}
+                      </a>
+                    ) : null}
                   </motion.div>
                 ) : null}
               </AnimatePresence>

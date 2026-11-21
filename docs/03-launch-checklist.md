@@ -2,11 +2,11 @@
 
 ## 1. Confirm with the restaurant (shown as reminders in Admin → Overview)
 - [x] Delivery offered (confirmed 22 Nov 2026).
-- [ ] Delivery fee (or leave empty for "confirmed by the restaurant") and delivery area
-      (Admin → Restaurant details → Delivery fee / Delivery note).
+- [x] Delivery fee: confirmed per order on WhatsApp (customers see a note and an "Ask about the
+      delivery charge" link). Enter a fixed fee in Admin → Restaurant details if one is set later.
 - [x] Facebook page https://www.facebook.com/aljalsarestaurant/ confirmed. TikTok / Snapchat links, if any.
-- [ ] Price conflicts on the printed menu: Methi Chaman (18 or 26?) and Green Salad (6 or 10?).
-- [ ] Descriptions for Mutton Fry and Matka Kheer (the printed ones belong to other dishes).
+- [x] Price conflicts: use the menu picture prices (Methi Chaman 18, Green Salad 6).
+- [x] Descriptions for Mutton Fry and Matka Kheer written.
 - [ ] Whether the 6 dishes on the old Ninja listing but not on the printed menu are still served.
 - [ ] Original photo files for the printed menu's photo pages, and photos for dishes without one.
 - [ ] Lunch buffet: still Sunday to Wednesday, still SAR 32 / 23? (A review mentions a Saturday buffet.)

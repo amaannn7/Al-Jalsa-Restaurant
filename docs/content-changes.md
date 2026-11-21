@@ -7,11 +7,13 @@ calories are as printed. The transcription is in `scripts/data/printed-menu.py`;
 The printed menu replaces the earlier Ninja delivery-app listing, whose prices were higher (for
 example Butter Chicken SAR 42 on Ninja, SAR 35 on the printed menu).
 
-## Please check: the English and Arabic columns disagree
+## Prices where the English and Arabic columns disagree
+The restaurant asked to use the prices given in the menu pictures; the site uses the English-side
+price badges for both languages.
 | Dish | English column | Arabic column | Used on the site |
 |---|---|---|---|
-| Methi Chaman | SAR 18 | ٢٦ (26) | **18**; please confirm |
-| Green Salad | SAR 06 | ١٠ (10) | **6**; please confirm |
+| Methi Chaman | SAR 18 | ٢٦ (26) | **18** |
+| Green Salad | SAR 06 | ١٠ (10) | **6** |
 
 ## Arabic text that was a copy of another dish (replaced with a translation of the English)
 | Dish | Printed Arabic | Site Arabic |
@@ -32,11 +34,11 @@ example Butter Chicken SAR 42 on Ninja, SAR 35 on the printed menu).
 | Chicken 65 | "Deep-fried spicy paneer with curry leaves & spices" | "Deep-fried spicy chicken with curry leaves & spices" |
 | Beef Pulao | "prepared in authentic anj Juciy Beef." | "prepared with authentic and juicy beef." |
 
-## Descriptions left empty (the printed text belongs to another dish)
-- **Mutton Fry**: printed text is the Achari Mutton description ("marinated in tangy pickling spices").
-- **Matka Kheer**: printed text is the Gajar Ka Halwa description ("Carrot-based sweet pudding").
-
-Add the correct descriptions in the admin.
+## Descriptions written at the restaurant's request (the printed text belonged to another dish)
+- **Mutton Fry**: "Tender pieces of mutton fried with onions and aromatic spices." /
+  "قطع لحم ضأن طرية مقلية مع البصل والتوابل العطرية."
+- **Matka Kheer**: "Creamy rice pudding slow-cooked in milk and served in a traditional clay pot." /
+  "بودنغ أرز كريمي مطهو ببطء في الحليب ويقدم في وعاء فخاري تقليدي."
 
 ## Other
 - Water is printed as "CAL 220"; no calories are shown for water.

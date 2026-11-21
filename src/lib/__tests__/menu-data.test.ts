@@ -19,6 +19,7 @@ describe("seed menu (transcribed from the printed menu)", () => {
         if (v.calories != null) expect(v.calories > 0 && v.calories < 5000, i.slug).toBe(true);
       }
       expect(i.nameEn && i.nameAr, i.slug).toBeTruthy();
+      expect(i.descriptionEn && i.descriptionAr, `${i.slug} needs EN and AR descriptions`).toBeTruthy();
     }
   });
   it("matches spot checks against the printed menu", () => {
@@ -28,6 +29,8 @@ describe("seed menu (transcribed from the printed menu)", () => {
     expect(price("butter-naan")).toBe(250);
     expect(price("shahi-chicken-biryani", 1)).toBe(6200);
     expect(price("fried-rice", 2)).toBe(3200);
+    expect(price("methi-chaman")).toBe(1800);
+    expect(price("green-salad")).toBe(600);
     expect(seedMenu.items).toHaveLength(124);
     expect(seedMenu.categories).toHaveLength(12);
   });

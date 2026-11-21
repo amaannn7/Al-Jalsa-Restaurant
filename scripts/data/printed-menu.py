@@ -57,7 +57,7 @@ CATS = [
  ("jalsa-special-mutton", "Jalsa Special: Mutton", "جلسة الخاصة: اللحم", "Jalsa-e-Khas mutton curries, rogan josh, maharaja and more.", "أطباق اللحم الخاصة، روغن جوش ومهراجا وغيرها.", [
   ("mutton-maharaja", "Mutton Maharaja", "لحم غنم مهراجا", "Royal-style mutton cooked with spices and dry fruits", "طبق ملكي من لحم الغنم مع التوابل والمكسرات", one(44, 350)),
   ("achari-mutton", "Achari Mutton", "لحم اشاري", "Tender mutton marinated in tangy pickling spices with a spicy kick.", "لحم طري متبل بتوابل المخلل الحامضة مع نكهة حارة", one(42, 450)),
-  ("mutton-fry", "Mutton Fry", "لحم فرائي", "", "", one(42, 450)),
+  ("mutton-fry", "Mutton Fry", "لحم فرائي", "Tender pieces of mutton fried with onions and aromatic spices.", "قطع لحم ضأن طرية مقلية مع البصل والتوابل العطرية.", one(42, 450)),
   ("mutton-marag", "Mutton Marag (Thu, Fri, Sat)", "لحم مرق (الخميس / الجمعة / السبت)", "Spicy mutton stew with aromatic flavors.", "حساء لحم ضأن حار بنكهات عطرية.", one(46, 350)),
   ("mutton-rogan-josh", "Mutton Rogan Josh", "لحم روغن جوش", "Classic Kashmiri mutton curry with rich red gravy", "طبق لحم غنم كشميري تقليدي بصلصة حمراء", one(42, 350)),
   ("seekh-kabab-masala", "Seekh Kabab Masala", "سيخ كبابا ماسالا", "Grilled minced meat in flavorful masala gravy.", "لحم مفروم مشوي في صلصة ماسالا لذيذة.", one(44, 350)),
@@ -135,7 +135,7 @@ CATS = [
   ("apricot-pudding", "Apricot Pudding", "بودنغ المشمش", "Soft, sweet pudding made with dried apricots", "بودنغ طري وحلو مصنوع من المشمش المجفف", one(16, 280)),
   ("gulab-jamun", "Gulab Jamun", "جلاب جامن", "Deep-fried milk dumplings soaked in rose-flavored syrup", "زلابية حليب مقلية مغموسة في شراب بنكهة الورد", one(10, 180)),
   ("gajar-ka-halwa", "Gajar Ka Halwa", "حلوى الجزر", "Carrot-based sweet pudding cooked in milk and ghee", "بودنغ حلو مصنوع من الجزر، مطبوخ في الحليب والسمن", one(15, 380)),
-  ("matka-kheer", "Matka Kheer", "ماتكا كهير", "", "", one(15, 380)),
+  ("matka-kheer", "Matka Kheer", "ماتكا كهير", "Creamy rice pudding slow-cooked in milk and served in a traditional clay pot.", "بودنغ أرز كريمي مطهو ببطء في الحليب ويقدم في وعاء فخاري تقليدي.", one(15, 380)),
   ("matka-kulfi", "Matka Kulfi", "ماتكا كُلفي", "Creamy, dense matka kulfi made by simmering milk with cardamom and nuts.", "حلوى كُلفي كريمية وكثيفة محضرة بتكثيف الحليب مع الهيل والمكسرات.", one(15, 180)),
   ("shahi-tukda", "Shahi Tukda", "شاهي توكرا", "Mughlai bread pudding with rich saffron and cardamom-flavored milk", "بودنغ خبز مغلاي مع حليب بنكهة الزعفران والهيل", one(14, 180)),
   ("mughlai-meetha-pan", "Mughlai Meetha Pan", "بان مغلاي حلو", "Sweet betel leaf preparation with aromatic fillings", "تحضير أوراق التنبول الحلوة مع حشوات عطرية", one(6, 80)),

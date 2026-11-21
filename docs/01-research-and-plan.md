@@ -127,10 +127,7 @@ and the same under `/ar`. `/admin` (login, dashboard, menu, categories, settings
 catering packages, reviews, enquiries, users).
 
 ## 7. Open questions for the client
-1. The delivery fee and delivery area.
-2. TikTok / Snapchat links, if any.
-3. The two price conflicts on the printed menu (Methi Chaman, Green Salad).
-4. Descriptions for Mutton Fry and Matka Kheer.
-5. Original photo files (the printed menu photos are small) and photos for the 77 dishes without one.
-6. Overall Google rating and review count, if you want them shown.
-7. Catering packages, if you want fixed packages shown.
+1. TikTok / Snapchat links, if any.
+2. Original photo files (the printed menu photos are small) and photos for the 77 dishes without one.
+3. Overall Google rating and review count, if you want them shown.
+4. Catering packages, if you want fixed packages shown.
