@@ -106,7 +106,12 @@ async function seedAdmin() {
   const email = process.env.ADMIN_EMAIL?.trim().toLowerCase();
   const password = process.env.ADMIN_PASSWORD;
   if (!email || !password) return console.warn("admin: ADMIN_EMAIL / ADMIN_PASSWORD not set, no admin created");
-  if (password.length < 12) throw new Error("ADMIN_PASSWORD must be at least 12 characters");
+  if (password.length < 12) {
+    // Do not fail the whole deploy over this: say so clearly and let the next deploy create the admin.
+    console.warn("\n*** admin: ADMIN_PASSWORD is shorter than 12 characters, so NO admin account was created.");
+    console.warn("*** Set a longer ADMIN_PASSWORD in Vercel (Settings > Environment Variables) and redeploy.\n");
+    return;
+  }
   await prisma.adminUser.create({
     data: { email, name: "Owner", role: "OWNER", passwordHash: await bcrypt.hash(password, 12) },
   });
@@ -124,6 +129,16 @@ async function main() {
 
 main()
   .catch((e) => {
+    // Print a plain explanation first (host only, never the password), then the raw error.
+    let host = "(none)";
+    try {
+      host = new URL(directDatabaseUrl() ?? "").host;
+    } catch {}
+    const msg = `${String((e as Error)?.message ?? e)} ${(e as { code?: string })?.code ?? ""}`;
+    console.error("\n*** Seeding the database failed. Database host: " + host);
+    if (/P1001|P1002|reach database|ENOTFOUND|ECONNREFUSED|ETIMEDOUT|timeout|connect/i.test(msg)) console.error("*** Could not reach the database. Check that the database is connected to this project in Vercel > Storage.");
+    else if (/P1000|password authentication|authentication failed/i.test(msg)) console.error("*** The database rejected the username/password. Reconnect the database in Vercel > Storage.");
+    else if (/does not exist|relation/i.test(msg)) console.error("*** Tables are missing: the migration step did not run against this database.");
     console.error(e);
     process.exit(1);
   })

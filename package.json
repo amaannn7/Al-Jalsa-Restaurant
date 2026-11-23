@@ -53,6 +53,6 @@
     "@prisma/engines@7.10.1": true
   },
   "engines": {
-    "node": ">=20.9"
+    "node": "24.x"
   }
 }
