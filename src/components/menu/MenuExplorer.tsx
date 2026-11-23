@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useReducedMotion } from "motion/react";
-import { useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import type { CategoryData, MenuItemData } from "@/lib/types";
 import { formatCalories, formatPrice, lowestPrice } from "@/lib/money";
 import { useCart } from "@/store/cart";
-import { IconCheck, IconClose, IconCutlery, IconPlus, IconSearch } from "@/components/ui/Icons";
+import { IconArrow, IconCheck, IconClose, IconCutlery, IconPlus, IconSearch } from "@/components/ui/Icons";
 import { ItemSheet } from "./ItemSheet";
+import { MenuTabs } from "./MenuTabs";
 
 type Section = { slug: string; name: string; description: string; items: MenuItemData[] };
 
@@ -33,16 +33,15 @@ function layoutFor(slug: string): "spotlight" | "list" | "cards" {
 }
 
 export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dict: Dictionary; menu: CategoryData[]; note?: string }) {
-  const reduce = useReducedMotion();
   const cart = useCart();
   const root = useRef<HTMLDivElement>(null);
-  const tabsRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const deferred = useDeferredValue(query);
-  const [active, setActive] = useState<string>("");
   const [sheet, setSheet] = useState<MenuItemData | null>(null);
+  const [cat, setCat] = useState<string>("");
+  const resultsRef = useRef<HTMLDivElement>(null);
   const [flash, setFlash] = useState<string | null>(null);
 
   const name = useCallback((x: { nameEn: string; nameAr: string }) => (locale === "ar" && x.nameAr ? x.nameAr : x.nameEn), [locale]);
@@ -76,103 +75,50 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
       .filter((s) => s.items.length);
   }, [sections, q]);
   const resultCount = filtered.reduce((n, s) => n + s.items.length, 0);
+  // One category at a time (searching shows matches from every category).
+  const current = sections.find((s) => s.slug === cat) ?? sections[0];
+  const shown = q ? filtered : current ? [current] : [];
+  const next = current ? sections[sections.indexOf(current) + 1] : undefined;
 
-  // While a tapped tab is scrolling the page to its section, the highlight stays on that tab.
-  const lockRef = useRef<string | null>(null);
-  const unlockTimer = useRef<number | undefined>(undefined);
+  // Stable list for the memoised tab strip.
+  const tabItems = useMemo(
+    () => sections.map((s) => ({ slug: s.slug, name: s.name, disabled: !!q && !filtered.some((f) => f.slug === s.slug) })),
+    [sections, filtered, q],
+  );
 
-  /** Where the tool bar's bottom edge sits once it is stuck (sticky top + its height). */
-  const barBottom = useCallback(() => {
-    const sticky = tabsRef.current?.closest<HTMLElement>("[data-menu-tools]");
-    const top = sticky ? parseFloat(getComputedStyle(sticky).top) : NaN;
-    return sticky && Number.isFinite(top) ? top + sticky.offsetHeight : 170;
+  /** Show a category: swap the list, then glide its top to just under the sticky tool bar (up when the
+   *  visitor had scrolled into a long list, down when the tabs were tapped from the top of the page). */
+  const select = useCallback((slug: string) => {
+    setCat(slug);
+    setQuery("");
+    requestAnimationFrame(() => {
+      const box = resultsRef.current;
+      const sticky = box?.parentElement?.querySelector<HTMLElement>("[data-menu-tools]");
+      if (!box || !sticky) return;
+      const stuck = parseFloat(getComputedStyle(sticky).top) + sticky.offsetHeight;
+      const top = box.getBoundingClientRect().top + window.scrollY - stuck - 8;
+      if (Math.abs(window.scrollY - top) < 4) return;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top, behavior: reduce ? "auto" : "smooth" });
+    });
   }, []);
 
-  // Scroll-spy: the current section is the last one whose top has passed under the tool bar
-  // (the last section once the page bottom is reached). One rAF-throttled scroll listener.
+  // Arriving with #slug (e.g. a home category link) opens that category.
   useEffect(() => {
-    const els = [...document.querySelectorAll<HTMLElement>("[data-menu-section]")];
-    if (!els.length) return;
-    let raf = 0;
-    const compute = () => {
-      raf = 0;
-      if (lockRef.current) return;
-      const line = barBottom() + 32;
-      let cur = els[0].id;
-      for (const el of els) if (el.getBoundingClientRect().top <= line) cur = el.id;
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = els[els.length - 1].id;
-      setActive(cur);
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(compute);
-    };
-    compute();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, [filtered, barBottom]);
-
-  // Keep the active tab in view inside the horizontal tab bar.
-  useEffect(() => {
-    // Scroll only the tab bar (scrollIntoView would also cancel the page's smooth scroll on the way
-    // to a section). Works in both directions because it measures on-screen positions.
-    const bar = tabsRef.current;
-    const tab = bar?.querySelector<HTMLElement>(`[data-tab="${active}"]`);
-    if (!bar || !tab) return;
-    const t = tab.getBoundingClientRect();
-    const c = bar.getBoundingClientRect();
-    // A tab the visitor can see (e.g. the one just tapped) stays where it is, so the next tap lands
-    // where they aim. Only a tab outside the visible strip is brought in (as the page scrolls).
-    if (t.left >= c.left - 1 && t.right <= c.right + 1) return;
-    // A tab cut off at the edge (e.g. just tapped) is nudged only far enough to show it fully; a tab
-    // far outside the strip (the page was scrolled to it) is brought to the centre.
-    const partly = t.right > c.left && t.left < c.right;
-    const delta = partly ? (t.left < c.left ? t.left - c.left - 12 : t.right - c.right + 12) : t.left + t.width / 2 - (c.left + c.width / 2);
-    bar.scrollBy({ left: delta, behavior: reduce ? "auto" : "smooth" });
-  }, [active, reduce]);
-
-  // Arriving with #slug (e.g. from a home category): highlight that tab from the first frame and
-  // place the section exactly under the tool bar in the same frame, so there is no visible second jump.
-  useLayoutEffect(() => {
     const hash = decodeURIComponent(window.location.hash.slice(1));
-    if (!hash || !document.getElementById(hash)) return;
-    lockRef.current = hash; // the scroll-spy leaves the highlight alone; jump() sets it next frame
-    const raf = requestAnimationFrame(() => jump(hash, true));
+    if (!hash || !sections.some((s) => s.slug === hash)) return;
+    const raf = requestAnimationFrame(() => {
+      setCat(hash);
+      const box = resultsRef.current;
+      const sticky = box?.parentElement?.querySelector<HTMLElement>("[data-menu-tools]");
+      if (!box || !sticky) return;
+      const stuck = parseFloat(getComputedStyle(sticky).top) + sticky.offsetHeight;
+      window.scrollTo({ top: box.getBoundingClientRect().top + window.scrollY - stuck - 8, behavior: "auto" });
+    });
     return () => cancelAnimationFrame(raf);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [sections]);
 
-  // Release the highlight lock once the page has stopped scrolling for a moment. One listener for
-  // the component's lifetime (nothing is added per tap).
-  useEffect(() => {
-    const onScroll = () => {
-      if (!lockRef.current) return;
-      window.clearTimeout(unlockTimer.current);
-      unlockTimer.current = window.setTimeout(() => (lockRef.current = null), 180);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.clearTimeout(unlockTimer.current);
-    };
-  }, []);
 
-  function jump(slug: string, instant = false) {
-    const el = document.getElementById(slug);
-    if (!el) return;
-    setActive(slug);
-    lockRef.current = slug;
-    const target = el.getBoundingClientRect().top + window.scrollY - barBottom() - 16;
-    // The browser's own smooth scroll: it keeps the sticky tool bar and taps in step, and a new tap
-    // simply retargets it. (Never mix in instant jumps while it runs: Safari keeps the old animation.)
-    window.scrollTo({ top: target, behavior: instant || reduce ? "auto" : "smooth" });
-    history.replaceState(null, "", `#${slug}`);
-    // If the page is already there (no scroll happens), release the lock anyway.
-    window.clearTimeout(unlockTimer.current);
-    unlockTimer.current = window.setTimeout(() => (lockRef.current = null), 600);
-  }
 
 
 
@@ -210,26 +156,7 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
       <div data-menu-tools className="sticky top-[5.5rem] z-30 mt-4 px-3 sm:px-4 lg:top-[6.25rem] [html[data-menu-open]_&]:hidden">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-2 rounded-[26px] bg-card p-1.5 shadow-[0_10px_30px_rgb(22_18_15/0.10)] ring-1 ring-hair sm:p-2 lg:flex-row lg:items-center lg:rounded-full">
           <div className="flex min-w-0 flex-1 items-center gap-1">
-          <div ref={tabsRef} className="no-scrollbar flex min-w-0 flex-1 gap-1 overflow-x-auto" role="tablist" aria-label={dict.menu.categories}>
-            {sections.map((s) => {
-              const on = active === s.slug;
-              const disabled = q && !filtered.some((f) => f.slug === s.slug);
-              return (
-                <button
-                  key={s.slug}
-                  type="button"
-                  role="tab"
-                  aria-selected={on}
-                  data-tab={s.slug}
-                  disabled={!!disabled}
-                  onClick={() => jump(s.slug)}
-                  className={`action h-11 shrink-0 whitespace-nowrap rounded-full px-4 transition-colors disabled:opacity-30 ${on ? "bg-ink text-white" : "text-ink-3 hover:bg-linen"}`}
-                >
-                  {s.name}
-                </button>
-              );
-            })}
-          </div>
+          <MenuTabs tabs={tabItems} active={q ? "" : current?.slug ?? ""} onSelect={select} label={dict.menu.categories} />
             <button
               type="button"
               onClick={() => {
@@ -272,7 +199,7 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
         {q ? `${resultCount} ${dict.menu.dishes}` : ""}
       </p>
 
-      <div className="mx-auto max-w-[var(--container-site)] px-5 pb-24 sm:px-8">
+      <div ref={resultsRef} id="menu-results" className="mx-auto max-w-[var(--container-site)] px-5 pb-24 sm:px-8">
         {q && !filtered.length ? (
           <div className="py-32 text-center">
             <p className="font-dish text-2xl">{dict.menu.noResults}</p>
@@ -284,8 +211,10 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
 
         {note ? <p className="mx-auto mt-12 max-w-2xl text-center text-muted">{note}</p> : null}
 
-        {filtered.map((s, si) => (
-          <section key={s.slug} id={s.slug} data-menu-section aria-labelledby={`${s.slug}-title`} className="scroll-mt-[10rem] pt-16 lg:scroll-mt-[11rem] lg:pt-24">
+        {shown.map((s) => {
+          const si = sections.findIndex((x) => x.slug === s.slug);
+          return (
+          <section key={s.slug} id={s.slug} data-menu-section aria-labelledby={`${s.slug}-title`} className={`pt-10 lg:pt-16 ${q ? "" : "rise-fade"}`}>
             <header className="mb-8 grid items-end gap-4 md:grid-cols-[1fr_auto] md:gap-10">
               <div>
                 <p className="eyebrow">
@@ -476,8 +405,24 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
               })}
             </ul>
             )}
+            {!q && next ? (
+              <button
+                type="button"
+                onClick={() => select(next.slug)}
+                className="card group mt-10 flex w-full items-center justify-between gap-4 p-5 text-start transition-colors hover:bg-paper sm:p-6"
+              >
+                <span>
+                  <span className="eyebrow block">{locale === "ar" ? "التالي" : "Next"}</span>
+                  <span className="font-display mt-1 block text-[1.6rem] leading-tight text-ink">{next.name}</span>
+                </span>
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-ink text-white transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                  <IconArrow size={18} />
+                </span>
+              </button>
+            ) : null}
           </section>
-        ))}
+          );
+        })}
       </div>
 
       <ItemSheet locale={locale} dict={dict} item={sheet} onClose={() => setSheet(null)} />

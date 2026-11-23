@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { ViewTransition } from "react";
 import "../globals.css";
 import { arabicFonts, latinFonts } from "../fonts";
 import { dirFor, isLocale, locales } from "@/i18n/config";
@@ -76,11 +75,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
               whatsappHref: waLink(settings.whatsapp),
             }}
           />
-          <ViewTransition default="page">
-            <main id="main" tabIndex={-1} className="overflow-x-clip outline-none">
-              {children}
-            </main>
-          </ViewTransition>
+          {/* No page-transition wrapper: it snapshots the whole page on every navigation, which is very
+              heavy on the long menu page and crashed phones. */}
+          <main id="main" tabIndex={-1} className="overflow-x-clip outline-none">
+            {children}
+          </main>
           <Footer locale={lang} dict={dict} settings={settings} tagline={t(content, "home.hero.intro", lang)} />
           <aside aria-label={lang === "ar" ? "إجراءات سريعة" : "Quick actions"}>
             <FloatingWhatsApp locale={lang} whatsapp={settings.whatsapp} label={dict.common.whatsapp} />
