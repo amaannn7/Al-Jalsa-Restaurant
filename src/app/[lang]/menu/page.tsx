@@ -60,15 +60,23 @@ export default async function MenuPage({ params }: PageProps<"/[lang]/menu">) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
       <PageHero eyebrow={dict.nav.menu} title={t(content, "menu.title", lang)} text={t(content, "menu.text", lang)} image="/images/menu/bbq-mix-chicken-platter.webp" compact>
         {settings.buffetEnabled ? (
-          <Link href={`${href(lang)}#buffet`} className="glass group inline-flex flex-wrap items-center gap-x-4 gap-y-1 rounded-full px-5 py-3 text-white/85 backdrop-blur transition-colors hover:bg-black/60">
-            <span className="rounded-full bg-sand px-2.5 py-1 text-[0.8125rem] font-medium text-ink">{t(content, "buffet.title", lang)}</span>
-            <span className="inline-flex items-center gap-2">
-              <IconClock size={16} className="text-sand" /> {t(content, "buffet.schedule", lang)}
+          <Link
+            href={`${href(lang)}#buffet`}
+            className="glass group flex max-w-md flex-col gap-2.5 rounded-[22px] p-4 text-white/85 backdrop-blur transition-colors hover:bg-black/60 sm:inline-flex sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-1 sm:rounded-full sm:px-5 sm:py-3"
+          >
+            <span className="flex items-center justify-between gap-3 sm:contents">
+              <span className="rounded-full bg-sand px-3 py-1 text-[0.8125rem] font-medium text-ink">{t(content, "buffet.title", lang)}</span>
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-sand sm:hidden" aria-hidden>
+                <IconArrow size={16} />
+              </span>
             </span>
-            <span className="text-white">
+            <span className="flex items-center gap-2 text-[0.95rem]">
+              <IconClock size={16} className="shrink-0 text-sand" /> {t(content, "buffet.schedule", lang)}
+            </span>
+            <span className="text-[0.95rem] font-medium text-white">
               {dict.buffet.adult} {t(content, "buffet.adultPrice", lang)} · {dict.buffet.kids} {t(content, "buffet.kidsPrice", lang)}
             </span>
-            <IconArrow size={16} className="text-sand transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+            <IconArrow size={16} className="hidden text-sand transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 sm:block" />
           </Link>
         ) : null}
       </PageHero>

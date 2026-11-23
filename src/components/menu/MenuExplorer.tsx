@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useReducedMotion } from "motion/react";
-import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import type { CategoryData, MenuItemData } from "@/lib/types";
@@ -77,29 +77,42 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
   }, [sections, q]);
   const resultCount = filtered.reduce((n, s) => n + s.items.length, 0);
 
-  // Scroll-spy for the category tabs.
+  // While a tapped tab is scrolling the page to its section, the highlight stays on that tab.
+  const lockRef = useRef<string | null>(null);
+  const unlockTimer = useRef<number | undefined>(undefined);
+
+  /** Where the tool bar's bottom edge sits once it is stuck (sticky top + its height). */
+  const barBottom = useCallback(() => {
+    const sticky = tabsRef.current?.closest<HTMLElement>("[data-menu-tools]");
+    const top = sticky ? parseFloat(getComputedStyle(sticky).top) : NaN;
+    return sticky && Number.isFinite(top) ? top + sticky.offsetHeight : 170;
+  }, []);
+
+  // Scroll-spy: the current section is the last one whose top has passed under the tool bar
+  // (the last section once the page bottom is reached). One rAF-throttled scroll listener.
   useEffect(() => {
     const els = [...document.querySelectorAll<HTMLElement>("[data-menu-section]")];
     if (!els.length) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible[0]) setActive(visible[0].target.id);
-      },
-      { rootMargin: "-35% 0px -55% 0px" },
-    );
-    els.forEach((el) => io.observe(el));
-    // Above the first section, the first tab is the current one.
-    const onScroll = () => {
-      if (els[0].getBoundingClientRect().top > window.innerHeight * 0.35) setActive(els[0].id);
+    let raf = 0;
+    const compute = () => {
+      raf = 0;
+      if (lockRef.current) return;
+      const line = barBottom() + 32;
+      let cur = els[0].id;
+      for (const el of els) if (el.getBoundingClientRect().top <= line) cur = el.id;
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = els[els.length - 1].id;
+      setActive(cur);
     };
-    onScroll();
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(compute);
+    };
+    compute();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
-      io.disconnect();
       window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
     };
-  }, [filtered]);
+  }, [filtered, barBottom]);
 
   // Keep the active tab in view inside the horizontal tab bar.
   useEffect(() => {
@@ -113,26 +126,39 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
     bar.scrollBy({ left: t.left + t.width / 2 - (c.left + c.width / 2), behavior: reduce ? "auto" : "smooth" });
   }, [active, reduce]);
 
-  // Open the right section when arriving with #slug.
-  useEffect(() => {
+  // Arriving with #slug (e.g. from a home category): highlight that tab from the first frame and
+  // place the section exactly under the tool bar in the same frame, so there is no visible second jump.
+  useLayoutEffect(() => {
     const hash = decodeURIComponent(window.location.hash.slice(1));
-    if (!hash) return;
-    const t = window.setTimeout(() => jump(hash), 350);
-    return () => window.clearTimeout(t);
+    if (!hash || !document.getElementById(hash)) return;
+    lockRef.current = hash; // the scroll-spy leaves the highlight alone; jump() sets it next frame
+    const raf = requestAnimationFrame(() => jump(hash, true));
+    return () => cancelAnimationFrame(raf);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function jump(slug: string) {
+  function jump(slug: string, instant = false) {
     const el = document.getElementById(slug);
     if (!el) return;
-    // Where the tool bar's bottom edge sits once it is stuck (its sticky top + height), measured
-    // that way because before it sticks it is further down the page.
-    const sticky = tabsRef.current?.closest<HTMLElement>("[data-menu-tools]");
-    const stickyTop = sticky ? parseFloat(getComputedStyle(sticky).top) : NaN;
-    const stuckBottom = sticky && Number.isFinite(stickyTop) ? stickyTop + sticky.offsetHeight : 170;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - stuckBottom - 16, behavior: reduce ? "auto" : "smooth" });
+    setActive(slug);
+    lockRef.current = slug;
+    const target = el.getBoundingClientRect().top + window.scrollY - barBottom() - 16;
+    // Far sections jump instantly (a long smooth scroll is a blur on phones); near ones glide.
+    const far = Math.abs(target - window.scrollY) > window.innerHeight * 2;
+    window.scrollTo({ top: target, behavior: instant || reduce || far ? "auto" : "smooth" });
     history.replaceState(null, "", `#${slug}`);
+    // Release the highlight lock once scrolling has been quiet for a moment.
+    const release = () => {
+      window.clearTimeout(unlockTimer.current);
+      unlockTimer.current = window.setTimeout(() => {
+        lockRef.current = null;
+        window.removeEventListener("scroll", release);
+      }, 200);
+    };
+    window.addEventListener("scroll", release, { passive: true });
+    release();
   }
+
 
   const quickAdd = (item: MenuItemData) => {
     if (item.variants.length !== 1) return setSheet(item);
@@ -241,7 +267,7 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
         {note ? <p className="mx-auto mt-12 max-w-2xl text-center text-muted">{note}</p> : null}
 
         {filtered.map((s, si) => (
-          <section key={s.slug} id={s.slug} data-menu-section aria-labelledby={`${s.slug}-title`} className="scroll-mt-48 pt-16 lg:pt-24">
+          <section key={s.slug} id={s.slug} data-menu-section aria-labelledby={`${s.slug}-title`} className="scroll-mt-[10rem] pt-16 lg:scroll-mt-[11rem] lg:pt-24">
             <header className="mb-8 grid items-end gap-4 md:grid-cols-[1fr_auto] md:gap-10">
               <div>
                 <p className="eyebrow">
@@ -306,6 +332,7 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
                   const added = flash === item.id;
                   const count = inCart.get(item.id) ?? 0;
                   const sizes = item.variants.length > 1 ? item.variants.map((v) => `${name(v)} ${v.priceHalalas != null ? formatPrice(v.priceHalalas, locale) : ""}`.trim()).join(" · ") : "";
+                  const priceText = low == null ? dict.common.priceOnRequest : `${item.variants.length > 1 ? `${dict.common.from} ` : ""}${formatPrice(low, locale)}`;
                   const cal = formatCalories(item.variants.map((v) => v.calories), locale);
                   return (
                     <li key={item.id} className="flex items-center gap-4 border-b border-hair py-4 last:border-b-0 md:[&:nth-last-child(2):nth-child(odd)]:border-b-0">
@@ -329,19 +356,20 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
                         ) : null}
                       </button>
                       <div className="min-w-0 flex-1">
+                        {/* Phones: the name wraps and the price sits on its own line below.
+                            Wider screens: name, dotted leader, price on one line (printed-menu style). */}
                         <div className="flex items-baseline gap-2">
-                          <h3 className="font-dish shrink-0 text-[1.1rem] leading-tight text-ink sm:text-[1.2rem]">
-                            <button type="button" onClick={() => setSheet(item)} className="py-1.5 text-start hover:text-bronze">
+                          <h3 className="font-dish min-w-0 text-[1.1rem] leading-tight text-ink sm:max-w-[70%] sm:text-[1.2rem]">
+                            <button type="button" onClick={() => setSheet(item)} className="py-1 text-start hover:text-bronze">
                               {name(item)}
                             </button>
                           </h3>
-                          <span className="min-w-4 flex-1 -translate-y-1 border-b border-dotted border-muted/50" aria-hidden />
-                          <span className="shrink-0 font-medium text-ink">
-                            {low == null ? dict.common.priceOnRequest : `${item.variants.length > 1 ? `${dict.common.from} ` : ""}${formatPrice(low, locale)}`}
-                          </span>
+                          <span className="hidden min-w-4 flex-1 -translate-y-1 border-b border-dotted border-muted/50 sm:block" aria-hidden />
+                          <span className="hidden shrink-0 font-medium text-ink sm:inline">{priceText}</span>
                         </div>
-                        <p className="mt-1 line-clamp-1 text-[0.875rem] text-muted">{locale === "ar" && item.descriptionAr ? item.descriptionAr : item.descriptionEn}</p>
+                        <p className="mt-0.5 line-clamp-1 text-[0.875rem] text-muted">{locale === "ar" && item.descriptionAr ? item.descriptionAr : item.descriptionEn}</p>
                         {sizes || cal ? <p className="mt-0.5 text-[0.8125rem] text-muted">{[sizes, cal].filter(Boolean).join(" · ")}</p> : null}
+                        <p className="mt-1.5 font-medium text-ink sm:hidden">{priceText}</p>
                       </div>
                       {item.isAvailable ? (
                         <button
