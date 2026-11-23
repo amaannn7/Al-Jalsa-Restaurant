@@ -52,6 +52,10 @@
   --field-focus: #16120f;
 }
 .theme-dark {
+  /* Light-page colours re-tuned for the dark admin (muted text and labels stay readable). */
+  --color-muted: #a89c8d;
+  --color-bronze: #d9c2a0;
+  --color-hair: #3a312a;
   --field-bg: #211b17;
   --field-border: #3a312a;
   --field-border-hover: #52463c;
@@ -75,6 +79,12 @@ body {
   min-height: 100dvh;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
+}
+/* Admin: dark theme. Unlayered like the body rule above, and more specific, so it wins. */
+html:has(body.theme-dark),
+body.theme-dark {
+  background: var(--color-ink);
+  color: var(--color-ivory);
 }
 [dir="rtl"] body,
 :lang(ar) {

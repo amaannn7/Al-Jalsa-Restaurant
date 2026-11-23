@@ -11,7 +11,6 @@ How they were made: the original full-resolution file was downloaded, then saved
 | `public/images/site/buffet.webp` | Grilled meat on stainless steel tray | https://unsplash.com/photos/grilled-meat-on-stainless-steel-tray-OQ1g_1m8Mb0 |
 | `public/images/site/catering.webp` | A table full of plates of food | https://unsplash.com/photos/a-table-full-of-plates-of-food-eqMHmoe550Y |
 | `public/images/site/hero.webp` | A table filled with lots of different types of food | https://unsplash.com/photos/a-table-filled-with-lots-of-different-types-of-food-YNfDiSsuU_E |
-| `public/images/site/hero-2.webp` | A person sitting at a table with a plate of food | https://unsplash.com/photos/a-person-sitting-at-a-table-with-a-plate-of-food-ESP18otLeBE |
 | `public/images/menu/aalo-gobi.webp` | A white bowl filled with meat and vegetables | https://unsplash.com/photos/a-white-bowl-filled-with-meat-and-vegetables-SE-U18vg5Hw |
 | `public/images/menu/achari-chicken.webp` | A pan filled with meat and vegetables on top of a stove | https://unsplash.com/photos/a-pan-filled-with-meat-and-vegetables-on-top-of-a-stove-jjoyL1hk1Vo |
 | `public/images/menu/achari-mutton.webp` | Skewed meat in bowl beside knife and fork | https://unsplash.com/photos/skewed-meat-in-bowl-beside-knife-and-fork-al9eh9QkdPA |
@@ -127,3 +126,4 @@ How they were made: the original full-resolution file was downloaded, then saved
 | `public/images/menu/watermelon-mint-burst.webp` | A glass of red liquid with a slice of lemon and a few coins | https://unsplash.com/photos/a-glass-of-red-liquid-with-a-slice-of-lemon-and-a-few-coins-97DxxxqGzxY |
 | `public/images/menu/wheat-tandoori-roti.webp` | Brown round plate with food | https://unsplash.com/photos/brown-round-plate-with-food-OE87GAgPG18 |
 | `public/images/menu/zeera-rice.webp` | Jeera rice in white bowl | https://unsplash.com/photos/jeera-rice-in-white-bowl-2wuoVk8wTzI |
+| `public/images/site/hero-home.webp` (mirrored) and `hero-home-rtl.webp` | A table filled with lots of different types of food | https://unsplash.com/photos/a-table-filled-with-lots-of-different-types-of-food-DUOpUlw4uLY |

@@ -46,7 +46,7 @@ export default async function Overview({ searchParams }: PageProps<"/admin">) {
           { n: unavailable, l: "Marked unavailable", h: "/admin/menu" },
           { n: reviews, l: "Reviews shown", h: "/admin/reviews" },
         ].map((s) => (
-          <Link key={s.l} href={s.h} className="border border-line bg-ink-2/70 p-5 transition-colors hover:border-gold/60">
+          <Link key={s.l} href={s.h} className="rounded-[20px] border border-line bg-ink-2/70 p-5 transition-colors hover:border-gold/60">
             <p className="font-display text-4xl text-gold">{s.n}</p>
             <p className="mt-1 text-sand">{s.l}</p>
           </Link>

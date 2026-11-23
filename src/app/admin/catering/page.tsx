@@ -22,7 +22,7 @@ export default async function CateringAdmin({ searchParams }: PageProps<"/admin/
         {sp.deleted ? <p className="mt-2 text-ok">Package deleted.</p> : null}
       </header>
       {packages.map((p) => (
-        <details key={p.id} className="border border-line bg-ink-2/60">
+        <details key={p.id} className="rounded-[20px] border border-line bg-ink-2/60">
           <summary className="flex cursor-pointer items-center justify-between gap-3 p-4">
             <span className="text-ivory">{p.nameEn}</span>
             <span className="meta">{p.isActive ? "shown" : "hidden"}</span>

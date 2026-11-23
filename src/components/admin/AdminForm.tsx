@@ -67,7 +67,7 @@ export function Check({ name, label, defaultChecked, hint }: { name: string; lab
 
 export function Panel({ title, children, description }: { title: string; children: ReactNode; description?: string }) {
   return (
-    <section className="border border-line bg-ink-2/70 p-5 sm:p-6">
+    <section className="rounded-[20px] border border-line bg-ink-2/70 p-5 sm:p-6">
       <h2 className="font-display text-lg uppercase tracking-wide">{title}</h2>
       {description ? <p className="meta mt-1">{description}</p> : null}
       <div className="mt-5 grid gap-5">{children}</div>

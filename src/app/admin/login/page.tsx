@@ -13,8 +13,8 @@ export default async function LoginPage({ searchParams }: PageProps<"/admin/logi
   return (
     <div className="grid min-h-dvh place-items-center p-6">
       <div className="w-full max-w-sm">
-        <Image src="/brand/logo-full-light.png" alt="Al Jalsa Restaurant" width={240} height={190} className="mx-auto h-auto w-48" preload />
-        <div className="mt-10 border border-line bg-ink/85 p-7">
+        <Image src="/brand/logo-full-light.png" alt="Al Jalsa Restaurant" width={240} height={190} className="mx-auto h-auto w-44" preload />
+        <div className="mt-10 rounded-[20px] border border-line bg-ink/85 p-7">
           <h1 className="font-display text-xl uppercase">Admin sign in</h1>
           {sp.changed ? <p className="mt-3 text-ok">Password changed. Please sign in again.</p> : null}
           <LoginForm next={next} />

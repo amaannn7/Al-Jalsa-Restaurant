@@ -17,7 +17,11 @@ for (const f of fs.readdirSync(origDir).filter((x) => x.endsWith(".jpg")).sort()
   const up = path.join(upDir, `${slug}.png`);
   const src = fs.existsSync(up) ? up : path.join(origDir, f);
   const site = slug.startsWith("_site-");
-  const out = site ? `public/images/site/${slug.slice(6)}.webp` : `public/images/menu/${slug}.webp`;
+  // The home hero has the main dish on the left, under the English headline: the English page uses a
+  // mirrored copy (hero-home.webp) and the Arabic page the original (hero-home-rtl.webp).
+  const mirrored = slug === "_site-hero-home";
+  const out = site ? `public/images/site/${slug.slice(6)}${mirrored ? "-rtl" : ""}.webp` : `public/images/menu/${slug}.webp`;
+  if (mirrored) await sharp(src).rotate().flop().resize(MAX, MAX, { fit: "inside", withoutEnlargement: true }).webp({ quality: 88, effort: 5 }).toFile("public/images/site/hero-home.webp");
   const info = await sharp(src).rotate().resize(MAX, MAX, { fit: "inside", withoutEnlargement: true }).webp({ quality: 88, effort: 5 }).toFile(out);
   report[slug] = { width: info.width, height: info.height, upscaled: src === up ? "upscayl-standard-4x" : null, kb: Math.round(info.size / 1024) };
   console.log(slug, info.width, "x", info.height, report[slug].upscaled ? "(upscaled)" : "", report[slug].kb + "KB");

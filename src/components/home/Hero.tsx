@@ -37,7 +37,7 @@ export function Hero({
     <section className="sm:px-4 sm:pt-4">
       <div className="overflow-hidden bg-card sm:rounded-[28px]">
         <div className="dark-card photo-scrim !rounded-none">
-          <Image src={image} alt={imageAlt} fill loading="eager" fetchPriority="high" sizes="100vw" quality={85} className="hero-zoom -z-20 object-cover object-[center_70%]" />
+          <Image src={image} alt={imageAlt} fill loading="eager" fetchPriority="high" sizes="100vw" quality={85} className="hero-zoom -z-20 object-cover object-[62%_55%] rtl:object-[38%_55%]" />
           <div className="mx-auto grid min-h-[min(100svh-6rem,860px)] max-w-[1600px] items-end gap-12 px-6 pb-10 pt-32 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:px-14 lg:pb-14">
             <div className="max-w-[640px]">
               <p className="rise-fade eyebrow !text-sand">{eyebrow}</p>

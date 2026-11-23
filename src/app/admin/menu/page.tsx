@@ -16,7 +16,7 @@ function Flag({ id, flag, on, label }: { id: string; flag: string; on: boolean; 
     <form action={toggleMenuFlag}>
       <input type="hidden" name="id" value={id} />
       <input type="hidden" name="flag" value={flag} />
-      <button type="submit" aria-pressed={on} className={`rounded-full border px-2.5 py-1 text-[0.8125rem] ${on ? "border-gold/70 bg-gold/15 text-gold" : "border-line text-muted hover:text-ivory"}`}>
+      <button type="submit" aria-pressed={on} className={`rounded-full border px-2.5 py-1 text-[0.8125rem] ${on ? "border-sand bg-sand font-medium text-ink" : "border-line text-muted hover:border-sand/60 hover:text-ivory"}`}>
         {label}
       </button>
     </form>

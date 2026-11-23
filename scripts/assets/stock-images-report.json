@@ -11,12 +11,6 @@
   "upscaled": null,
   "kb": 780
  },
- "_site-hero-2": {
-  "width": 3840,
-  "height": 2560,
-  "upscaled": null,
-  "kb": 3423
- },
  "_site-hero": {
   "width": 3840,
   "height": 2880,
@@ -712,5 +706,11 @@
   "height": 2797,
   "upscaled": null,
   "kb": 514
+ },
+ "_site-hero-home": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 1141
  }
 }

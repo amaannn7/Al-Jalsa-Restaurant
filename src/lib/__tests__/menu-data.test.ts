@@ -15,7 +15,7 @@ describe("seed menu (transcribed from the printed menu)", () => {
     const urls = [...seedMenu.items.map((i) => i.imageUrl).filter(Boolean), ...seedGallery.map((g) => `/images/menu/${g.slug}.webp`)] as string[];
     expect(urls.length).toBeGreaterThan(100);
     for (const u of urls) expect(fs.existsSync(path.join(process.cwd(), "public", u)), u).toBe(true);
-    for (const f of ["hero", "hero-2", "catering", "buffet"]) expect(fs.existsSync(path.join(process.cwd(), "public/images/site", `${f}.webp`)), f).toBe(true);
+    for (const f of ["hero", "hero-home", "hero-home-rtl", "catering", "buffet"]) expect(fs.existsSync(path.join(process.cwd(), "public/images/site", `${f}.webp`)), f).toBe(true);
   });
   it("prices every dish, names every size, and keeps calories sane", () => {
     for (const i of seedMenu.items) {

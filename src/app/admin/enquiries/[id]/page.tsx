@@ -35,11 +35,11 @@ export default async function EnquiryDetail({ params }: PageProps<"/admin/enquir
           Reply on WhatsApp
         </a>
       </header>
-      <section className="border border-line bg-ink-2/70 p-5">
+      <section className="rounded-[20px] border border-line bg-ink-2/70 p-5">
         <h2 className="eyebrow">Message as generated</h2>
         <pre dir="auto" className="mt-4 whitespace-pre-wrap font-[inherit] text-[0.9375rem] leading-relaxed text-ivory">{e.message}</pre>
       </section>
-      <form action={updateEnquiry} className="grid gap-4 border border-line bg-ink-2/70 p-5">
+      <form action={updateEnquiry} className="grid gap-4 rounded-[20px] border border-line bg-ink-2/70 p-5">
         <input type="hidden" name="id" value={e.id} />
         <fieldset className="flex flex-wrap gap-2">
           <legend className="field-label mb-2">Status</legend>

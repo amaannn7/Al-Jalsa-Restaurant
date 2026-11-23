@@ -24,7 +24,7 @@ export default async function Categories({ searchParams }: PageProps<"/admin/cat
         {sp.deleted ? <p className="mt-2 text-ok">Category deleted.</p> : null}
       </header>
       {cats.map((c) => (
-        <details key={c.id} className="border border-line bg-ink-2/60 open:bg-ink-2">
+        <details key={c.id} className="rounded-[20px] border border-line bg-ink-2/60 open:bg-ink-2">
           <summary className="flex cursor-pointer flex-wrap items-center justify-between gap-3 p-4">
             <span>
               <span className="text-ivory">{c.nameEn}</span>{" "}

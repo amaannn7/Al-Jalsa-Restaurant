@@ -128,8 +128,8 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         eyebrow={c("home.hero.eyebrow")}
         title={c("home.hero.title")}
         intro={c("home.hero.intro")}
-        image="/images/site/hero-2.webp"
-        imageAlt={lang === "ar" ? "أطباق هندية في أوانٍ نحاسية مع خبز" : "Indian dishes in brass bowls with bread"}
+        image={lang === "ar" ? "/images/site/hero-home-rtl.webp" : "/images/site/hero-home.webp"}
+        imageAlt={lang === "ar" ? "مائدة عامرة بالكاري والأطباق الهندية في أوانٍ نحاسية" : "A table of curries and Indian dishes in copper bowls"}
         menu={{ href: href(lang, "/menu"), label: dict.common.viewMenu }}
         whatsapp={{ href: waLink(settings.whatsapp, lang === "ar" ? "مرحباً، أود تقديم طلب." : "Hello, I would like to place an order."), label: dict.common.orderWhatsApp }}
         visit={{ href: settings.mapsUrl, label: dict.common.visitLocation }}
