@@ -123,7 +123,14 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
     if (!bar || !tab) return;
     const t = tab.getBoundingClientRect();
     const c = bar.getBoundingClientRect();
-    bar.scrollBy({ left: t.left + t.width / 2 - (c.left + c.width / 2), behavior: reduce ? "auto" : "smooth" });
+    // A tab the visitor can see (e.g. the one just tapped) stays where it is, so the next tap lands
+    // where they aim. Only a tab outside the visible strip is brought in (as the page scrolls).
+    if (t.left >= c.left - 1 && t.right <= c.right + 1) return;
+    // A tab cut off at the edge (e.g. just tapped) is nudged only far enough to show it fully; a tab
+    // far outside the strip (the page was scrolled to it) is brought to the centre.
+    const partly = t.right > c.left && t.left < c.right;
+    const delta = partly ? (t.left < c.left ? t.left - c.left - 12 : t.right - c.right + 12) : t.left + t.width / 2 - (c.left + c.width / 2);
+    bar.scrollBy({ left: delta, behavior: reduce ? "auto" : "smooth" });
   }, [active, reduce]);
 
   // Arriving with #slug (e.g. from a home category): highlight that tab from the first frame and
@@ -137,27 +144,38 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Release the highlight lock once the page has stopped scrolling for a moment. One listener for
+  // the component's lifetime (nothing is added per tap).
+  useEffect(() => {
+    const onScroll = () => {
+      if (!lockRef.current) return;
+      window.clearTimeout(unlockTimer.current);
+      unlockTimer.current = window.setTimeout(() => (lockRef.current = null), 180);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.clearTimeout(unlockTimer.current);
+    };
+  }, []);
+
   function jump(slug: string, instant = false) {
     const el = document.getElementById(slug);
     if (!el) return;
     setActive(slug);
     lockRef.current = slug;
     const target = el.getBoundingClientRect().top + window.scrollY - barBottom() - 16;
-    // Far sections jump instantly (a long smooth scroll is a blur on phones); near ones glide.
-    const far = Math.abs(target - window.scrollY) > window.innerHeight * 2;
-    window.scrollTo({ top: target, behavior: instant || reduce || far ? "auto" : "smooth" });
+    // The browser's own smooth scroll: it keeps the sticky tool bar and taps in step, and a new tap
+    // simply retargets it. (Never mix in instant jumps while it runs: Safari keeps the old animation.)
+    window.scrollTo({ top: target, behavior: instant || reduce ? "auto" : "smooth" });
     history.replaceState(null, "", `#${slug}`);
-    // Release the highlight lock once scrolling has been quiet for a moment.
-    const release = () => {
-      window.clearTimeout(unlockTimer.current);
-      unlockTimer.current = window.setTimeout(() => {
-        lockRef.current = null;
-        window.removeEventListener("scroll", release);
-      }, 200);
-    };
-    window.addEventListener("scroll", release, { passive: true });
-    release();
+    // If the page is already there (no scroll happens), release the lock anyway.
+    window.clearTimeout(unlockTimer.current);
+    unlockTimer.current = window.setTimeout(() => (lockRef.current = null), 600);
   }
+
+
+
 
 
   const quickAdd = (item: MenuItemData) => {
