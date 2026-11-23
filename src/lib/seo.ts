@@ -1,7 +1,25 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n/config";
 
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+/**
+ * The site's public address. Accepts "example.com" as well as "https://example.com" (adds https://),
+ * falls back to the production address Vercel provides, and never throws on a bad value.
+ */
+function resolveSiteUrl(): string {
+  const candidates = [process.env.NEXT_PUBLIC_SITE_URL, process.env.VERCEL_PROJECT_PRODUCTION_URL, process.env.VERCEL_URL];
+  for (const raw of candidates) {
+    const v = (raw ?? "").trim().replace(/^["']|["']$/g, "");
+    if (!v) continue;
+    try {
+      const u = new URL(/^https?:\/\//i.test(v) ? v : `https://${v}`);
+      return u.origin;
+    } catch {
+      // try the next candidate
+    }
+  }
+  return "http://localhost:3000";
+}
+export const siteUrl = resolveSiteUrl();
 export const allowIndexing = process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";
 
 export const pages = ["", "/menu", "/order", "/catering", "/book-meeting", "/about", "/contact"] as const;

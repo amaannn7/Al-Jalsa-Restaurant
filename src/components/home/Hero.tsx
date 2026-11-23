@@ -34,8 +34,8 @@ export function Hero({
   band: { image: string; imageAlt: string; href: string; hrefLabel: string; lead: string; text: string };
 }) {
   return (
-    <section className="px-3 pt-3 sm:px-4 sm:pt-4">
-      <div className="overflow-hidden rounded-[28px] bg-card">
+    <section className="sm:px-4 sm:pt-4">
+      <div className="overflow-hidden bg-card sm:rounded-[28px]">
         <div className="dark-card photo-scrim !rounded-none">
           <Image src={image} alt={imageAlt} fill loading="eager" fetchPriority="high" sizes="100vw" quality={85} className="hero-zoom -z-20 object-cover object-[center_70%]" />
           <div className="mx-auto grid min-h-[min(100svh-6rem,860px)] max-w-[1600px] items-end gap-12 px-6 pb-10 pt-32 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:px-14 lg:pb-14">

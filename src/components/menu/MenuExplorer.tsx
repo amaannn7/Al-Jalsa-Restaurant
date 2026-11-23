@@ -38,6 +38,8 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
   const root = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchRef = useRef<HTMLInputElement>(null);
   const deferred = useDeferredValue(query);
   const [active, setActive] = useState<string>("");
   const [sheet, setSheet] = useState<MenuItemData | null>(null);
@@ -125,9 +127,9 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
     if (!el) return;
     // Where the tool bar's bottom edge sits once it is stuck (its sticky top + height), measured
     // that way because before it sticks it is further down the page.
-    const panel = tabsRef.current?.parentElement;
-    const sticky = panel?.parentElement;
-    const stuckBottom = sticky && panel ? parseFloat(getComputedStyle(sticky).top) + panel.offsetHeight : 170;
+    const sticky = tabsRef.current?.closest<HTMLElement>("[data-menu-tools]");
+    const stickyTop = sticky ? parseFloat(getComputedStyle(sticky).top) : NaN;
+    const stuckBottom = sticky && Number.isFinite(stickyTop) ? stickyTop + sticky.offsetHeight : 170;
     window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - stuckBottom - 16, behavior: reduce ? "auto" : "smooth" });
     history.replaceState(null, "", `#${slug}`);
   }
@@ -159,10 +161,12 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
 
   return (
     <div ref={root}>
-      {/* Sticky tools: pill category tabs and search, in one white bar */}
-      <div className="sticky top-[6.25rem] z-30 mt-4 px-3 sm:px-4 [html[data-menu-open]_&]:hidden">
-        <div className="mx-auto flex max-w-[1280px] flex-col gap-2 rounded-[26px] bg-card/95 p-2 shadow-[0_10px_30px_rgb(22_18_15/0.08)] ring-1 ring-hair backdrop-blur lg:flex-row lg:items-center lg:rounded-full">
-          <div ref={tabsRef} className="no-scrollbar flex flex-1 gap-1 overflow-x-auto" role="tablist" aria-label={dict.menu.categories}>
+      {/* Sticky tools: pill category tabs and search in one solid white bar. On phones and tablets the
+          search box opens from a button at the end of the tab row, so the bar stays one row high. */}
+      <div data-menu-tools className="sticky top-[5.5rem] z-30 mt-4 px-3 sm:px-4 lg:top-[6.25rem] [html[data-menu-open]_&]:hidden">
+        <div className="mx-auto flex max-w-[1280px] flex-col gap-2 rounded-[26px] bg-card p-1.5 shadow-[0_10px_30px_rgb(22_18_15/0.10)] ring-1 ring-hair sm:p-2 lg:flex-row lg:items-center lg:rounded-full">
+          <div className="flex min-w-0 flex-1 items-center gap-1">
+          <div ref={tabsRef} className="no-scrollbar flex min-w-0 flex-1 gap-1 overflow-x-auto" role="tablist" aria-label={dict.menu.categories}>
             {sections.map((s) => {
               const on = active === s.slug;
               const disabled = q && !filtered.some((f) => f.slug === s.slug);
@@ -182,12 +186,27 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
               );
             })}
           </div>
-          <div className="relative w-full lg:w-[280px]">
+            <button
+              type="button"
+              onClick={() => {
+                setSearchOpen((v) => !v);
+                window.setTimeout(() => searchRef.current?.focus(), 50);
+              }}
+              aria-expanded={searchOpen || !!query}
+              aria-controls="menu-search-box"
+              aria-label={dict.menu.searchLabel}
+              className={`icon-btn shrink-0 lg:hidden ${searchOpen || query ? "bg-ink text-white" : "bg-linen text-ink"}`}
+            >
+              <IconSearch size={18} />
+            </button>
+          </div>
+          <div id="menu-search-box" className={`relative w-full lg:block lg:w-[280px] ${searchOpen || query ? "block" : "hidden"}`}>
             <label htmlFor="menu-search" className="sr-only">
               {dict.menu.searchLabel}
             </label>
             <IconSearch size={18} className="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-muted" />
             <input
+              ref={searchRef}
               id="menu-search"
               type="search"
               value={query}

@@ -27,6 +27,8 @@ export function Header({ locale, dict, contact }: { locale: Locale; dict: Dictio
   const links = navLinks(dict);
   const pills = [{ path: "", label: dict.nav.home }, links[0], links[2], links[4]];
   const other: Locale = locale === "ar" ? "en" : "ar";
+  // The language links are plain <a> (full page load): English and Arabic have separate root layouts
+  // (lang/dir on <html>), so a client-side transition would only prefetch and then reload anyway.
 
   useEffect(() => {
     const onScroll = () => setFloating(window.scrollY > 80);
@@ -120,7 +122,7 @@ export function Header({ locale, dict, contact }: { locale: Locale; dict: Dictio
           <Logo locale={locale} size="sm" priority className="justify-self-center max-[360px]:scale-90" />
 
           <div className="flex items-center justify-end gap-2">
-            <Link
+            <a
               href={switchLocalePath(pathname, other)}
               hrefLang={other}
               lang={other}
@@ -128,7 +130,7 @@ export function Header({ locale, dict, contact }: { locale: Locale; dict: Dictio
               className={`hidden h-11 items-center rounded-full border border-white/20 px-4 text-white/90 transition-colors hover:border-white/60 hover:text-white sm:inline-flex ${other === "ar" ? "font-[family-name:var(--font-readex)] text-[0.95rem]" : "action"}`}
             >
               {dict.nav.language}
-            </Link>
+            </a>
             <button
               type="button"
               onClick={openCart}
@@ -169,13 +171,13 @@ export function Header({ locale, dict, contact }: { locale: Locale; dict: Dictio
             role="dialog"
             aria-modal="true"
             aria-label={dict.nav.primary}
-            className="fixed inset-2 z-40 overflow-y-auto rounded-[28px] bg-ink text-white sm:inset-3"
+            className="fixed inset-0 z-40 overflow-y-auto bg-ink text-white sm:inset-3 sm:rounded-[28px]"
             initial={reduce ? { opacity: 0 } : { opacity: 0, clipPath: "inset(0 0 100% 0 round 28px)" }}
             animate={reduce ? { opacity: 1 } : { opacity: 1, clipPath: "inset(0 0 0% 0 round 28px)" }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, clipPath: "inset(0 0 100% 0 round 28px)" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="mx-auto grid min-h-full max-w-[1280px] gap-12 px-6 pb-10 pt-28 sm:px-10 lg:grid-cols-[1.4fr_1fr] lg:gap-20 lg:pt-36">
+            <div className="mx-auto grid min-h-full max-w-[1280px] content-start gap-8 px-6 pb-8 pt-24 sm:gap-12 sm:px-10 sm:pt-28 lg:grid-cols-[1.4fr_1fr] lg:gap-20 lg:pt-36">
               <nav aria-label={dict.nav.primary}>
                 <ul className="grid">
                   {[{ path: "", label: dict.nav.home }, ...links].map((l, i) => (
@@ -189,12 +191,12 @@ export function Header({ locale, dict, contact }: { locale: Locale; dict: Dictio
                         href={href(locale, l.path || "/")}
                         onClick={() => closeMenu(false)}
                         aria-current={isActive(l.path) ? "page" : undefined}
-                        className="group flex items-baseline gap-5 border-b border-white/10 py-3.5 text-white/85 transition-colors hover:text-white aria-[current=page]:text-sand sm:py-4"
+                        className="group flex items-baseline gap-4 border-b border-white/10 py-2.5 text-white/85 transition-colors hover:text-white aria-[current=page]:text-sand sm:gap-5 sm:py-4"
                       >
                         <span className="meta w-6 shrink-0 !text-white/40 tabular-nums" aria-hidden>
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <span className="font-display text-[clamp(1.8rem,4.4vw,3rem)] leading-tight">{l.label}</span>
+                        <span className="font-display text-[clamp(1.5rem,4.4vw,3rem)] leading-tight">{l.label}</span>
                         <IconArrow size={22} className="ms-auto self-center opacity-0 transition-opacity group-hover:opacity-60" />
                       </Link>
                     </motion.li>
@@ -202,7 +204,7 @@ export function Header({ locale, dict, contact }: { locale: Locale; dict: Dictio
                 </ul>
               </nav>
               <motion.div
-                className="flex flex-col gap-8 lg:pt-4"
+                className="flex flex-col gap-5 sm:gap-8 lg:pt-4"
                 initial={reduce ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.35, duration: 0.6 }}
@@ -224,7 +226,7 @@ export function Header({ locale, dict, contact }: { locale: Locale; dict: Dictio
                   <a href={contact.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn btn-ghost action">
                     {dict.common.whatsapp}
                   </a>
-                  <Link
+                  <a
                     href={switchLocalePath(pathname, other)}
                     hrefLang={other}
                     lang={other}
@@ -232,7 +234,7 @@ export function Header({ locale, dict, contact }: { locale: Locale; dict: Dictio
                     className={`btn btn-ghost ${other === "ar" ? "font-[family-name:var(--font-readex)]" : "action"}`}
                   >
                     {dict.nav.language}
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             </div>

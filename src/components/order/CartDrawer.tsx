@@ -75,7 +75,7 @@ export function CartDrawer({
       <AnimatePresence>
         {showBar && (
           <motion.div
-            className="fixed inset-x-3 bottom-3 z-40 md:hidden"
+            className="fixed inset-x-3 bottom-3 z-40 md:hidden [html[data-menu-open]_&]:hidden"
             initial={reduce ? { opacity: 0 } : { y: 90, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={reduce ? { opacity: 0 } : { y: 90, opacity: 0 }}

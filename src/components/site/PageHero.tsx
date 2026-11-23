@@ -20,8 +20,8 @@ export function PageHero({
   compact?: boolean;
 }) {
   return (
-    <section className="px-3 pt-3 sm:px-4 sm:pt-4">
-      <div className={`dark-card ${image ? "photo-scrim" : ""} flex items-end ${compact ? "min-h-[min(62svh,560px)]" : "min-h-[min(78svh,720px)]"}`}>
+    <section className="sm:px-4 sm:pt-4">
+      <div className={`dark-card max-sm:!rounded-none ${image ? "photo-scrim" : ""} flex items-end ${compact ? "min-h-[min(62svh,560px)]" : "min-h-[min(78svh,720px)]"}`}>
         {image ? (
           <Image src={image} alt={imageAlt} fill loading="eager" fetchPriority="high" sizes="100vw" quality={85} className="hero-zoom -z-20 object-cover" />
         ) : null}

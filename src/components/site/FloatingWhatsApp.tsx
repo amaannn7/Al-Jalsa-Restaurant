@@ -18,7 +18,7 @@ export function FloatingWhatsApp({ locale, whatsapp, label }: { locale: Locale; 
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${label}: ${locale === "ar" ? "تواصل معنا" : "chat with us"}`}
-      className={`group fixed end-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#1f7a4d] text-white shadow-[0_12px_30px_rgb(0_0_0/0.25)] transition-all duration-500 hover:bg-[#186640] sm:end-6 ${
+      className={`group fixed end-4 z-40 grid [html[data-menu-open]_&]:hidden h-14 w-14 place-items-center rounded-full bg-[#1f7a4d] text-white shadow-[0_12px_30px_rgb(0_0_0/0.25)] transition-all duration-500 hover:bg-[#186640] sm:end-6 ${
         lifted ? "bottom-24 md:bottom-6" : "bottom-5 sm:bottom-6"
       }`}
     >
