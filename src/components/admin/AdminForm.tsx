@@ -55,8 +55,8 @@ export function AdminForm({
 
 export function Check({ name, label, defaultChecked, hint }: { name: string; label: string; defaultChecked?: boolean; hint?: string }) {
   return (
-    <label className="flex cursor-pointer items-start gap-3">
-      <input type="checkbox" name={name} defaultChecked={defaultChecked} className="mt-1 h-4 w-4 accent-[var(--color-gold)]" />
+    <label className="flex min-h-11 cursor-pointer items-start gap-3 py-1">
+      <input type="checkbox" name={name} defaultChecked={defaultChecked} className="mt-0.5 accent-[var(--color-gold)]" />
       <span>
         <span className="text-ivory">{label}</span>
         {hint ? <span className="meta block">{hint}</span> : null}

@@ -24,9 +24,9 @@ export default async function ReviewsAdmin({ searchParams }: PageProps<"/admin/r
         {sp.deleted ? <p className="mt-2 text-ok">Review deleted.</p> : null}
       </header>
       {reviews.map((r) => (
-        <details key={r.id} className="rounded-[20px] border border-line bg-ink-2/60">
-          <summary className="flex cursor-pointer items-center justify-between gap-3 p-4">
-            <span className="truncate text-ivory">
+        <details key={r.id} className="min-w-0 rounded-[20px] border border-line bg-ink-2/60">
+          <summary className="flex min-h-12 cursor-pointer items-center justify-between gap-3 p-4">
+            <span className="min-w-0 truncate text-ivory">
               {r.author}: <span className="text-sand">{r.text.slice(0, 70)}</span>
             </span>
             <span className="meta shrink-0">{r.isActive ? "shown" : "hidden"}</span>

@@ -154,14 +154,14 @@ export function SettingsEditor({ s: settings }: { s: SiteSettingsData }) {
               {DAYS.map((d, i) => {
                 const h = hours.get(i) ?? { day: i, open: "06:00", close: "01:00", closed: false };
                 return (
-                  <div key={d} className="grid grid-cols-[7rem_1fr_1fr_auto] items-center gap-2">
-                    <span className="text-sand">{d}</span>
-                    <input name={`open-${i}`} type="time" defaultValue={h.open} className="input !min-h-10 !py-1.5" aria-label={`${d} opening time`} />
-                    <input name={`close-${i}`} type="time" defaultValue={h.close} className="input !min-h-10 !py-1.5" aria-label={`${d} closing time`} />
-                    <label className="flex items-center gap-2 text-[0.9375rem] text-sand">
+                  <div key={d} className="grid grid-cols-2 items-center gap-2 border-b border-line/60 pb-3 sm:grid-cols-[7rem_1fr_1fr_auto] sm:border-0 sm:pb-0">
+                    <span className="order-1 text-sand">{d}</span>
+                    <input name={`open-${i}`} type="time" defaultValue={h.open} className="input order-3 !min-h-11 !py-1.5 sm:order-2" aria-label={`${d} opening time`} />
+                    <input name={`close-${i}`} type="time" defaultValue={h.close} className="input order-4 !min-h-11 !py-1.5 sm:order-3" aria-label={`${d} closing time`} />
+                    <label className="order-2 flex min-h-11 items-center justify-end gap-2 text-[0.9375rem] text-sand sm:order-4 sm:justify-start">
                       <input type="checkbox" name={`closed-${i}`} defaultChecked={h.closed} className="accent-[var(--color-gold)]" /> Closed
                     </label>
-                    {err(s, `hours-${i}`) ? <p className="field-error col-span-4">{err(s, `hours-${i}`)}</p> : null}
+                    {err(s, `hours-${i}`) ? <p className="field-error order-5 col-span-2 sm:col-span-4">{err(s, `hours-${i}`)}</p> : null}
                   </div>
                 );
               })}

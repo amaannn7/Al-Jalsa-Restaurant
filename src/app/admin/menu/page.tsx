@@ -16,7 +16,7 @@ function Flag({ id, flag, on, label }: { id: string; flag: string; on: boolean; 
     <form action={toggleMenuFlag}>
       <input type="hidden" name="id" value={id} />
       <input type="hidden" name="flag" value={flag} />
-      <button type="submit" aria-pressed={on} className={`rounded-full border px-2.5 py-1 text-[0.8125rem] ${on ? "border-sand bg-sand font-medium text-ink" : "border-line text-muted hover:border-sand/60 hover:text-ivory"}`}>
+      <button type="submit" aria-pressed={on} className={`min-h-10 rounded-full border px-3 text-[0.8125rem] ${on ? "border-sand bg-sand font-medium text-ink" : "border-line text-muted hover:border-sand/60 hover:text-ivory"}`}>
         {label}
       </button>
     </form>
@@ -85,7 +85,7 @@ export default async function MenuAdmin({ searchParams }: PageProps<"/admin/menu
                     <Flag id={i.id} flag="isPopular" on={i.isPopular} label="Popular" />
                     <Flag id={i.id} flag="isActive" on={i.isActive} label="Shown" />
                   </div>
-                  <Link href={`/admin/menu/${i.id}`} className="action link-underline text-gold">
+                  <Link href={`/admin/menu/${i.id}`} className="action link-underline text-gold inline-flex min-h-11 items-center">
                     Edit
                   </Link>
                 </li>

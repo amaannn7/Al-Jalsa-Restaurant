@@ -76,7 +76,7 @@ export default async function Overview({ searchParams }: PageProps<"/admin">) {
       <section>
         <div className="flex items-baseline justify-between">
           <h2 className="font-display text-lg uppercase">Latest enquiries</h2>
-          <Link href="/admin/enquiries" className="action link-underline text-gold">
+          <Link href="/admin/enquiries" className="action link-underline text-gold inline-flex min-h-11 items-center">
             All enquiries
           </Link>
         </div>

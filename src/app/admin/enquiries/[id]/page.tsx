@@ -20,7 +20,7 @@ export default async function EnquiryDetail({ params }: PageProps<"/admin/enquir
   const greeting = e.locale === "ar" ? `مرحباً ${e.name}، شكراً لتواصلك مع مطعم الجلسة.` : `Hello ${e.name}, thank you for contacting Al Jalsa Restaurant.`;
   return (
     <div className="grid max-w-4xl gap-6">
-      <Link href="/admin/enquiries" className="action link-underline text-sand">
+      <Link href="/admin/enquiries" className="action link-underline text-sand inline-flex min-h-11 items-center">
         Back to enquiries
       </Link>
       <header className="flex flex-wrap items-end justify-between gap-4">

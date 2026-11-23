@@ -15,7 +15,7 @@ export default async function NewItem({ searchParams }: PageProps<"/admin/menu/n
   const categories = await db().category.findMany({ orderBy: { sortOrder: "asc" }, select: { id: true, nameEn: true } });
   return (
     <div className="grid gap-6">
-      <Link href="/admin/menu" className="action link-underline text-sand">
+      <Link href="/admin/menu" className="action link-underline text-sand inline-flex min-h-11 items-center">
         Back to menu
       </Link>
       <h1 className="font-display text-3xl uppercase">Add dish</h1>

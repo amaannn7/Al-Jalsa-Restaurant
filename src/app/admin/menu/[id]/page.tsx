@@ -22,11 +22,11 @@ export default async function EditItem({ params }: PageProps<"/admin/menu/[id]">
   if (!item) notFound();
   return (
     <div className="grid gap-6">
-      <Link href="/admin/menu" className="action link-underline text-sand">
+      <Link href="/admin/menu" className="action link-underline text-sand inline-flex min-h-11 items-center">
         Back to menu
       </Link>
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <h1 className="font-display text-3xl uppercase">{item.nameEn}</h1>
+        <h1 className="font-display text-3xl uppercase [overflow-wrap:anywhere]">{item.nameEn}</h1>
         <form action={deleteMenuItem}>
           <input type="hidden" name="id" value={item.id} />
           <ConfirmButton message={`Delete "${item.nameEn}" permanently? To hide it for now, untick "Show on the website" instead.`}>Delete dish</ConfirmButton>

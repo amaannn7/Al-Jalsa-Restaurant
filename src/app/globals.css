@@ -305,6 +305,7 @@ body.theme-dark {
   }
   .input {
     width: 100%;
+    min-width: 0; /* lets fields shrink inside grids on narrow phones */
     min-height: 3rem;
     background: var(--field-bg);
     border: 1px solid var(--field-border);
@@ -337,6 +338,18 @@ body.theme-dark {
   }
   [dir="rtl"] select.input {
     background-position: 1.2rem 1.3rem, 0.85rem 1.3rem;
+  }
+  /* Admin: grid items may shrink below their content width, so long names, file inputs and wide
+     rows never push a page wider than the phone screen. */
+  .theme-dark main .grid > * {
+    min-width: 0;
+  }
+  /* Admin: checkboxes and radios big enough to tap. */
+  .theme-dark input[type="checkbox"],
+  .theme-dark input[type="radio"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
   }
   .theme-dark input[type="date"].input,
   .theme-dark input[type="time"].input {
