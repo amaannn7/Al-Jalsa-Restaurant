@@ -57,6 +57,11 @@ const en = {
     notFoundText: "The page you were looking for does not exist or has moved.",
     rightsReserved: "All rights reserved.",
     adminLink: "Admin",
+    signature: "Signature dishes",
+    viewInMenu: "View menu",
+    visitLocation: "Visit our location",
+    orderWhatsApp: "Order on WhatsApp",
+    ourStory: "Our story",
   },
   days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
   menu: {
@@ -254,6 +259,11 @@ const ar: Dictionary = {
     notFoundText: "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
     rightsReserved: "جميع الحقوق محفوظة.",
     adminLink: "الإدارة",
+    signature: "أطباق مميزة",
+    viewInMenu: "عرض القائمة",
+    visitLocation: "زُر موقعنا",
+    orderWhatsApp: "اطلب عبر واتساب",
+    ourStory: "قصتنا",
   },
   days: ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"],
   menu: {

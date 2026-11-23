@@ -8,11 +8,11 @@
 - [x] Price conflicts: use the menu picture prices (Methi Chaman 18, Green Salad 6).
 - [x] Descriptions for Mutton Fry and Matka Kheer written.
 - [ ] Whether the 6 dishes on the old Ninja listing but not on the printed menu are still served.
-- [ ] Original photo files for the printed menu's photo pages, and photos for dishes without one.
+- [ ] The site uses representative stock photos (Unsplash, free licence). Ask for photos of the restaurant's own dishes to replace them over time, starting with the featured dishes.
 - [ ] Lunch buffet: still Sunday to Wednesday, still SAR 32 / 23? (A review mentions a Saturday buffet.)
       Edit in Admin → Website text → Buffet, or switch it off in Restaurant details.
 - [ ] Email address to show (none is shown now) and the overall Google rating (optional).
-- [ ] Rights to the food photos (from the restaurant's Ninja listing and printed menu).
+- [ ] The client is happy to show stock photos as representative images (credits in `docs/photo-credits.md`).
 - [ ] Review the wording in Admin → Website text and the corrections in `docs/content-changes.md`.
 
 ## 2. Staging

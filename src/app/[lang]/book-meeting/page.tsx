@@ -43,24 +43,24 @@ export default async function MeetingPage({ params }: PageProps<"/[lang]/book-me
         ];
   return (
     <>
-      <PageHero eyebrow={dict.nav.meeting} title={t(content, "meeting.title", lang)} text={t(content, "meeting.text", lang)} image={plate?.cutoutWhole ? plate.cutoutUrl : null} imageAlt={plate ? pick(plate, "name", lang) : ""} />
-      <section className="pb-28">
+      <PageHero eyebrow={dict.nav.meeting} title={t(content, "meeting.title", lang)} text={t(content, "meeting.text", lang)} image={plate?.imageUrl ?? "/images/site/hero.webp"} imageAlt={plate ? pick(plate, "name", lang) : ""} compact />
+      <section className="pb-24 pt-20 lg:pb-28 lg:pt-28">
         <div className="mx-auto grid max-w-[var(--container-site)] gap-12 px-5 sm:px-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
-          <ol className="grid content-start gap-8 border-t border-line pt-8">
+          <ol className="grid content-start gap-3">
             {steps.map(({ Icon, title, text }, i) => (
-              <li key={title} className="flex gap-5">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-gold/60 text-gold">
+              <li key={title} className="card flex gap-5 p-6">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-linen text-ink">
                   <Icon size={20} />
                 </span>
                 <div>
                   <p className="eyebrow">0{i + 1}</p>
-                  <h2 className="font-display mt-1 text-xl uppercase">{title}</h2>
-                  <p className="mt-1 text-sand">{text}</p>
+                  <h2 className="font-dish mt-1 text-[1.35rem] text-ink">{title}</h2>
+                  <p className="mt-1 text-muted">{text}</p>
                 </div>
               </li>
             ))}
           </ol>
-          <div className="border border-line bg-ink-2/80 p-6 sm:p-10">
+          <div className="card p-6 sm:p-10">
             <MeetingForm locale={lang} dict={dict} whatsapp={settings.whatsapp} />
           </div>
         </div>

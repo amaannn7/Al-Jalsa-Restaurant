@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function AdminLayout({ children }: LayoutProps<"/admin">) {
   return (
     <html lang="en" dir="ltr" className={`${latinFonts} ${arabicFonts}`}>
-      <body className="min-h-dvh bg-ink text-ivory">
+      <body className="theme-dark min-h-dvh bg-ink text-ivory">
         <Suspense fallback={<div className="grid min-h-dvh place-items-center text-muted">Loading...</div>}>
           <AdminChrome>{children}</AdminChrome>
         </Suspense>

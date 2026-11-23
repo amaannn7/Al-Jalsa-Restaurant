@@ -30,20 +30,20 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
   const [content, settings] = await Promise.all([getContent(), getSettings()]);
   return (
     <>
-      <PageHero eyebrow={dict.nav.contact} title={t(content, "contact.title", lang)} text={t(content, "contact.text", lang)} compact />
-      <section className="pb-20">
+      <PageHero eyebrow={dict.nav.contact} title={t(content, "contact.title", lang)} text={t(content, "contact.text", lang)} image="/images/menu/chicken-karahi.webp" compact />
+      <section className="pb-16 pt-20 lg:pt-28">
         <VisitBlock locale={lang} dict={dict} settings={settings} title={lang === "ar" ? settings.nameAr : settings.nameEn} />
       </section>
-      <section className="border-t border-line/70 py-20 lg:py-28">
+      <section className="pb-20 pt-8 lg:pb-28">
         <div className="mx-auto grid max-w-[var(--container-site)] gap-12 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <h2 className="font-display text-display uppercase">{t(content, "contact.form.title", lang)}</h2>
-            <div className="mt-8 flex items-center gap-3">
+            <h2 className="font-display text-display text-ink">{t(content, "contact.form.title", lang)}</h2>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <span className="eyebrow">{dict.common.follow}</span>
-              <SocialLinks socials={settings.socials} label={dict.common.follow} />
+              <SocialLinks socials={settings.socials} label={dict.common.follow} tone="light" />
             </div>
           </div>
-          <div className="border border-line bg-ink-2/80 p-6 sm:p-10">
+          <div className="card p-6 sm:p-10">
             <ContactForm locale={lang} dict={dict} whatsapp={settings.whatsapp} />
           </div>
         </div>

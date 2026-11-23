@@ -1,6 +1,8 @@
 // Builds transparent and light-on-dark versions of the official logo (no redrawing).
 import sharp from 'sharp';
-const src = 'docs/brand/logo-original.jpeg';
+// docs/brand/logo-4k.png is the official logo upscaled 3x with Upscayl (digital-art-4x model).
+const src = process.env.LOGO_SRC || 'docs/brand/logo-4k.png';
+const K = Number(process.env.LOGO_SCALE || 3); // crop boxes below are in original (1536px) coordinates
 const { data, info } = await sharp(src).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
 const W = info.width, H = info.height;
 const orig = Buffer.alloc(data.length), light = Buffer.alloc(data.length);
@@ -18,10 +20,11 @@ for (let i = 0; i < data.length; i += 4) {
   light.set([...c.map(Math.round), Math.round(a * 255)], i);
 }
 const mk = (buf) => sharp(buf, { raw: { width: W, height: H, channels: 4 } });
+const box = (l, t, w, h) => ({ left: l * K, top: t * K, width: w * K, height: h * K });
 const crops = {
-  full: { left: 170, top: 30, width: 1200, height: 940 },
-  mark: { left: 560, top: 30, width: 420, height: 520 },
-  wordmark: { left: 180, top: 542, width: 1180, height: 150 },
+  full: box(170, 30, 1200, 940),
+  mark: box(560, 30, 420, 507),
+  wordmark: box(180, 542, 1180, 150),
 };
 for (const [name, region] of Object.entries(crops)) {
   for (const [buf, suffix] of [[orig, ''], [light, '-light']]) {

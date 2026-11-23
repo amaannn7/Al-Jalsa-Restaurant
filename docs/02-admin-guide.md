@@ -16,12 +16,10 @@ Menu items → **Add dish** → fill the English name (Arabic is recommended), c
 photo → **Add dish**.
 
 ### Photos
-- **Photo:** a square photo of the dish works best. It is resized automatically.
-- **Cut-out plate (optional):** the same dish with a transparent background (PNG). Used for the large
-  floating plates. Tick "whole plate" only if no edge of the plate is cut off; only whole plates are
-  used for the rotating effects. On a Mac (macOS 13 or later), right-click the image in
-  Finder → Quick Actions → Remove Background, or open it in Preview → Tools → Remove Background,
-  then export as PNG.
+- **Photo:** a landscape (4:3) photo of the dish works best, at least 2000 px wide and under 4 MB.
+  It is shown on the menu card, the home page and the dish details, and resized automatically.
+- The current photos are representative stock photos (see `docs/photo-credits.md`). Replacing them
+  with photos of the restaurant's own dishes is always an improvement.
 
 ## Featured and Popular
 - **Featured** dishes appear in the home page carousel and a Featured tab on the menu.

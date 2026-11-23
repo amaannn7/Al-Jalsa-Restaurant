@@ -58,17 +58,17 @@ export default async function MenuPage({ params }: PageProps<"/[lang]/menu">) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
-      <PageHero eyebrow={dict.nav.menu} title={t(content, "menu.title", lang)} text={t(content, "menu.text", lang)} compact>
+      <PageHero eyebrow={dict.nav.menu} title={t(content, "menu.title", lang)} text={t(content, "menu.text", lang)} image="/images/menu/bbq-mix-chicken-platter.webp" compact>
         {settings.buffetEnabled ? (
-          <Link href={`${href(lang)}#buffet`} className="group mx-auto inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-1 border border-gold/40 px-5 py-3 text-sand transition-colors hover:border-gold">
-            <span className="eyebrow">{t(content, "buffet.title", lang)}</span>
+          <Link href={`${href(lang)}#buffet`} className="glass group inline-flex flex-wrap items-center gap-x-4 gap-y-1 rounded-full px-5 py-3 text-white/85 backdrop-blur transition-colors hover:bg-black/60">
+            <span className="rounded-full bg-sand px-2.5 py-1 text-[0.8125rem] font-medium text-ink">{t(content, "buffet.title", lang)}</span>
             <span className="inline-flex items-center gap-2">
-              <IconClock size={16} className="text-gold" /> {t(content, "buffet.schedule", lang)}
+              <IconClock size={16} className="text-sand" /> {t(content, "buffet.schedule", lang)}
             </span>
-            <span className="text-ivory">
+            <span className="text-white">
               {dict.buffet.adult} {t(content, "buffet.adultPrice", lang)} · {dict.buffet.kids} {t(content, "buffet.kidsPrice", lang)}
             </span>
-            <IconArrow size={16} className="text-gold transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+            <IconArrow size={16} className="text-sand transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
           </Link>
         ) : null}
       </PageHero>

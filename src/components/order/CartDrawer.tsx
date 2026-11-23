@@ -84,7 +84,7 @@ export function CartDrawer({
             <button
               type="button"
               onClick={cart.open}
-              className="flex w-full items-center justify-between gap-4 rounded-sm bg-gold px-5 py-4 text-ink shadow-[0_18px_40px_rgb(0_0_0/0.5)]"
+              className="flex w-full items-center justify-between gap-4 rounded-full bg-ink px-5 py-4 text-white shadow-[0_18px_40px_rgb(0_0_0/0.3)]"
             >
               <span className="action flex items-center gap-3">
                 <IconBag size={18} />
@@ -116,21 +116,20 @@ export function CartDrawer({
             role="dialog"
             aria-modal="true"
             aria-labelledby="cart-title"
-            className="stone fixed inset-y-0 end-0 z-[61] flex w-full max-w-[460px] flex-col border-s border-line"
+            className="fixed inset-y-2 end-2 z-[61] flex w-[calc(100%-1rem)] max-w-[460px] flex-col overflow-hidden rounded-[28px] bg-linen text-ink shadow-2xl"
             initial={reduce ? { opacity: 0 } : { x: fromStart }}
             animate={reduce ? { opacity: 1 } : { x: 0 }}
             exit={reduce ? { opacity: 0 } : { x: fromStart }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            data-lenis-prevent
           >
-            <div className="flex items-center justify-between border-b border-line px-6 py-5">
-              <h2 id="cart-title" className="font-display text-title uppercase">
+            <div className="flex items-center justify-between border-b border-hair px-6 py-5">
+              <h2 id="cart-title" className="font-display text-title">
                 {t.title}
               </h2>
               <button
                 type="button"
                 onClick={cart.close}
-                className="grid h-11 w-11 place-items-center rounded-full border border-ivory/25 transition-colors hover:border-gold hover:text-gold"
+                className="grid h-11 w-11 place-items-center rounded-full border border-hair transition-colors hover:border-ink hover:bg-ink hover:text-white"
                 aria-label={dict.menu.close}
               >
                 <IconClose size={18} />
@@ -140,17 +139,17 @@ export function CartDrawer({
             {cart.lines.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-5 px-8 text-center">
                 <div className="relative h-40 w-40 opacity-80">
-                  <Image src="/brand/logo-mark-light.png" alt="" fill sizes="160px" className="object-contain opacity-30" />
+                  <Image src="/brand/logo-mark.png" alt="" fill sizes="160px" className="object-contain opacity-20" />
                 </div>
                 <p className="font-dish text-2xl">{t.empty}</p>
-                <p className="text-sand">{t.emptyHint}</p>
-                <Link href={href(locale, "/menu")} onClick={cart.close} className="btn btn-gold action mt-2">
+                <p className="text-muted">{t.emptyHint}</p>
+                <Link href={href(locale, "/menu")} onClick={cart.close} className="btn btn-dark action mt-2">
                   {t.browse}
                 </Link>
               </div>
             ) : (
               <>
-                <ul className="flex-1 divide-y divide-line overflow-y-auto px-6" data-lenis-prevent>
+                <ul className="flex-1 divide-y divide-hair overflow-y-auto px-6">
                   <AnimatePresence initial={false}>
                     {cart.lines.map((l) => (
                       <motion.li
@@ -160,10 +159,10 @@ export function CartDrawer({
                         animate={{ opacity: 1, height: "auto" }}
                         exit={reduce ? { opacity: 0 } : { opacity: 0, height: 0 }}
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden border-line"
+                        className="overflow-hidden border-hair"
                       >
                         <div className="flex gap-4 py-5">
-                          <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full bg-ink-3">
+                          <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-[16px] bg-stone">
                             {l.image ? <Image src={l.image} alt="" fill sizes="80px" className="object-cover" /> : null}
                           </div>
                           <div className="min-w-0 flex-1">
@@ -174,7 +173,7 @@ export function CartDrawer({
                                   <p className="meta">{locale === "ar" && l.variantAr ? l.variantAr : l.variantEn}</p>
                                 ) : null}
                               </div>
-                              <p className="shrink-0 text-gold">
+                              <p className="shrink-0 text-bronze">
                                 {l.unitHalalas == null ? dict.common.priceOnRequest : formatPrice(l.unitHalalas * l.quantity, locale)}
                               </p>
                             </div>
@@ -190,7 +189,7 @@ export function CartDrawer({
                                 labels={{ decrease: dict.menu.decrease, increase: dict.menu.increase, quantity: dict.menu.quantity }}
                                 size="sm"
                               />
-                              <button type="button" onClick={() => cart.remove(l.key)} className="action link-underline text-muted hover:text-ivory">
+                              <button type="button" onClick={() => cart.remove(l.key)} className="action link-underline text-muted hover:text-ink">
                                 {t.remove}
                               </button>
                             </div>
@@ -200,11 +199,11 @@ export function CartDrawer({
                     ))}
                   </AnimatePresence>
                 </ul>
-                <div className="border-t border-line px-6 py-5">
+                <div className="border-t border-hair px-6 py-5">
                   <dl className="grid gap-2">
                     <div className="flex justify-between">
-                      <dt className="text-sand">{t.subtotal}</dt>
-                      <dd className="text-ivory">{formatPrice(cart.subtotal, locale)}</dd>
+                      <dt className="text-muted">{t.subtotal}</dt>
+                      <dd className="text-ink">{formatPrice(cart.subtotal, locale)}</dd>
                     </div>
                     {deliveryEnabled ? (
                       <div className="flex justify-between">
@@ -213,10 +212,10 @@ export function CartDrawer({
                       </div>
                     ) : null}
                   </dl>
-                  <Link href={href(locale, "/order")} onClick={cart.close} className="btn btn-gold action mt-5 w-full">
+                  <Link href={href(locale, "/order")} onClick={cart.close} className="btn btn-dark action mt-5 w-full">
                     {t.checkout} <IconArrow size={18} />
                   </Link>
-                  <button type="button" onClick={cart.close} className="action link-underline mx-auto mt-4 block text-sand hover:text-ivory">
+                  <button type="button" onClick={cart.close} className="action link-underline mx-auto mt-4 block text-muted hover:text-ink">
                     {t.continue}
                   </button>
                 </div>

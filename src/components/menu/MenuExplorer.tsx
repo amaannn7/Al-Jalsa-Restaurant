@@ -1,20 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import type { CategoryData, MenuItemData } from "@/lib/types";
 import { formatCalories, formatPrice, lowestPrice } from "@/lib/money";
 import { useCart } from "@/store/cart";
-import { dirSign, gsap, MQ, ScrollTrigger, useGSAP } from "@/components/motion/gsap";
-import { getLenis } from "@/components/motion/scroll-lock";
-import { Plate } from "@/components/ui/Plate";
-import { IconCheck, IconClose, IconInfo, IconPlus, IconSearch } from "@/components/ui/Icons";
+import { IconCheck, IconClose, IconCutlery, IconPlus, IconSearch } from "@/components/ui/Icons";
 import { ItemSheet } from "./ItemSheet";
 
-type Section = { slug: string; name: string; description: string; items: MenuItemData[]; thumb: MenuItemData | undefined };
+type Section = { slug: string; name: string; description: string; items: MenuItemData[] };
 
 /** Normalises text for search: lower case, Arabic letter variants folded, diacritics removed. */
 function fold(s: string) {
@@ -26,6 +23,13 @@ function fold(s: string) {
     .replace(/ى/g, "ي")
     .replace(/ة/g, "ه")
     .replace(/[̀-ͯ]/g, "");
+}
+
+/** Each kind of section gets its own structure, so the long menu does not repeat one card shape. */
+const LIST_SECTIONS = new Set(["rice", "bread", "desserts", "beverages", "mojitos"]);
+function layoutFor(slug: string): "spotlight" | "list" | "cards" {
+  if (slug === "featured" || slug === "popular") return "spotlight";
+  return LIST_SECTIONS.has(slug) ? "list" : "cards";
 }
 
 export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dict: Dictionary; menu: CategoryData[]; note?: string }) {
@@ -47,14 +51,13 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
       name: name(c),
       description: (locale === "ar" ? c.descriptionAr : c.descriptionEn) ?? "",
       items: c.items,
-      thumb: c.items.find((i) => i.cutoutWhole && i.isFeatured) ?? c.items.find((i) => i.cutoutWhole) ?? c.items.find((i) => i.imageUrl),
     }));
     const all = menu.flatMap((c) => c.items);
     const featured = all.filter((i) => i.isFeatured);
     const popular = all.filter((i) => i.isPopular);
     const extra: Section[] = [];
-    if (popular.length) extra.push({ slug: "popular", name: dict.menu.popular, description: "", items: popular, thumb: popular.find((i) => i.cutoutWhole) ?? popular[0] });
-    if (featured.length) extra.push({ slug: "featured", name: dict.menu.featured, description: "", items: featured, thumb: featured.find((i) => i.cutoutWhole) ?? featured[0] });
+    if (popular.length) extra.push({ slug: "popular", name: dict.menu.popular, description: "", items: popular });
+    if (featured.length) extra.push({ slug: "featured", name: dict.menu.featured, description: "", items: featured });
     return [...extra, ...base];
   }, [menu, locale, name, dict.menu.featured, dict.menu.popular]);
 
@@ -84,13 +87,28 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
       { rootMargin: "-35% 0px -55% 0px" },
     );
     els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    // Above the first section, the first tab is the current one.
+    const onScroll = () => {
+      if (els[0].getBoundingClientRect().top > window.innerHeight * 0.35) setActive(els[0].id);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [filtered]);
 
   // Keep the active tab in view inside the horizontal tab bar.
   useEffect(() => {
-    const tab = tabsRef.current?.querySelector<HTMLElement>(`[data-tab="${active}"]`);
-    tab?.scrollIntoView({ block: "nearest", inline: "center", behavior: reduce ? "auto" : "smooth" });
+    // Scroll only the tab bar (scrollIntoView would also cancel the page's smooth scroll on the way
+    // to a section). Works in both directions because it measures on-screen positions.
+    const bar = tabsRef.current;
+    const tab = bar?.querySelector<HTMLElement>(`[data-tab="${active}"]`);
+    if (!bar || !tab) return;
+    const t = tab.getBoundingClientRect();
+    const c = bar.getBoundingClientRect();
+    bar.scrollBy({ left: t.left + t.width / 2 - (c.left + c.width / 2), behavior: reduce ? "auto" : "smooth" });
   }, [active, reduce]);
 
   // Open the right section when arriving with #slug.
@@ -105,31 +123,14 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
   function jump(slug: string) {
     const el = document.getElementById(slug);
     if (!el) return;
-    const offset = -(tabsRef.current?.getBoundingClientRect().height ?? 0) - 90;
-    const lenis = getLenis();
-    if (lenis) lenis.scrollTo(el, { offset, duration: 1.2 });
-    else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY + offset, behavior: reduce ? "auto" : "smooth" });
+    // Where the tool bar's bottom edge sits once it is stuck (its sticky top + height), measured
+    // that way because before it sticks it is further down the page.
+    const panel = tabsRef.current?.parentElement;
+    const sticky = panel?.parentElement;
+    const stuckBottom = sticky && panel ? parseFloat(getComputedStyle(sticky).top) + panel.offsetHeight : 170;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - stuckBottom - 16, behavior: reduce ? "auto" : "smooth" });
     history.replaceState(null, "", `#${slug}`);
   }
-
-  // Plates turn gently as the tiles cross the screen (scroll-linked, desktop and mobile).
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add(MQ.motion, () => {
-        gsap.utils.toArray<HTMLElement>("[data-tile-plate]", root.current).forEach((el, i) => {
-          const dir = (i % 2 ? 1 : -1) * dirSign();
-          gsap.fromTo(el, { rotate: -14 * dir }, { rotate: 14 * dir, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true } });
-        });
-        gsap.utils.toArray<HTMLElement>("[data-section-plate]", root.current).forEach((el) => {
-          gsap.fromTo(el, { rotate: -60 * dirSign(), scale: 0.8 }, { rotate: 0, scale: 1, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "center 40%", scrub: 0.6 } });
-        });
-      });
-      ScrollTrigger.refresh();
-      return () => mm.revert();
-    },
-    { scope: root, dependencies: [filtered], revertOnUpdate: true },
-  );
 
   const quickAdd = (item: MenuItemData) => {
     if (item.variants.length !== 1) return setSheet(item);
@@ -158,10 +159,10 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
 
   return (
     <div ref={root}>
-      {/* Sticky tools: circular category tabs (reference 1) and search */}
-      <div className="sticky top-[var(--hdr-offset,var(--hdr-h))] z-30 border-y border-line/70 bg-ink/90 backdrop-blur-md transition-[top] duration-500 ease-[var(--ease-out-expo)] [html[data-menu-open]_&]:hidden">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-4 py-3 sm:px-8 lg:flex-row lg:items-center lg:gap-8">
-          <div ref={tabsRef} className="no-scrollbar -mx-4 flex flex-1 gap-1 overflow-x-auto px-4 sm:mx-0 sm:px-0" role="tablist" aria-label={dict.menu.categories}>
+      {/* Sticky tools: pill category tabs and search, in one white bar */}
+      <div className="sticky top-[6.25rem] z-30 mt-4 px-3 sm:px-4 [html[data-menu-open]_&]:hidden">
+        <div className="mx-auto flex max-w-[1280px] flex-col gap-2 rounded-[26px] bg-card/95 p-2 shadow-[0_10px_30px_rgb(22_18_15/0.08)] ring-1 ring-hair backdrop-blur lg:flex-row lg:items-center lg:rounded-full">
+          <div ref={tabsRef} className="no-scrollbar flex flex-1 gap-1 overflow-x-auto" role="tablist" aria-label={dict.menu.categories}>
             {sections.map((s) => {
               const on = active === s.slug;
               const disabled = q && !filtered.some((f) => f.slug === s.slug);
@@ -174,38 +175,29 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
                   data-tab={s.slug}
                   disabled={!!disabled}
                   onClick={() => jump(s.slug)}
-                  className="group flex w-[96px] shrink-0 flex-col items-center gap-1.5 rounded-sm px-1 py-1.5 text-center transition-opacity disabled:opacity-30"
+                  className={`action h-11 shrink-0 whitespace-nowrap rounded-full px-4 transition-colors disabled:opacity-30 ${on ? "bg-ink text-white" : "text-ink-3 hover:bg-linen"}`}
                 >
-                  <span className={`relative grid h-12 w-12 place-items-center rounded-full border transition-all duration-500 ${on ? "border-gold bg-gold/10" : "border-line group-hover:border-ivory/40"}`}>
-                    {s.thumb ? (
-                      <span className="relative h-10 w-10 transition-transform duration-700 group-hover:rotate-45">
-                        <Image src={s.thumb.cutoutWhole && s.thumb.cutoutUrl ? s.thumb.cutoutUrl : s.thumb.imageUrl ?? ""} alt="" fill sizes="40px" className={s.thumb.cutoutWhole ? "object-contain" : "rounded-full object-cover"} />
-                      </span>
-                    ) : (
-                      <span className="diamond text-gold/70" aria-hidden />
-                    )}
-                  </span>
-                  <span className={`line-clamp-2 min-h-[2lh] text-[0.8125rem] leading-tight transition-colors ${on ? "text-gold" : "text-sand group-hover:text-ivory"}`}>{s.name}</span>
+                  {s.name}
                 </button>
               );
             })}
           </div>
-          <div className="relative w-full lg:w-[300px]">
+          <div className="relative w-full lg:w-[280px]">
             <label htmlFor="menu-search" className="sr-only">
               {dict.menu.searchLabel}
             </label>
-            <IconSearch size={18} className="pointer-events-none absolute start-3.5 top-1/2 -translate-y-1/2 text-muted" />
+            <IconSearch size={18} className="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-muted" />
             <input
               id="menu-search"
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={dict.menu.searchPlaceholder}
-              className="input !min-h-11 !ps-10 !pe-10"
+              className="input !min-h-11 !rounded-full !border-transparent !bg-linen !ps-11 !pe-10"
               autoComplete="off"
             />
             {query ? (
-              <button type="button" onClick={() => setQuery("")} className="absolute end-1.5 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-muted hover:text-ivory" aria-label={dict.menu.clearSearch}>
+              <button type="button" onClick={() => setQuery("")} className="absolute end-1.5 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-muted hover:text-ink" aria-label={dict.menu.clearSearch}>
                 <IconClose size={16} />
               </button>
             ) : null}
@@ -217,87 +209,193 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
         {q ? `${resultCount} ${dict.menu.dishes}` : ""}
       </p>
 
-      <div className="mx-auto max-w-[1440px] px-4 pb-24 sm:px-8">
+      <div className="mx-auto max-w-[var(--container-site)] px-5 pb-24 sm:px-8">
         {q && !filtered.length ? (
           <div className="py-32 text-center">
             <p className="font-dish text-2xl">{dict.menu.noResults}</p>
-            <button type="button" onClick={() => setQuery("")} className="btn btn-line action mt-6">
+            <button type="button" onClick={() => setQuery("")} className="btn btn-outline action mt-6">
               {dict.menu.clearSearch}
             </button>
           </div>
         ) : null}
 
-        {note ? <p className="mx-auto mt-10 max-w-2xl text-center text-sand">{note}</p> : null}
+        {note ? <p className="mx-auto mt-12 max-w-2xl text-center text-muted">{note}</p> : null}
 
         {filtered.map((s, si) => (
-          <section key={s.slug} id={s.slug} data-menu-section aria-labelledby={`${s.slug}-title`} className="scroll-mt-48 pt-20 lg:pt-28">
-            <header className="mb-10 grid items-end gap-6 border-b border-line pb-8 md:grid-cols-[1fr_auto]">
-              <div className="flex items-end gap-5">
-                {s.thumb && !q ? (
-                  <div data-section-plate className="hidden w-24 shrink-0 sm:block lg:w-28">
-                    <Plate item={s.thumb} name={name(s.thumb)} sizes="112px" />
-                  </div>
-                ) : null}
-                <div>
-                  <p className="eyebrow">
-                    {String(si + 1).padStart(2, "0")} · {s.items.length} {dict.menu.dishes}
-                  </p>
-                  <h2 id={`${s.slug}-title`} className="font-display text-display mt-3 uppercase text-ivory">
-                    {s.name}
-                  </h2>
-                </div>
+          <section key={s.slug} id={s.slug} data-menu-section aria-labelledby={`${s.slug}-title`} className="scroll-mt-48 pt-16 lg:pt-24">
+            <header className="mb-8 grid items-end gap-4 md:grid-cols-[1fr_auto] md:gap-10">
+              <div>
+                <p className="eyebrow">
+                  {String(si + 1).padStart(2, "0")} · {s.items.length} {dict.menu.dishes}
+                </p>
+                <h2 id={`${s.slug}-title`} className="font-display text-display mt-3 text-ink">
+                  {s.name}
+                </h2>
               </div>
-              {s.description ? <p className="max-w-[44ch] text-sand md:text-end">{s.description}</p> : null}
+              {s.description ? <p className="max-w-[44ch] text-muted md:text-end">{s.description}</p> : null}
             </header>
 
-            <motion.ul layout={!reduce} className="grid grid-cols-1 gap-4 min-[520px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              <AnimatePresence mode="popLayout" initial={false}>
+            {layoutFor(s.slug) === "spotlight" ? (
+              /* Featured / Popular: tall photo cards with the details over the photo */
+              <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
                 {s.items.map((item, ii) => {
                   const low = lowestPrice(item.variants);
                   const added = flash === item.id;
                   const count = inCart.get(item.id) ?? 0;
-                  const sizes = item.variants.length > 1 ? item.variants.map((v) => name(v)).join(" / ") : "";
                   return (
-                    <motion.li
-                      key={item.id}
-                      layout={!reduce}
-                      initial={reduce ? false : { opacity: 0, scale: 0.94 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.94 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      className={`group relative flex flex-col overflow-hidden border p-5 transition-colors duration-500 ${added ? "border-maroon bg-maroon" : "border-line/80 bg-ink-2/85 hover:border-ivory/25"}`}
-                    >
+                    <li key={item.id} className="group relative aspect-[3/4] overflow-hidden rounded-[22px] bg-ink-2 text-white">
+                      <button type="button" onClick={() => setSheet(item)} className="zoom-on-hover absolute inset-0 block" aria-label={`${dict.menu.details}: ${name(item)}`}>
+                        {item.imageUrl ? (
+                          <Image src={item.imageUrl} alt="" fill sizes="(max-width: 1024px) 46vw, 300px" quality={85} loading={si === 0 && ii < 4 ? "eager" : "lazy"} className="object-cover" />
+                        ) : null}
+                        <span className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" aria-hidden />
+                      </button>
                       {count > 0 ? (
-                        <span className="action absolute start-4 top-4 z-10 grid h-9 min-w-9 place-items-center rounded-full border border-gold/70 px-2 text-gold" aria-label={`${count} ${dict.cart.items}`}>
+                        <span className="action pointer-events-none absolute start-3 top-3 grid h-8 min-w-8 place-items-center rounded-full bg-white px-2 text-ink" aria-label={`${count} ${dict.cart.items}`}>
                           {count}
                         </span>
                       ) : null}
-                      <button type="button" onClick={() => setSheet(item)} className="absolute end-3 top-3 z-10 grid h-10 w-10 place-items-center rounded-full text-sand transition-colors hover:text-gold" aria-label={`${dict.menu.details}: ${name(item)}`}>
-                        <IconInfo size={20} />
-                      </button>
-                      <button type="button" onClick={() => setSheet(item)} className="relative mx-auto mt-2 block w-[78%]" tabIndex={-1} aria-hidden>
-                        <div data-tile-plate>
-                          <Plate item={item} name={name(item)} priority={si === 0 && ii < 4} sizes="(max-width: 520px) 70vw, (max-width: 1024px) 38vw, 22vw" imgClassName="transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.07] group-hover:rotate-12" />
-                        </div>
-                      </button>
-                      <div className="mt-5 flex items-end justify-between gap-3">
-                        <div className="min-w-0">
-                          <p className={`text-lg ${added ? "text-ivory" : "text-gold"}`}>
-                            {low == null ? dict.common.priceOnRequest : `${item.variants.length > 1 ? `${dict.common.from} ` : ""}${formatPrice(low, locale)}`}
-                          </p>
-                          {sizes ? <p className="meta">{sizes}</p> : null}
-                          {formatCalories(item.variants.map((v) => v.calories), locale) ? (
-                            <p className="meta">{formatCalories(item.variants.map((v) => v.calories), locale)}</p>
-                          ) : null}
-                        </div>
-                      </div>
-                      <div className="mt-2 flex items-end justify-between gap-4">
-                        <h3 className="font-dish text-[1.3rem] leading-tight text-ivory">{name(item)}</h3>
+                      <span className="pointer-events-none absolute end-3 top-3 rounded-full bg-black/45 px-3 py-1.5 text-sm font-medium text-white backdrop-blur">
+                        {low == null ? dict.common.priceOnRequest : `${item.variants.length > 1 ? `${dict.common.from} ` : ""}${formatPrice(low, locale)}`}
+                      </span>
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                        <h3 className="font-dish text-[1.15rem] leading-tight sm:text-[1.4rem]">{name(item)}</h3>
+                        <p className="mt-1.5 line-clamp-2 text-sm text-white/75 max-sm:hidden">{locale === "ar" && item.descriptionAr ? item.descriptionAr : item.descriptionEn}</p>
                         {item.isAvailable ? (
                           <button
                             type="button"
                             onClick={() => quickAdd(item)}
-                            className={`btn action !min-h-10 shrink-0 !px-3.5 ${added ? "btn-gold" : "btn-gold"}`}
+                            className={`btn action pointer-events-auto mt-3 !min-h-10 !px-3.5 sm:mt-4 ${added ? "bg-white text-ink" : "btn-sand"}`}
+                            aria-label={`${dict.menu.add}: ${name(item)}`}
+                          >
+                            {added ? <IconCheck size={16} /> : <IconPlus size={16} />}
+                            <span>{added ? dict.menu.added : dict.menu.add}</span>
+                          </button>
+                        ) : (
+                          <p className="mt-3 text-sm text-white/70">{dict.common.unavailable}</p>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : layoutFor(s.slug) === "list" ? (
+              /* Rice, bread, desserts, drinks: a printed-menu style list with dotted leaders */
+              <ul className="card grid px-4 py-2 sm:px-8 md:grid-cols-2 md:gap-x-12 md:py-4">
+                {s.items.map((item) => {
+                  const low = lowestPrice(item.variants);
+                  const added = flash === item.id;
+                  const count = inCart.get(item.id) ?? 0;
+                  const sizes = item.variants.length > 1 ? item.variants.map((v) => `${name(v)} ${v.priceHalalas != null ? formatPrice(v.priceHalalas, locale) : ""}`.trim()).join(" · ") : "";
+                  const cal = formatCalories(item.variants.map((v) => v.calories), locale);
+                  return (
+                    <li key={item.id} className="flex items-center gap-4 border-b border-hair py-4 last:border-b-0 md:[&:nth-last-child(2):nth-child(odd)]:border-b-0">
+                      <button
+                        type="button"
+                        onClick={() => setSheet(item)}
+                        className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full bg-stone sm:h-[72px] sm:w-[72px]"
+                        aria-label={`${dict.menu.details}: ${name(item)}`}
+                      >
+                        {item.imageUrl ? (
+                          <Image src={item.imageUrl} alt="" fill sizes="72px" quality={80} className="object-cover transition-transform duration-500 hover:scale-105" />
+                        ) : (
+                          <span className="absolute inset-0 grid place-items-center text-ink/25">
+                            <IconCutlery size={22} />
+                          </span>
+                        )}
+                        {count > 0 ? (
+                          <span className="absolute inset-x-0 bottom-0 bg-ink/80 text-center text-[0.75rem] font-medium text-white" aria-label={`${count} ${dict.cart.items}`}>
+                            ×{count}
+                          </span>
+                        ) : null}
+                      </button>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-baseline gap-2">
+                          <h3 className="font-dish shrink-0 text-[1.1rem] leading-tight text-ink sm:text-[1.2rem]">
+                            <button type="button" onClick={() => setSheet(item)} className="py-1.5 text-start hover:text-bronze">
+                              {name(item)}
+                            </button>
+                          </h3>
+                          <span className="min-w-4 flex-1 -translate-y-1 border-b border-dotted border-muted/50" aria-hidden />
+                          <span className="shrink-0 font-medium text-ink">
+                            {low == null ? dict.common.priceOnRequest : `${item.variants.length > 1 ? `${dict.common.from} ` : ""}${formatPrice(low, locale)}`}
+                          </span>
+                        </div>
+                        <p className="mt-1 line-clamp-1 text-[0.875rem] text-muted">{locale === "ar" && item.descriptionAr ? item.descriptionAr : item.descriptionEn}</p>
+                        {sizes || cal ? <p className="mt-0.5 text-[0.8125rem] text-muted">{[sizes, cal].filter(Boolean).join(" · ")}</p> : null}
+                      </div>
+                      {item.isAvailable ? (
+                        <button
+                          type="button"
+                          onClick={() => quickAdd(item)}
+                          className={`icon-btn shrink-0 transition-colors ${added ? "bg-sand text-ink" : "bg-ink text-white hover:bg-ink-3"}`}
+                          aria-label={`${dict.menu.add}: ${name(item)}`}
+                        >
+                          {added ? <IconCheck size={17} /> : <IconPlus size={17} />}
+                        </button>
+                      ) : (
+                        <span className="meta shrink-0">{dict.common.unavailable}</span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <ul className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
+              {s.items.map((item, ii) => {
+                const low = lowestPrice(item.variants);
+                const added = flash === item.id;
+                const count = inCart.get(item.id) ?? 0;
+                const sizes = item.variants.length > 1 ? item.variants.map((v) => name(v)).join(" / ") : "";
+                const cal = formatCalories(item.variants.map((v) => v.calories), locale);
+                return (
+                  <li key={item.id} className="card group relative grid grid-cols-[112px_1fr] gap-4 p-2.5 sm:flex sm:flex-col sm:gap-0">
+                    <button
+                      type="button"
+                      onClick={() => setSheet(item)}
+                      className="zoom-on-hover relative block aspect-square overflow-hidden rounded-[16px] bg-stone sm:aspect-[4/3] sm:rounded-[18px]"
+                      aria-label={`${dict.menu.details}: ${name(item)}`}
+                    >
+                      {item.imageUrl ? (
+                        <Image
+                          src={item.imageUrl}
+                          alt=""
+                          fill
+                          sizes="(max-width: 640px) 112px, (max-width: 1024px) 46vw, 300px"
+                          quality={85}
+                          loading={si === 0 && ii < 4 ? "eager" : "lazy"}
+                          className="object-cover"
+                        />
+                      ) : (
+                        <span className="absolute inset-0 grid place-items-center text-ink/25">
+                          <IconCutlery size={34} />
+                        </span>
+                      )}
+                      {count > 0 ? (
+                        <span className="action absolute start-2 top-2 grid h-8 min-w-8 place-items-center rounded-full bg-ink px-2 text-white" aria-label={`${count} ${dict.cart.items}`}>
+                          {count}
+                        </span>
+                      ) : null}
+                    </button>
+                    <div className="flex min-w-0 flex-1 flex-col py-1 pe-1 sm:px-2.5 sm:pb-2 sm:pt-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="font-dish text-[1.1rem] leading-tight text-ink sm:text-[1.25rem]">
+                          <button type="button" onClick={() => setSheet(item)} className="py-1.5 text-start hover:underline hover:decoration-hair hover:underline-offset-4">
+                            {name(item)}
+                          </button>
+                        </h3>
+                      </div>
+                      <p className="mt-1.5 line-clamp-2 text-[0.9rem] leading-snug text-muted">{locale === "ar" && item.descriptionAr ? item.descriptionAr : item.descriptionEn}</p>
+                      {sizes || cal ? <p className="mt-1.5 text-[0.8125rem] text-muted">{[sizes, cal].filter(Boolean).join(" · ")}</p> : null}
+                      <div className="mt-auto flex items-center justify-between gap-3 pt-3 sm:pt-4">
+                        <p className="font-medium text-ink">
+                          {low == null ? dict.common.priceOnRequest : `${item.variants.length > 1 ? `${dict.common.from} ` : ""}${formatPrice(low, locale)}`}
+                        </p>
+                        {item.isAvailable ? (
+                          <button
+                            type="button"
+                            onClick={() => quickAdd(item)}
+                            className={`btn action !min-h-10 shrink-0 !px-3.5 ${added ? "btn-sand" : "btn-dark"}`}
                             aria-label={`${dict.menu.add}: ${name(item)}`}
                           >
                             {added ? <IconCheck size={16} /> : <IconPlus size={16} />}
@@ -307,12 +405,12 @@ export function MenuExplorer({ locale, dict, menu, note }: { locale: Locale; dic
                           <span className="meta shrink-0">{dict.common.unavailable}</span>
                         )}
                       </div>
-                      <p className="meta mt-3 line-clamp-2">{locale === "ar" && item.descriptionAr ? item.descriptionAr : item.descriptionEn}</p>
-                    </motion.li>
-                  );
-                })}
-              </AnimatePresence>
-            </motion.ul>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+            )}
           </section>
         ))}
       </div>

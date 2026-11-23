@@ -1,5 +1,7 @@
+import fs from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { seedMenu, seedReviews } from "../seed-source";
+import { seedGallery, seedMenu, seedReviews } from "../seed-source";
 import { formatCalories } from "../money";
 
 describe("seed menu (transcribed from the printed menu)", () => {
@@ -8,6 +10,12 @@ describe("seed menu (transcribed from the printed menu)", () => {
     expect(new Set(slugs).size).toBe(slugs.length);
     const cats = new Set(seedMenu.categories.map((c) => c.slug));
     for (const i of seedMenu.items) expect(cats.has(i.category), i.slug).toBe(true);
+  });
+  it("points every photo at a file that exists (4K WebP in public/images)", () => {
+    const urls = [...seedMenu.items.map((i) => i.imageUrl).filter(Boolean), ...seedGallery.map((g) => `/images/menu/${g.slug}.webp`)] as string[];
+    expect(urls.length).toBeGreaterThan(100);
+    for (const u of urls) expect(fs.existsSync(path.join(process.cwd(), "public", u)), u).toBe(true);
+    for (const f of ["hero", "hero-2", "catering", "buffet"]) expect(fs.existsSync(path.join(process.cwd(), "public/images/site", `${f}.webp`)), f).toBe(true);
   });
   it("prices every dish, names every size, and keeps calories sane", () => {
     for (const i of seedMenu.items) {

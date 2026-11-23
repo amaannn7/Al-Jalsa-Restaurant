@@ -8,74 +8,44 @@ import { href, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { useCart } from "@/store/cart";
 import { Logo } from "./Logo";
-import { IconBag } from "@/components/ui/Icons";
+import { navLinks, switchLocalePath } from "./nav";
+import { IconArrow, IconBag, IconClose, IconMenu } from "@/components/ui/Icons";
 import { lockScroll } from "@/components/motion/scroll-lock";
 
-export function navLinks(dict: Dictionary) {
-  return [
-    { path: "/menu", label: dict.nav.menu },
-    { path: "/order", label: dict.nav.order },
-    { path: "/catering", label: dict.nav.catering },
-    { path: "/book-meeting", label: dict.nav.meeting },
-    { path: "/about", label: dict.nav.about },
-    { path: "/contact", label: dict.nav.contact },
-  ];
-}
-
-export function switchLocalePath(pathname: string, to: Locale) {
-  const parts = pathname.split("/");
-  parts[1] = to;
-  return parts.join("/") || `/${to}`;
-}
-
-export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+/**
+ * Sits inside the top of each page's dark hero card; after scrolling it becomes a floating dark
+ * pill bar. The circle button opens every page in a full-screen panel (all screen sizes).
+ */
+export function Header({ locale, dict, contact }: { locale: Locale; dict: Dictionary; contact: { phone: string; phoneLabel: string; address: string; whatsappHref: string } }) {
   const pathname = usePathname() || `/${locale}`;
   const { count, open: openCart } = useCart();
   const reduce = useReducedMotion();
-  const [solid, setSolid] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const [floating, setFloating] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const links = navLinks(dict);
+  const pills = [{ path: "", label: dict.nav.home }, links[0], links[2], links[4]];
   const other: Locale = locale === "ar" ? "en" : "ar";
 
   useEffect(() => {
-    let last = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setSolid(y > 40);
-      setHidden(y > 320 && y > last + 4 && !menuOpen);
-      if (y < last - 4) setHidden(false);
-      last = y;
-    };
+    const onScroll = () => setFloating(window.scrollY > 80);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [menuOpen]);
-
-  // Sticky elements below the header (menu tabs) follow it as it hides and shows.
-  useEffect(() => {
-    document.documentElement.style.setProperty("--hdr-offset", hidden ? "0px" : "var(--hdr-h)");
-  }, [hidden]);
+  }, []);
 
   const closeMenu = useCallback((returnFocus = true) => {
     setMenuOpen(false);
     if (returnFocus) toggleRef.current?.focus();
   }, []);
 
-  // Close on route change (adjusting state during render, as React recommends) and on resize to desktop.
+  // Close on route change (adjusting state during render, as React recommends).
   const [lastPath, setLastPath] = useState(pathname);
   if (lastPath !== pathname) {
     setLastPath(pathname);
     setMenuOpen(false);
   }
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1280px)");
-    const onChange = () => mq.matches && setMenuOpen(false);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
 
   // Escape to close, focus trap, scroll lock while the menu is open.
   useEffect(() => {
@@ -106,69 +76,63 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     };
   }, [menuOpen, closeMenu]);
 
-  const isActive = (path: string) => pathname === `/${locale}${path}` || pathname.startsWith(`/${locale}${path}/`);
-  const linkCls = (path: string) =>
-    `action relative py-2 text-ivory/85 transition-colors hover:text-ivory after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-[inherit] after:bg-gold after:transition-transform after:duration-500 ${
-      isActive(path) ? "text-ivory after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"
-    }`;
+  const isActive = (path: string) => (path ? pathname === `/${locale}${path}` || pathname.startsWith(`/${locale}${path}/`) : pathname === `/${locale}`);
+  const bar = floating && !menuOpen;
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color] duration-500 ease-[var(--ease-out-expo)] ${
-          solid || menuOpen ? "border-b border-line/70 bg-ink/92 backdrop-blur-md" : "border-b border-transparent"
-        } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
-      >
-        <div className="mx-auto grid h-[4.5rem] max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 sm:px-6 lg:h-20 lg:px-10">
-          {/* Start side */}
-          <div className="flex items-center gap-7">
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+        <div
+          className={`pointer-events-auto mx-auto grid grid-cols-[1fr_auto_1fr] items-center gap-3 transition-[max-width,background-color,padding,box-shadow,margin] duration-500 ease-[var(--ease-out-expo)] ${
+            bar
+              ? "mt-1 h-16 max-w-[1180px] rounded-full bg-ink/85 px-2.5 shadow-[0_18px_40px_rgb(0_0_0/0.25)] ring-1 ring-white/10 backdrop-blur-md sm:px-3"
+              : "h-[4.75rem] max-w-[1600px] px-3 sm:px-5 lg:px-8"
+          }`}
+        >
+          <div className="flex items-center gap-2">
             <button
               ref={toggleRef}
               type="button"
-              className="action group inline-flex h-11 items-center gap-3 rounded-full border border-ivory/30 px-4 text-ivory transition-colors hover:border-ivory xl:hidden"
+              className={`icon-btn shrink-0 text-white transition-colors ${menuOpen ? "bg-white !text-ink" : "bg-black/50 hover:bg-black/70"} ${bar ? "" : "!h-12 !w-12"}`}
               aria-expanded={menuOpen}
               aria-controls="site-menu"
+              aria-label={menuOpen ? dict.nav.closeMenu : dict.nav.openMenu}
               onClick={() => setMenuOpen((v) => !v)}
             >
-              <span className="relative block h-3 w-5" aria-hidden>
-                <span className={`absolute inset-x-0 top-0 h-px bg-current transition-transform duration-300 ${menuOpen ? "translate-y-1.5 rotate-45" : ""}`} />
-                <span className={`absolute inset-x-0 bottom-0 h-px bg-current transition-transform duration-300 ${menuOpen ? "-translate-y-1.5 -rotate-45" : ""}`} />
-              </span>
-              <span className="hidden min-[400px]:inline">{menuOpen ? dict.nav.closeMenu : dict.nav.openMenu}</span>
+              {menuOpen ? <IconClose size={18} /> : <IconMenu size={20} />}
             </button>
-            <nav aria-label={dict.nav.primary} className="hidden items-center gap-7 xl:flex">
-              {links.slice(0, 4).map((l) => (
-                <Link key={l.path} href={href(locale, l.path)} className={linkCls(l.path)} aria-current={isActive(l.path) ? "page" : undefined}>
+            <nav aria-label={dict.nav.primary} className="hidden items-center gap-1.5 min-[1380px]:flex">
+              {pills.map((l) => (
+                <Link
+                  key={l.path}
+                  href={href(locale, l.path || "/")}
+                  aria-current={isActive(l.path) ? "page" : undefined}
+                  className={`action inline-flex h-11 items-center whitespace-nowrap rounded-full transition-colors ${bar ? "px-4" : "px-5"} ${
+                    isActive(l.path) ? "bg-white text-ink" : "border border-white/20 text-white/90 hover:border-white/60 hover:text-white"
+                  }`}
+                >
                   {l.label}
                 </Link>
               ))}
             </nav>
           </div>
 
-          <Logo locale={locale} size="sm" priority className="justify-self-center max-[380px]:scale-90" />
+          <Logo locale={locale} size="sm" priority className="justify-self-center max-[360px]:scale-90" />
 
-          {/* End side */}
-          <div className="flex items-center justify-end gap-3 sm:gap-5">
-            <nav aria-label={locale === "ar" ? "روابط إضافية" : "More pages"} className="hidden items-center gap-7 xl:flex">
-              {links.slice(4).map((l) => (
-                <Link key={l.path} href={href(locale, l.path)} className={linkCls(l.path)} aria-current={isActive(l.path) ? "page" : undefined}>
-                  {l.label}
-                </Link>
-              ))}
-            </nav>
+          <div className="flex items-center justify-end gap-2">
             <Link
               href={switchLocalePath(pathname, other)}
               hrefLang={other}
               lang={other}
               title={dict.nav.languageLabel}
-              className={`hidden h-11 items-center px-1 text-ivory/85 transition-colors hover:text-gold sm:inline-flex ${other === "ar" ? "font-[family-name:var(--font-readex)] text-[0.95rem]" : "action"}`}
+              className={`hidden h-11 items-center rounded-full border border-white/20 px-4 text-white/90 transition-colors hover:border-white/60 hover:text-white sm:inline-flex ${other === "ar" ? "font-[family-name:var(--font-readex)] text-[0.95rem]" : "action"}`}
             >
               {dict.nav.language}
             </Link>
             <button
               type="button"
               onClick={openCart}
-              className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-ivory/30 text-ivory transition-colors hover:border-gold hover:text-gold"
+              className="icon-btn relative bg-black/50 text-white hover:bg-black/70"
               aria-label={`${dict.cart.open}${count ? ` (${count})` : ""}`}
             >
               <IconBag size={19} />
@@ -180,7 +144,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.4, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 500, damping: 22 }}
-                    className="absolute -end-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[0.75rem] font-medium leading-none text-ink"
+                    className="absolute -end-0.5 -top-0.5 grid h-5 min-w-5 place-items-center rounded-full bg-sand px-1 text-[0.75rem] font-semibold leading-none text-ink"
                     aria-hidden
                   >
                     {count}
@@ -188,26 +152,14 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 )}
               </AnimatePresence>
             </button>
-            <Link href={href(locale, "/menu")} className="btn btn-gold action hidden !min-h-11 !px-5 md:inline-flex">
-              {dict.nav.orderNow}
+            <Link href={href(locale, "/menu")} className="btn btn-dark action hidden !min-h-11 bg-black/80 !px-5 ring-1 ring-white/10 md:inline-flex">
+              <IconBag size={17} /> {dict.nav.orderNow}
             </Link>
           </div>
         </div>
       </header>
 
-      {/* Mobile / tablet menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            key="scrim"
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-[2px] xl:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => closeMenu(false)}
-          />
-        )}
-      </AnimatePresence>
+      {/* Full-screen menu (all pages, all sizes) */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -217,48 +169,72 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             role="dialog"
             aria-modal="true"
             aria-label={dict.nav.primary}
-            className="stone fixed inset-x-3 top-[5.1rem] z-50 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-sm border border-line p-6 sm:inset-x-6 sm:p-8 xl:hidden"
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: -16, clipPath: "inset(0 0 100% 0)" }}
-            animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }}
-            exit={reduce ? { opacity: 0 } : { opacity: 0, y: -10, clipPath: "inset(0 0 100% 0)" }}
-            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            data-lenis-prevent
+            className="fixed inset-2 z-40 overflow-y-auto rounded-[28px] bg-ink text-white sm:inset-3"
+            initial={reduce ? { opacity: 0 } : { opacity: 0, clipPath: "inset(0 0 100% 0 round 28px)" }}
+            animate={reduce ? { opacity: 1 } : { opacity: 1, clipPath: "inset(0 0 0% 0 round 28px)" }}
+            exit={reduce ? { opacity: 0 } : { opacity: 0, clipPath: "inset(0 0 100% 0 round 28px)" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <nav aria-label={dict.nav.primary}>
-              <ul className="grid gap-1">
-                {[{ path: "", label: dict.nav.home }, ...links].map((l, i) => (
-                  <motion.li
-                    key={l.path}
-                    initial={reduce ? false : { opacity: 0, x: locale === "ar" ? 24 : -24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.08 + i * 0.045, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <Link
-                      href={href(locale, l.path || "/")}
-                      onClick={() => closeMenu(false)}
-                      aria-current={(l.path ? isActive(l.path) : pathname === `/${locale}`) ? "page" : undefined}
-                      className="font-display flex items-center justify-between border-b border-line/60 py-3 text-[1.55rem] uppercase text-ivory transition-colors hover:text-gold aria-[current=page]:text-gold rtl:text-[1.5rem]"
+            <div className="mx-auto grid min-h-full max-w-[1280px] gap-12 px-6 pb-10 pt-28 sm:px-10 lg:grid-cols-[1.4fr_1fr] lg:gap-20 lg:pt-36">
+              <nav aria-label={dict.nav.primary}>
+                <ul className="grid">
+                  {[{ path: "", label: dict.nav.home }, ...links].map((l, i) => (
+                    <motion.li
+                      key={l.path}
+                      initial={reduce ? false : { opacity: 0, y: 18 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.12 + i * 0.04, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      {l.label}
-                      <span className="diamond text-gold opacity-0 transition-opacity [[aria-current=page]_&]:opacity-100" aria-hidden />
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
-            </nav>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Link href={href(locale, "/menu")} onClick={() => closeMenu(false)} className="btn btn-gold action flex-1">
-                {dict.nav.orderNow}
-              </Link>
-              <Link
-                href={switchLocalePath(pathname, other)}
-                hrefLang={other}
-                lang={other}
-                onClick={() => closeMenu(false)}
-                className={`btn btn-line flex-1 ${other === "ar" ? "font-[family-name:var(--font-readex)]" : "action"}`}
+                      <Link
+                        href={href(locale, l.path || "/")}
+                        onClick={() => closeMenu(false)}
+                        aria-current={isActive(l.path) ? "page" : undefined}
+                        className="group flex items-baseline gap-5 border-b border-white/10 py-3.5 text-white/85 transition-colors hover:text-white aria-[current=page]:text-sand sm:py-4"
+                      >
+                        <span className="meta w-6 shrink-0 !text-white/40 tabular-nums" aria-hidden>
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="font-display text-[clamp(1.8rem,4.4vw,3rem)] leading-tight">{l.label}</span>
+                        <IconArrow size={22} className="ms-auto self-center opacity-0 transition-opacity group-hover:opacity-60" />
+                      </Link>
+                    </motion.li>
+                  ))}
+                </ul>
+              </nav>
+              <motion.div
+                className="flex flex-col gap-8 lg:pt-4"
+                initial={reduce ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.35, duration: 0.6 }}
               >
-                {dict.nav.language}
-              </Link>
+                <div>
+                  <p className="eyebrow !text-sand">{dict.common.address}</p>
+                  <p className="mt-3 max-w-[32ch] text-white/80">{contact.address}</p>
+                </div>
+                <div>
+                  <p className="eyebrow !text-sand">{dict.common.phone}</p>
+                  <a href={`tel:${contact.phone}`} dir="ltr" className="mt-3 inline-block text-xl text-white hover:text-sand">
+                    {contact.phoneLabel}
+                  </a>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <Link href={href(locale, "/menu")} onClick={() => closeMenu(false)} className="btn btn-sand action">
+                    {dict.nav.orderNow} <IconArrow size={17} />
+                  </Link>
+                  <a href={contact.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn btn-ghost action">
+                    {dict.common.whatsapp}
+                  </a>
+                  <Link
+                    href={switchLocalePath(pathname, other)}
+                    hrefLang={other}
+                    lang={other}
+                    onClick={() => closeMenu(false)}
+                    className={`btn btn-ghost ${other === "ar" ? "font-[family-name:var(--font-readex)]" : "action"}`}
+                  >
+                    {dict.nav.language}
+                  </Link>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         )}

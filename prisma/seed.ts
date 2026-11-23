@@ -5,6 +5,7 @@
  *   npx prisma db seed            (or: npx tsx prisma/seed.ts)
  *   SEED_RESET_MENU=1 npx tsx prisma/seed.ts       (replaces the menu with the seed menu)
  *   SEED_RESET_SETTINGS=1 npx tsx prisma/seed.ts   (overwrites restaurant details with the defaults)
+ *   SEED_RESET_GALLERY=1 npx tsx prisma/seed.ts    (replaces the home gallery with the seed photos)
  */
 import "dotenv/config";
 import bcrypt from "bcryptjs";
@@ -85,6 +86,7 @@ async function seedContent() {
 }
 
 async function seedGalleryTable() {
+  if (process.env.SEED_RESET_GALLERY === "1") await prisma.galleryImage.deleteMany();
   if ((await prisma.galleryImage.count()) > 0) return console.log("gallery: already present, skipped");
   await prisma.galleryImage.createMany({
     data: seedGallery.map((g, n) => ({ url: `/images/menu/${g.slug}.webp`, altEn: g.altEn, altAr: g.altAr, sortOrder: n })),

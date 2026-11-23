@@ -32,7 +32,7 @@ export function ContactForm({ locale, dict, whatsapp }: { locale: Locale; dict: 
       <TextField id="phone" label={f.phone} required type="tel" inputMode="tel" autoComplete="tel" dir="ltr" error={e("phone")} />
       <TextArea id="message" label={f.message} required className="sm:col-span-2" rows={5} error={e("message")} />
       <div className="sm:col-span-2">
-        <button type="submit" className="btn btn-gold action w-full sm:w-auto" disabled={pending}>
+        <button type="submit" className="btn btn-dark action w-full sm:w-auto" disabled={pending}>
           <IconWhatsApp size={18} /> {pending ? f.sending : f.submitContact}
         </button>
       </div>

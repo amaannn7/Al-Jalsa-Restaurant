@@ -21,6 +21,16 @@ export const contentDefaults: ContentDefault[] = [
     en: "Tandoor grills, slow-cooked curries and biryani by the family pot. Take a seat with us, or order on WhatsApp.",
     ar: "مشويات التندور، وكاري مطهو ببطء، وبرياني بحجم العائلة. تفضّل بالجلوس معنا، أو اطلب عبر واتساب.",
   },
+  {
+    key: "home.hero.title", group: "Home: hero", label: "Main headline",
+    en: "Gather Around the Table at Al Jalsa",
+    ar: "اجتمعوا حول المائدة في الجلسة",
+  },
+  {
+    key: "home.intro.text", group: "Home: hero", label: "Large line in the white band under the hero", multiline: true,
+    en: "Mughlai curries, Indo-Chinese favourites, fresh naan and family-size biryani, to dine in, take away or have delivered.",
+    ar: "كاري المغلاي وأطباق هندية صينية ونان طازج وبرياني بحجم العائلة، تناولها عندنا أو خذها سفري أو اطلب التوصيل.",
+  },
   { key: "home.hero.scrollLine", group: "Home: hero", label: "Line revealed while scrolling the hero", en: "Al Jalsa means the sitting: a table to gather around.", ar: "الجلسة: مكان نلتقي حوله على مائدة واحدة." },
 
   // Home: story (pinned section)
@@ -45,6 +55,10 @@ export const contentDefaults: ContentDefault[] = [
   },
 
   // Home: sections
+  { key: "home.featured.eyebrow", group: "Home: sections", label: "Featured dishes label", en: "Signature dishes", ar: "أطباق مميزة" },
+  { key: "home.categories.eyebrow", group: "Home: sections", label: "Menu categories label", en: "Explore the menu", ar: "استكشف القائمة" },
+  { key: "home.gallery.eyebrow", group: "Home: sections", label: "Gallery label", en: "Gallery", ar: "معرض الصور" },
+  { key: "home.reviews.eyebrow", group: "Home: sections", label: "Reviews label", en: "Reviews", ar: "آراء الضيوف" },
   { key: "home.featured.title", group: "Home: sections", label: "Featured dishes title", en: "From our kitchen", ar: "من مطبخنا" },
   { key: "home.featured.text", group: "Home: sections", label: "Featured dishes text", en: "A few plates to begin with. The full menu has many more.", ar: "بعض الأطباق لتبدأ بها، وفي القائمة الكاملة المزيد." },
   { key: "home.categories.title", group: "Home: sections", label: "Menu categories title", en: "The Menu", ar: "قائمة الطعام" },

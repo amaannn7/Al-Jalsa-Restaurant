@@ -18,12 +18,11 @@ export function FloatingWhatsApp({ locale, whatsapp, label }: { locale: Locale; 
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${label}: ${locale === "ar" ? "تواصل معنا" : "chat with us"}`}
-      className={`group fixed end-4 z-40 grid h-14 w-14 place-items-center rounded-full border border-gold/60 bg-ink/90 text-gold shadow-[0_12px_30px_rgb(0_0_0/0.45)] backdrop-blur transition-all duration-500 hover:border-gold hover:bg-gold hover:text-ink sm:end-6 ${
+      className={`group fixed end-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#1f7a4d] text-white shadow-[0_12px_30px_rgb(0_0_0/0.25)] transition-all duration-500 hover:bg-[#186640] sm:end-6 ${
         lifted ? "bottom-24 md:bottom-6" : "bottom-5 sm:bottom-6"
       }`}
     >
-      <span className="absolute inset-0 rounded-full border border-gold/40 motion-safe:animate-[ping_2.8s_cubic-bezier(0,0,0.2,1)_3]" aria-hidden />
-      <IconWhatsApp size={26} />
+            <IconWhatsApp size={26} />
     </a>
   );
 }

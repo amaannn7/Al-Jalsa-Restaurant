@@ -14,7 +14,9 @@ dashboard for the restaurant.
 |---|---|
 | Framework | Next.js 16.4 (App Router, Cache Components), React 19.3, TypeScript |
 | Styling | Tailwind CSS 4, custom design tokens in `src/app/globals.css` |
-| Motion | GSAP + ScrollTrigger (scroll-linked effects), Motion (UI transitions), Lenis (smooth scroll on desktop), React `<ViewTransition>` (page transitions) |
+| Design | Clean modern restaurant layout: dark rounded photo cards for heroes, white cards on linen, pill navigation. Newsreader + DM Sans (Noto Naskh Arabic + Readex Pro in Arabic) |
+| Motion | Light CSS only: hero text rises on load, text fades in once, a few photo reveals and hover zooms (one shared IntersectionObserver), a reviews marquee. Motion for the cart, menus and dialogs. React `<ViewTransition>` for quick page fades. No scroll-jacking or smooth-scroll library. |
+| Photos | Representative Unsplash stock photos at original resolution (under-4K originals upscaled with [Upscayl](https://github.com/upscayl/upscayl)), 3840px WebP through `next/image`; credits in `docs/photo-credits.md` |
 | Data | PostgreSQL via Prisma 7 (`@prisma/adapter-pg`) |
 | Auth | Email + password (bcrypt), signed httpOnly session cookie (jose), roles Owner / Editor |
 | Images | Vercel Blob for admin uploads (local `public/uploads` in development) |
@@ -84,7 +86,7 @@ with the original seed menu; use with care).
 | Admin pages and actions | `src/app/admin/*`, `src/app/admin/actions.ts` |
 | Logo files (from the official logo, never redrawn) | `public/brand/` |
 | Food photos and background-removed plates | `public/images/menu/`, `public/images/menu/cut/` |
-| Asset scripts (logo, cut-outs, textures) | `scripts/assets/` |
+| Asset scripts (logo, 4K photos) | `scripts/assets/` (`stock-images.mjs` builds the 3840px WebPs from the original downloads and Upscayl output) |
 
 ## How ordering works
 

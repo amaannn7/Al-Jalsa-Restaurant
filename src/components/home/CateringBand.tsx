@@ -1,12 +1,8 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { dirSign, gsap, MQ, useGSAP } from "@/components/motion/gsap";
 import { IconArrow } from "@/components/ui/Icons";
 
-/** Maroon band. The photo opens through an expanding circle and settles from a zoom as you scroll. */
+/** Full-bleed photo card with the catering call to action. */
 export function CateringBand({
   eyebrow,
   title,
@@ -24,46 +20,27 @@ export function CateringBand({
   image: string;
   imageAlt: string;
 }) {
-  const root = useRef<HTMLElement>(null);
-  useGSAP(
-    () => {
-      const q = gsap.utils.selector(root);
-      const s = dirSign();
-      const mm = gsap.matchMedia();
-      mm.add(MQ.motion, () => {
-        const tl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: { trigger: root.current, start: "top 85%", end: "center 45%", scrub: 0.7 } });
-        tl.fromTo(q("[data-cat-mask]"), { clipPath: "circle(8% at 50% 50%)" }, { clipPath: "circle(50% at 50% 50%)" }, 0)
-          .fromTo(q("[data-cat-img]"), { scale: 1.45, rotate: -25 * s }, { scale: 1, rotate: 0 }, 0)
-          .fromTo(q("[data-cat-ring]"), { scale: 0.6, opacity: 0, rotate: 0 }, { scale: 1, opacity: 1, rotate: 90 * s }, 0);
-        gsap.fromTo(q("[data-cat-copy] > *"), { opacity: 0, y: 40 }, { opacity: 1, y: 0, stagger: 0.09, duration: 1, ease: "expo.out", scrollTrigger: { trigger: root.current, start: "top 70%", toggleActions: "play none none reverse" } });
-        gsap.to(q("[data-cat-img]"), { rotate: 20 * s, ease: "none", scrollTrigger: { trigger: root.current, start: "center 45%", end: "bottom top", scrub: true } });
-      });
-      return () => mm.revert();
-    },
-    { scope: root },
-  );
   return (
-    <section ref={root} className="band-maroon relative overflow-hidden border-y border-gold/25" aria-labelledby="catering-band-title">
-      <div className="mx-auto grid max-w-[var(--container-site)] items-center gap-12 px-5 py-24 sm:px-8 md:grid-cols-2 lg:py-32">
-        <div data-cat-copy>
-          <p className="eyebrow !text-gold-soft">{eyebrow}</p>
-          <h2 id="catering-band-title" className="font-display text-display mt-5 uppercase text-ivory">
+    <section className="px-3 py-10 sm:px-4 lg:py-14" aria-labelledby="catering-band-title">
+      <div className="dark-card photo-scrim mx-auto flex min-h-[min(80svh,640px)] max-w-[1600px] items-end">
+        <Image src={image} alt={imageAlt} fill sizes="100vw" quality={85} className="-z-20 object-cover" />
+        <div className="w-full px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
+          <p data-reveal className="eyebrow !text-sand">
+            {eyebrow}
+          </p>
+          <h2 data-reveal id="catering-band-title" className="font-display text-display mt-4 max-w-[18ch] text-white [text-wrap:balance]">
             {title}
           </h2>
-          <p className="mt-6 max-w-[42ch] text-lg text-ivory/85">{text}</p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link href={cta.href} className="btn btn-gold action">
-              {cta.label}
+          <p data-reveal className="mt-5 max-w-[48ch] text-lg text-white/90">
+            {text}
+          </p>
+          <div data-reveal className="mt-9 flex flex-wrap gap-3">
+            <Link href={cta.href} className="btn btn-sand action">
+              {cta.label} <IconArrow size={17} />
             </Link>
-            <Link href={secondary.href} className="action link-underline inline-flex items-center justify-center gap-2 px-2 py-3 text-ivory">
-              {secondary.label} <IconArrow size={16} />
+            <Link href={secondary.href} className="btn btn-ghost action">
+              {secondary.label}
             </Link>
-          </div>
-        </div>
-        <div className="relative mx-auto aspect-square w-[min(82vw,520px)]">
-          <div data-cat-ring className="absolute -inset-[6%] rounded-full border border-dashed border-gold/45" aria-hidden />
-          <div data-cat-mask className="absolute inset-0 overflow-hidden rounded-full">
-            <Image data-cat-img src={image} alt={imageAlt} fill sizes="(max-width: 768px) 82vw, 520px" quality={85} className="object-cover" />
           </div>
         </div>
       </div>

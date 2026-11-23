@@ -19,10 +19,10 @@ export function QuantityStepper({
 }) {
   const box = size === "sm" ? "h-9 w-9" : "h-11 w-11";
   return (
-    <div className="inline-flex items-center rounded-full border border-line" role="group" aria-label={labels.quantity}>
+    <div className="inline-flex items-center rounded-full border border-hair bg-paper" role="group" aria-label={labels.quantity}>
       <button
         type="button"
-        className={`${box} grid place-items-center rounded-full text-ivory transition-colors hover:bg-ivory/10 disabled:opacity-40`}
+        className={`${box} grid place-items-center rounded-full text-ink transition-colors hover:bg-stone disabled:opacity-40`}
         onClick={() => onChange(Math.max(min, value - 1))}
         disabled={value <= min}
         aria-label={labels.decrease}
@@ -34,7 +34,7 @@ export function QuantityStepper({
       </output>
       <button
         type="button"
-        className={`${box} grid place-items-center rounded-full text-ivory transition-colors hover:bg-ivory/10 disabled:opacity-40`}
+        className={`${box} grid place-items-center rounded-full text-ink transition-colors hover:bg-stone disabled:opacity-40`}
         onClick={() => onChange(Math.min(max, value + 1))}
         disabled={value >= max}
         aria-label={labels.increase}

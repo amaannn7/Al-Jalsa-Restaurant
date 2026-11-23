@@ -4,20 +4,20 @@ import { href, isLocale, pick } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getContent, getGallery, getMenu, getReviews, getSettings, t } from "@/lib/data";
 import { formatPrice, lowestPrice } from "@/lib/money";
-import { allItems, hasPhoto, PLATE_PREFERENCES, pickPlate } from "@/lib/menu-helpers";
+import { allItems, PLATE_PREFERENCES } from "@/lib/menu-helpers";
 import { jsonLd, pageMetadata, siteUrl } from "@/lib/seo";
+import { waLink } from "@/lib/whatsapp";
+import type { MenuItemData } from "@/lib/types";
 import { Hero } from "@/components/home/Hero";
-import { Story } from "@/components/home/Story";
-import { CategoryShowcase } from "@/components/home/CategoryShowcase";
-import { FeaturedRail } from "@/components/home/FeaturedRail";
+import { Kitchen } from "@/components/home/Kitchen";
+import { SignatureDishes } from "@/components/home/SignatureDishes";
+import { CategoryGrid, type CategoryCard } from "@/components/home/CategoryGrid";
+import { BuffetSection } from "@/components/home/BuffetSection";
 import { Gallery } from "@/components/home/Gallery";
 import { Reviews } from "@/components/home/Reviews";
 import { CateringBand } from "@/components/home/CateringBand";
-import { BuffetSection } from "@/components/home/BuffetSection";
-import { waLink } from "@/lib/whatsapp";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { VisitBlock } from "@/components/site/VisitBlock";
-import { Reveal } from "@/components/motion/Reveal";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]">): Promise<Metadata> {
   const { lang } = await params;
@@ -35,45 +35,55 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const dict = getDictionary(lang);
   const [menu, content, settings, gallery, reviews] = await Promise.all([getMenu(), getContent(), getSettings(), getGallery(), getReviews()]);
   const c = (key: string) => t(content, key, lang);
+  const items = allItems(menu);
   const name = (i: { nameEn: string; nameAr: string }) => (lang === "ar" && i.nameAr ? i.nameAr : i.nameEn);
-
-  const used = new Set<string>();
-  const heroItems = PLATE_PREFERENCES.hero.map((p) => pickPlate(menu, p, used)).filter(Boolean) as NonNullable<ReturnType<typeof pickPlate>>[];
-  const storyItems = PLATE_PREFERENCES.story.map((p) => pickPlate(menu, p, used));
-  const heroPlate = (i: (typeof heroItems)[number]) => {
+  const priceLabel = (i: MenuItemData) => {
     const low = lowestPrice(i.variants);
-    return {
-      slug: i.slug,
-      src: i.cutoutUrl ?? i.imageUrl ?? "",
-      name: name(i),
-      description: pick(i, "description", lang),
-      price: low == null ? dict.common.priceOnRequest : `${i.variants.length > 1 ? `${dict.common.from} ` : ""}${formatPrice(low, lang)}`,
-    };
+    return low == null ? dict.common.priceOnRequest : `${i.variants.length > 1 ? `${dict.common.from} ` : ""}${formatPrice(low, lang)}`;
   };
+  /** First dish with a photo among the preferred slugs (then any dish with a photo). */
+  const photoOf = (slugs: string[], fallback = true) =>
+    slugs.map((s) => items.find((i) => i.slug === s && i.imageUrl)).find(Boolean) ?? (fallback ? items.find((i) => i.imageUrl) : undefined);
 
-  // Plates only for sections with real photos; the rest are listed as links (no fake imagery).
-  const otherCategories = menu
-    .filter((cat) => cat.items.length && !hasPhoto(cat.items))
-    .map((cat) => ({ slug: cat.slug, name: pick(cat, "name", lang), href: href(lang, `/menu#${cat.slug}`), count: cat.items.length }));
-  const categoryRows = menu
-    .filter((cat) => cat.items.length && hasPhoto(cat.items))
+  const featured = items.filter((i) => i.isFeatured && i.isAvailable);
+  const cards: CategoryCard[] = menu
+    .filter((cat) => cat.items.length)
     .map((cat) => {
-      const plate = pickPlate(menu, PLATE_PREFERENCES.category[cat.slug] ?? [], used, cat.slug) ?? cat.items[0];
+      const prefs = PLATE_PREFERENCES.category[cat.slug] ?? [];
+      const withPhoto = prefs.map((s) => cat.items.find((i) => i.slug === s && i.imageUrl)).find(Boolean) ?? cat.items.find((i) => i.imageUrl);
       return {
         slug: cat.slug,
         name: pick(cat, "name", lang),
         description: pick(cat, "description", lang),
         count: `${cat.items.length} ${dict.menu.dishes}`,
         href: href(lang, `/menu#${cat.slug}`),
-        plate,
-        plateName: name(plate),
+        image: withPhoto?.imageUrl ?? null,
       };
     });
 
-  const featured = allItems(menu).filter((i) => i.isFeatured);
-  const cateringPhoto = allItems(menu).find((i) => i.slug === "mutton-dum-biryani")?.imageUrl ?? allItems(menu).find((i) => i.imageUrl)?.imageUrl ?? "/images/menu/shahi-chicken-biryani.webp";
+  // Hero carousel: one dish from each menu section (not the featured ones, which have their own section).
+  const featuredSlugs = new Set(featured.slice(0, 6).map((i) => i.slug));
+  const signatures = menu
+    .map((cat) => {
+      const prefs = PLATE_PREFERENCES.category[cat.slug] ?? [];
+      return (
+        prefs.map((s) => cat.items.find((i) => i.slug === s && i.imageUrl && i.isAvailable && !featuredSlugs.has(i.slug))).find(Boolean) ??
+        cat.items.find((i) => i.imageUrl && i.isAvailable && !featuredSlugs.has(i.slug))
+      );
+    })
+    .filter((i): i is MenuItemData => !!i)
+    .slice(0, 8)
+    .map((i) => ({
+      slug: i.slug,
+      name: name(i),
+      text: (lang === "ar" && i.descriptionAr ? i.descriptionAr : i.descriptionEn) ?? "",
+      price: priceLabel(i),
+      image: i.imageUrl!,
+      href: href(lang, `/menu#${menu.find((c) => c.items.includes(i))?.slug ?? ""}`),
+    }));
 
-  const highlights = [1, 2, 3, 4].map((n) => ({ title: c(`highlight.${n}.title`), text: c(`highlight.${n}.text`) }));
+  const story = PLATE_PREFERENCES.story.map((p) => photoOf(p));
+  const bandDish = photoOf(["shahi-chicken-biryani"]);
 
   const schema = {
     "@context": "https://schema.org",
@@ -114,51 +124,48 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
-      {heroItems.length === 2 ? (
-        <Hero
-          eyebrow={c("home.hero.eyebrow")}
-          title={lang === "ar" ? settings.nameAr : "Al Jalsa"}
-          nameOther={lang === "ar" ? "Al Jalsa" : settings.nameAr}
-          tagline={c("home.hero.tagline")}
-          intro={c("home.hero.intro")}
-          scrollLine={c("home.hero.scrollLine")}
-          left={heroPlate(heroItems[0])}
-          right={heroPlate(heroItems[1])}
-          ctas={{
-            order: { href: href(lang, "/menu"), label: dict.common.orderNow },
-            menu: { href: href(lang, "/menu"), label: dict.common.viewMenu },
-            catering: { href: href(lang, "/catering"), label: dict.common.cateringCta },
-          }}
-        />
-      ) : null}
-
-      <Story
-        eyebrow={c("home.story.eyebrow")}
-        panels={[1, 2, 3].map((n, i) => {
-          const item = storyItems[i];
-          return {
-            title: c(`home.story.${n}.title`),
-            text: c(`home.story.${n}.text`),
-            image: item?.cutoutUrl ?? item?.imageUrl ?? "/brand/logo-mark-light.png",
-            alt: item ? name(item) : "",
-          };
-        })}
+      <Hero
+        eyebrow={c("home.hero.eyebrow")}
+        title={c("home.hero.title")}
+        intro={c("home.hero.intro")}
+        image="/images/site/hero-2.webp"
+        imageAlt={lang === "ar" ? "أطباق هندية في أوانٍ نحاسية مع خبز" : "Indian dishes in brass bowls with bread"}
+        menu={{ href: href(lang, "/menu"), label: dict.common.viewMenu }}
+        whatsapp={{ href: waLink(settings.whatsapp, lang === "ar" ? "مرحباً، أود تقديم طلب." : "Hello, I would like to place an order."), label: dict.common.orderWhatsApp }}
+        visit={{ href: settings.mapsUrl, label: dict.common.visitLocation }}
+        signatures={signatures}
+        carouselLabels={{ title: dict.common.signature, view: dict.common.viewInMenu, previous: dict.common.previous, next: dict.common.next }}
+        band={{
+          image: bandDish?.imageUrl ?? "/images/site/hero.webp",
+          imageAlt: bandDish ? name(bandDish) : "",
+          href: href(lang, "/about"),
+          hrefLabel: dict.common.ourStory,
+          lead: c("home.hero.scrollLine"),
+          text: c("home.intro.text"),
+        }}
       />
 
-      <section className="py-24 lg:py-32" aria-labelledby="categories-title">
-        <SectionTitle id="categories-title" title={c("home.categories.title")} text={c("home.categories.text")} />
-        <CategoryShowcase rows={categoryRows} viewLabel={dict.common.viewCategory} more={{ title: c("home.categories.more"), links: otherCategories, dishes: dict.menu.dishes }} />
-      </section>
-
       {featured.length ? (
-        <FeaturedRail
+        <SignatureDishes
           locale={lang}
+          eyebrow={c("home.featured.eyebrow")}
           title={c("home.featured.title")}
           text={c("home.featured.text")}
           items={featured}
-          labels={{ add: dict.menu.add, added: dict.menu.added, priceOnRequest: dict.common.priceOnRequest, from: dict.common.from, unavailable: dict.common.unavailable }}
+          menuHref={href(lang, "/menu")}
+          labels={{ add: dict.menu.add, added: dict.menu.added, priceOnRequest: dict.common.priceOnRequest, from: dict.common.from, unavailable: dict.common.unavailable, fullMenu: dict.common.viewMenu }}
         />
       ) : null}
+
+      <Kitchen
+        eyebrow={c("home.story.eyebrow")}
+        title={c("about.menu.title")}
+        pillars={[1, 2, 3].map((n, i) => {
+          const item = story[i];
+          return { title: c(`home.story.${n}.title`), text: c(`home.story.${n}.text`), image: item?.imageUrl ?? "/images/site/hero.webp", alt: item ? name(item) : "" };
+        })}
+        more={{ href: href(lang, "/about"), label: dict.common.ourStory }}
+      />
 
       {settings.buffetEnabled ? (
         <BuffetSection
@@ -174,34 +181,18 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
             title: dict.buffet[k],
             items: c(`buffet.${k}`).split("\n").map((x) => x.trim()).filter(Boolean),
           }))}
-          plate={allItems(menu).find((i) => i.slug === "shahi-chicken-biryani")?.cutoutUrl ?? null}
           directions={settings.mapsUrl}
           whatsapp={waLink(settings.whatsapp, lang === "ar" ? "مرحباً، أود الاستفسار عن بوفيه الغداء." : "Hello, I would like to ask about the lunch buffet.")}
+          image="/images/site/buffet.webp"
         />
       ) : null}
 
-      <section className="border-y border-line/70 bg-ink/60" aria-label={lang === "ar" ? "لمحات" : "Highlights"}>
-        <Reveal className="mx-auto grid max-w-[var(--container-site)] sm:grid-cols-2 lg:grid-cols-4" stagger={0.1}>
-          {highlights.map((h, i) => (
-            <div key={i} data-reveal className={`border-line/70 px-6 py-12 sm:px-8 lg:py-16 ${i ? "border-t sm:border-t-0" : ""} ${i % 2 ? "sm:border-s" : ""} ${i > 1 ? "sm:border-t lg:border-t-0" : ""} ${i ? "lg:border-s" : ""}`}>
-              <span className="diamond block text-gold" aria-hidden />
-              <h3 className="font-display mt-6 text-[1.35rem] uppercase text-ivory">{h.title}</h3>
-              <p className="mt-2 text-sand">{h.text}</p>
-            </div>
-          ))}
-        </Reveal>
-      </section>
+      <CategoryGrid eyebrow={c("home.categories.eyebrow")} title={c("home.categories.title")} text={c("home.categories.text")} cards={cards} />
 
-      {gallery.length ? (
-        <section className="py-24 lg:py-36" aria-labelledby="gallery-title">
-          <SectionTitle id="gallery-title" title={c("home.gallery.title")} />
-          <Gallery images={gallery} locale={lang} />
-        </section>
-      ) : null}
-
-      <section id="reviews" className="py-20 lg:py-28">
+      <section id="reviews" className="scroll-mt-24 py-10 lg:py-14">
         <Reviews
           reviews={reviews}
+          eyebrow={c("home.reviews.eyebrow")}
           title={c("home.reviews.title")}
           emptyText={c("home.reviews.empty")}
           mapsUrl={settings.mapsUrl}
@@ -219,11 +210,20 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         text={c("catering.cta.text")}
         cta={{ href: href(lang, "/catering#quote"), label: dict.common.requestQuote }}
         secondary={{ href: href(lang, "/book-meeting"), label: dict.nav.meeting }}
-        image={cateringPhoto}
-        imageAlt={lang === "ar" ? "لحم دوم برياني" : "Mutton dum biryani"}
+        image="/images/site/catering.webp"
+        imageAlt={lang === "ar" ? "أطباق ضيافة على طاولة بوفيه" : "Catering dishes on a buffet table"}
       />
 
-      <section className="py-24 lg:py-32">
+      {gallery.length ? (
+        <section className="py-20 lg:py-28" aria-labelledby="gallery-title">
+          <div className="mx-auto max-w-[var(--container-site)] px-5 sm:px-8">
+            <SectionTitle id="gallery-title" eyebrow={c("home.gallery.eyebrow")} title={c("home.gallery.title")} />
+            <Gallery images={gallery} locale={lang} />
+          </div>
+        </section>
+      ) : null}
+
+      <section className="pb-20 pt-4 lg:pb-28">
         <VisitBlock locale={lang} dict={dict} settings={settings} title={c("home.visit.title")} text={c("home.visit.text")} />
       </section>
     </>

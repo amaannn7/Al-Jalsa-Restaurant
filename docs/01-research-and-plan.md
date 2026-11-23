@@ -36,74 +36,62 @@ Source: the restaurant's printed menu (supplied 22 Nov 2026): 12 sections, 124 d
 with calories. It replaced the first version, taken from the Ninja delivery listing. Corrections,
 conflicts and removed dishes are listed in `docs/content-changes.md`.
 
-## 3. Design inspiration analysis
+## 3. Design direction (v2, 23 Nov 2026)
 
-| Reference | What it does | What we take |
-|---|---|---|
-| 1. Snack World menu | Near-black concrete texture; huge centred caps title between two hairlines; two half-plates meeting in the middle; circular category icons above; dish name in condensed gold caps, short description, price; prev/next spoon controls; centred footer logo with nav either side | Stone background, centred hairline titles, the split-plate hero, circular plate tabs on the menu page, gold dish names, footer layout |
-| 2. Little Red Hen bakery | Dark flour-dusted surface; sketch logo top left; editorial caps serif headline; one hero object with tight crop; dark product tiles (photo, price, weight, serif name, small Add button); one tile highlighted in the accent colour with a tick | High-contrast serif for dish names, product tile anatomy, "added" state shown by a coloured tile with a tick, small accent buttons |
-| 3. Steakhouse menu | Black wood, plates alternating left and right in a zigzag, flour and spice splashes behind plates, typewriter category labels, herbs scattered, events and booking blocks | The zigzag category showcase with dust splashes behind plates, scattered garnish rhythm, booking-style CTA block |
+The first design (dark stone ground, cut-out plates, Cinzel caps) was replaced at the client's
+request with a clean, modern, premium restaurant layout based on a reference the client supplied
+(a "fine dining" landing page; kept privately in `docs/brand/inspiration/`, not committed).
 
-Shared language: dark textured ground, food as cut-out plates seen from above, warm single accent
-colour, generous negative space, centred symmetric compositions, small tracked labels.
+| Reference does | We take |
+|---|---|
+| Dark rounded hero card with a full-bleed moody food photo, nav pills inside it | Hero and every inner-page header are dark rounded photo cards; the header sits inside their top |
+| Pill navigation (active pill white), hamburger circle, centred logo, dark "Book a Table" pill | Same, with "Order Now"; the circle opens every page in a full-screen panel |
+| Small caps label, large transitional serif headline, short intro, sand pill "Explore Menu", round play button | Same, with WhatsApp in place of the video button (there is no video) |
+| "Visit our location" round arrow button | Links to Google Maps |
+| Signature-dish card with 01 to 04 counter, glass text card, photo card, prev/next circles | Featured dishes carousel (desktop) |
+| White band under the hero: round photo with arrow, fork-and-knife icon, large line | Same, linking to About |
 
-Brand adaptation: the accent is the logo's gold, the secondary is the logo's maroon (used for
-bands and the "added to order" state), and the hairline + diamond divider comes straight from the
-logo.
+Below the hero the page continues in the same language: white rounded cards on a warm linen ground,
+dark photo cards for feature bands (buffet, catering), rounded photos, pill buttons.
 
 ## 4. Design system
 
-### Colour (contrast measured on `--ink`)
-| Token | Hex | Use | Contrast on ink |
+### Colour
+| Token | Hex | Use | Contrast |
 |---|---|---|---|
-| ink | #110E0C | page ground | - |
-| ink-2 | #1A1613 | tiles, panels | - |
-| line | #3A2F27 | hairlines | - |
-| ivory | #F3E9D8 | headings, primary text | 16.0:1 |
-| sand | #CDBFA8 | body text | 10.6:1 |
-| muted | #9A8C78 | meta text | 5.9:1 |
-| gold | #C9973F | labels, prices, buttons (ink text on gold 7.3:1) | 7.3:1 |
-| gold-soft | #E2BF7A | small labels over photos | 11.0:1 |
-| maroon | #5B1B13 | bands, active tile | ivory on maroon 10.8:1, gold on maroon 5.0:1 |
-| maroon-deep | #3B1410 | app icon, band shadow | - |
+| linen | #F4EFE8 | page ground | - |
+| card | #FFFFFF | cards, white band | - |
+| stone / hair | #E7DFD4 / #E3DACD | photo placeholders / hairlines | - |
+| ink | #16120F | text, dark cards, primary buttons | 17.5:1 on linen |
+| muted | #6B6158 | body text on light | 5.6:1 on linen |
+| bronze | #7A5C33 | small labels, prices on light | 5.4:1 on linen |
+| sand | #D9C2A0 | accent pill buttons (ink text), labels on dark | ink on sand 10.8:1 |
 
 ### Type
-- Display: **Cinzel 700** (EN, caps only); **El Messiri 700** (AR).
-- Dish names and editorial lines: **Bodoni Moda** 500 / italic 500 (EN); El Messiri 600 (AR).
-- Body and UI: **Jost** 400/500 (EN); **Readex Pro** 400/500 (AR).
-- Scale (fluid): display-xl clamp(3.5rem, 11vw, 10rem); display clamp(2.25rem, 5vw, 4.25rem);
-  title clamp(1.6rem, 2.6vw, 2.25rem); dish 1.375rem; body 1.0625rem / 1.65; small 0.9375rem.
-- Small-text scale, defined once: `.eyebrow` (12px, 500, caps, 0.32em, gold), `.action`
-  (13px, 500, caps, 0.18em), `.meta` (14px). Nothing under 12px. Arabic never gets letter-spacing
-  or uppercase.
+- Display and dish names: **Newsreader** 400/500 (EN), chosen after rendering candidates against the
+  reference headline; **Noto Naskh Arabic** 500/600 (AR).
+- Body and UI: **DM Sans** 400/500/600 (EN); **Readex Pro** 400/500 (AR).
+- Scale: hero clamp(2.6rem, 5.6vw, 4.6rem); display clamp(2.1rem, 4vw, 3.4rem); title clamp(1.45rem, 2.2vw, 1.9rem).
+- Small text: `.eyebrow` (12px, 500, caps, 0.16em, bronze), `.action` (15px, 500), `.meta` (14px).
+  Nothing under 12px. Arabic never gets letter-spacing or uppercase.
 
-### Space, borders, radius
-- 4px base; section padding clamp(5rem, 12vw, 10rem); content width 1240px; text measure 60ch.
-- Hairlines 1px `line`. Radius: 2px on buttons and inputs, 0 on tiles; plates are circles.
-  No glassmorphism, no gradients except neutral photo scrims, no drop shadows except a soft
-  contact shadow under cut-out plates.
+### Shape
+- Cards 24px radius, hero and feature cards 28px, photos inside cards 16 to 20px, buttons and tabs pills.
+- No borders on cards (white on linen), one soft shadow on floating bars and dialogs only.
 
-### Buttons
-- Primary: gold fill, ink text, caps `.action`, 2px radius; hover fills from the start edge
-  (direction flips in RTL).
-- Secondary: 1px ivory outline. Tertiary: text with animated underline.
+### Photos
+- Representative Unsplash stock photos (free licence, credits in `docs/photo-credits.md`), one per
+  dish where a good match exists (115 of 124 dishes). Dishes without a match show a neutral tile.
+- Original full-resolution downloads, saved as 3840px WebP (quality 88); the 11 originals under
+  3840px were upscaled first with Upscayl (Standard model). Served by `next/image` at quality 85.
+- No restaurant interiors are used, so nothing suggests a room that is not Al Jalsa's.
 
-### Image treatment
-- Cut-out plates (background removed with Apple Vision from the restaurant's own photos) on the
-  stone ground with a dust splash and contact shadow. Only full, uncropped plates rotate.
-- Original square photos for the gallery and for plates cropped by the original frame.
-- No colour tint on food photos.
-
-### Motion principles
-- Scroll-linked with GSAP ScrollTrigger (`scrub`), not play-once. Few pins: hero, story,
-  featured horizontal gallery.
-- Rotation max 40 degrees on entry, settling to 0; scale 0.85 to 1.15; 3D tilt max 18 degrees.
-- Lenis smooth scroll on desktop pointer devices only, synced to the GSAP ticker; off for
-  reduced motion.
-- `gsap.matchMedia`: full effects at 900px+ with no reduced-motion preference; simplified
-  (no pins, smaller movement) under 900px; none with `prefers-reduced-motion: reduce`.
-- Content is visible without JavaScript; the hero heading is never hidden (LCP).
-- Directional effects read `dir` and mirror in Arabic.
+### Motion (light, CSS only)
+- Hero text rises on load, the hero photo settles from 106% to 100% once.
+- Text fades up once as it enters (one IntersectionObserver); photos in editorial blocks and the
+  gallery open from a slightly inset frame; card photos zoom 5% on hover.
+- Reviews scroll as a marquee that pauses on hover, keyboard focus and while a review is expanded.
+- All motion is off with `prefers-reduced-motion`; content is visible without JavaScript.
 
 ## 5. Architecture
 

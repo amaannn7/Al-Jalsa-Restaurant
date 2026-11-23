@@ -63,10 +63,8 @@ export function MenuItemEditor({ item, categories }: { item: EditableItem; categ
               <Panel title="Prices">
                 <VariantsEditor initial={item.variants} error={err(s, "variants")} />
               </Panel>
-              <Panel title="Photos" description="Square photos work best. The cut-out is optional: a PNG of the dish with a transparent background, used for the floating plates.">
+              <Panel title="Photo" description="A landscape (4:3) photo of the dish works best, at least 2000 px wide. It is shown on the menu card and in the dish details.">
                 <ImageInput name="photo" label="Photo" current={item.imageUrl} error={err(s, "photo")} removable removeName="removePhoto" />
-                <ImageInput name="cutout" label="Cut-out plate (transparent PNG, optional)" current={item.cutoutUrl} alpha removable removeName="removeCutout" />
-                <Check name="cutoutWhole" label="The cut-out shows the whole plate" hint="Tick only if no edge of the plate is cut off. Whole plates are used for rotating effects." defaultChecked={item.cutoutWhole} />
               </Panel>
             </div>
             <div className="grid content-start gap-5">

@@ -103,7 +103,7 @@ export function Checkout({
         <SentPanel dict={{ ...dict, forms: { ...dict.forms, sentTitle: c.sentTitle, sentText: c.sentText, openAgain: c.openAgain } }} url={sentUrl} onReset={() => setSentUrl(null)}>
           <button
             type="button"
-            className="action link-underline mt-6 text-muted hover:text-ivory"
+            className="action link-underline mt-6 text-muted hover:text-ink"
             onClick={() => {
               cart.clear();
               setSentUrl(null);
@@ -120,8 +120,8 @@ export function Checkout({
     return (
       <div className="mx-auto max-w-xl py-16 text-center">
         <p className="font-dish text-3xl">{dict.cart.empty}</p>
-        <p className="mt-3 text-sand">{dict.cart.emptyHint}</p>
-        <Link href={href(locale, "/menu")} className="btn btn-gold action mt-8">
+        <p className="mt-3 text-muted">{dict.cart.emptyHint}</p>
+        <Link href={href(locale, "/menu")} className="btn btn-dark action mt-8">
           {dict.cart.browse}
         </Link>
       </div>
@@ -134,10 +134,10 @@ export function Checkout({
     <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
       {/* Order review */}
       <section aria-labelledby="summary-title" className="order-2 lg:order-1">
-        <h2 id="summary-title" className="font-display text-title uppercase">
+        <h2 id="summary-title" className="font-display text-title">
           {c.summary}
         </h2>
-        <ul className="mt-6 divide-y divide-line border-y border-line">
+        <ul className="mt-6 divide-y divide-hair border-y border-hair">
           <AnimatePresence initial={false}>
             {cart.lines.map((l) => (
               <motion.li
@@ -148,14 +148,14 @@ export function Checkout({
                 exit={reduce ? { opacity: 0 } : { opacity: 0, x: locale === "ar" ? 40 : -40 }}
                 className="flex gap-4 py-5"
               >
-                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full bg-ink-3">{l.image ? <Image src={l.image} alt="" fill sizes="80px" className="object-cover" /> : null}</div>
+                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-[16px] bg-stone">{l.image ? <Image src={l.image} alt="" fill sizes="80px" className="object-cover" /> : null}</div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="font-dish text-xl leading-snug">{locale === "ar" && l.nameAr ? l.nameAr : l.nameEn}</p>
                       {l.variantEn ? <p className="meta">{locale === "ar" && l.variantAr ? l.variantAr : l.variantEn}</p> : null}
                     </div>
-                    <p className="shrink-0 text-gold">{l.unitHalalas == null ? dict.common.priceOnRequest : formatPrice(l.unitHalalas * l.quantity, locale)}</p>
+                    <p className="shrink-0 text-bronze">{l.unitHalalas == null ? dict.common.priceOnRequest : formatPrice(l.unitHalalas * l.quantity, locale)}</p>
                   </div>
                   <label className="mt-3 block">
                     <span className="sr-only">{dict.menu.instructions}</span>
@@ -169,7 +169,7 @@ export function Checkout({
                   </label>
                   <div className="mt-3 flex items-center justify-between">
                     <QuantityStepper value={l.quantity} onChange={(q) => cart.setQuantity(l.key, q)} size="sm" labels={{ decrease: dict.menu.decrease, increase: dict.menu.increase, quantity: dict.menu.quantity }} />
-                    <button type="button" onClick={() => cart.remove(l.key)} className="action link-underline text-muted hover:text-ivory">
+                    <button type="button" onClick={() => cart.remove(l.key)} className="action link-underline text-muted hover:text-ink">
                       {dict.cart.remove}
                     </button>
                   </div>
@@ -180,29 +180,29 @@ export function Checkout({
         </ul>
         <dl className="mt-6 grid gap-2.5">
           <div className="flex justify-between">
-            <dt className="text-sand">{dict.cart.subtotal}</dt>
+            <dt className="text-muted">{dict.cart.subtotal}</dt>
             <dd>{formatPrice(totals.subtotal, locale)}</dd>
           </div>
           {fulfilment === "delivery" ? (
             <div className="flex justify-between">
-              <dt className="text-sand">{dict.cart.delivery}</dt>
+              <dt className="text-muted">{dict.cart.delivery}</dt>
               <dd className={totals.delivery == null ? "meta" : ""}>{totals.delivery == null ? dict.cart.deliveryTbc : formatPrice(totals.delivery, locale)}</dd>
             </div>
           ) : null}
-          <div className="flex justify-between border-t border-line pt-3 text-lg">
+          <div className="flex justify-between border-t border-hair pt-3 text-lg">
             <dt>{totals.total == null ? dict.cart.totalTbc : dict.cart.total}</dt>
-            <dd className="text-gold">{formatPrice(totals.total ?? totals.subtotal, locale)}</dd>
+            <dd className="text-bronze">{formatPrice(totals.total ?? totals.subtotal, locale)}</dd>
           </div>
         </dl>
-        <Link href={href(locale, "/menu")} className="action link-underline mt-6 inline-block text-sand hover:text-ivory">
+        <Link href={href(locale, "/menu")} className="action link-underline mt-6 inline-block text-muted hover:text-ink">
           {dict.cart.continue}
         </Link>
       </section>
 
       {/* Details */}
       <section aria-labelledby="details-title" className="order-1 lg:order-2">
-        <div className="border border-line bg-ink-2/80 p-6 sm:p-8 lg:sticky lg:top-28">
-          <h2 id="details-title" className="font-display text-title uppercase">
+        <div className="card p-6 sm:p-8 lg:sticky lg:top-28">
+          <h2 id="details-title" className="font-display text-title">
             {c.yourDetails}
           </h2>
           {noFulfilment ? (
@@ -215,14 +215,14 @@ export function Checkout({
                 <legend className="field-label mb-3">{c.fulfilment}</legend>
                 <div className="grid grid-cols-2 gap-2">
                   {takeawayEnabled ? (
-                    <label className="flex cursor-pointer items-center gap-3 border border-line px-4 py-3 transition-colors hover:border-ivory/40 has-[:checked]:border-gold has-[:checked]:bg-gold/10">
-                      <input type="radio" name="fulfilment" value="takeaway" checked={fulfilment === "takeaway"} onChange={() => setFulfilment("takeaway")} className="accent-[var(--color-gold)]" />
+                    <label className="flex cursor-pointer items-center gap-3 rounded-[14px] border border-hair px-4 py-3 transition-colors hover:border-muted has-[:checked]:border-ink has-[:checked]:bg-linen">
+                      <input type="radio" name="fulfilment" value="takeaway" checked={fulfilment === "takeaway"} onChange={() => setFulfilment("takeaway")} className="accent-[var(--color-ink)]" />
                       {c.takeaway}
                     </label>
                   ) : null}
                   {deliveryEnabled ? (
-                    <label className="flex cursor-pointer items-center gap-3 border border-line px-4 py-3 transition-colors hover:border-ivory/40 has-[:checked]:border-gold has-[:checked]:bg-gold/10">
-                      <input type="radio" name="fulfilment" value="delivery" checked={fulfilment === "delivery"} onChange={() => setFulfilment("delivery")} className="accent-[var(--color-gold)]" />
+                    <label className="flex cursor-pointer items-center gap-3 rounded-[14px] border border-hair px-4 py-3 transition-colors hover:border-muted has-[:checked]:border-ink has-[:checked]:bg-linen">
+                      <input type="radio" name="fulfilment" value="delivery" checked={fulfilment === "delivery"} onChange={() => setFulfilment("delivery")} className="accent-[var(--color-ink)]" />
                       {c.deliveryOpt}
                     </label>
                   ) : null}
@@ -238,7 +238,7 @@ export function Checkout({
                         href={waLink(whatsapp, locale === "ar" ? "مرحباً، كم رسوم التوصيل إلى منطقتي؟" : "Hello, what is the delivery charge to my area?")}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="action link-underline mt-2 inline-flex items-center gap-2 text-gold"
+                        className="action link-underline mt-2 inline-flex items-center gap-2 text-bronze"
                       >
                         <IconWhatsApp size={15} /> {locale === "ar" ? "اسأل عن رسوم التوصيل" : "Ask about the delivery charge"}
                       </a>
@@ -248,11 +248,11 @@ export function Checkout({
               </AnimatePresence>
               <TextArea id="notes" label={c.notes} rows={2} />
               {errors.lines ? <p className="field-error">{dict.forms.errorGeneric}</p> : null}
-              <p className="flex gap-3 border-s-2 border-gold ps-4 text-[0.9375rem] text-sand">
-                <IconInfo size={18} className="mt-0.5 shrink-0 text-gold" />
+              <p className="flex gap-3 border-s-2 border-bronze ps-4 text-[0.9375rem] text-muted">
+                <IconInfo size={18} className="mt-0.5 shrink-0 text-bronze" />
                 {c.disclaimer}
               </p>
-              <button type="submit" className="btn btn-gold action w-full" disabled={!cart.lines.length}>
+              <button type="submit" className="btn btn-dark action w-full" disabled={!cart.lines.length}>
                 <IconWhatsApp size={18} /> {c.send}
               </button>
             </form>

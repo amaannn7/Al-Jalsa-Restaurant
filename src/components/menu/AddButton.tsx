@@ -14,11 +14,14 @@ export function AddButton({
   item,
   labels,
   compact = false,
+  tone = "light",
 }: {
   locale: Locale;
   item: MenuItemData;
   labels: { add: string; added: string; unavailable: string };
   compact?: boolean;
+  /** "dark" when placed on a dark photo card. */
+  tone?: "light" | "dark";
 }) {
   const cart = useCart();
   const [variantId, setVariantId] = useState(item.variants[0]?.id);
@@ -52,7 +55,7 @@ export function AddButton({
   return (
     <div className="flex flex-wrap items-center gap-3">
       {item.variants.length > 1 ? (
-        <div className="inline-flex rounded-full border border-line p-0.5" role="radiogroup" aria-label={locale === "ar" ? "الحجم" : "Size"}>
+        <div className={`inline-flex rounded-full p-0.5 ${tone === "dark" ? "bg-white/10 ring-1 ring-white/15 backdrop-blur" : "border border-hair bg-paper"}`} role="radiogroup" aria-label={locale === "ar" ? "الحجم" : "Size"}>
           {item.variants.map((v) => {
             const on = v.id === variant.id;
             return (
@@ -62,7 +65,7 @@ export function AddButton({
                 role="radio"
                 aria-checked={on}
                 onClick={() => setVariantId(v.id)}
-                className={`rounded-full px-3 py-1.5 text-[0.875rem] transition-colors ${on ? "bg-ivory text-ink" : "text-sand hover:text-ivory"}`}
+                className={`min-h-10 rounded-full px-3 py-2 text-[0.875rem] transition-colors ${on ? (tone === "dark" ? "bg-white text-ink" : "bg-ink text-white") : tone === "dark" ? "text-white/75 hover:text-white" : "text-muted hover:text-ink"}`}
               >
                 {locale === "ar" && v.nameAr ? v.nameAr : v.nameEn}
                 {v.priceHalalas != null && !compact ? <span className="ms-1.5 opacity-70">{formatPrice(v.priceHalalas, locale)}</span> : null}
@@ -74,7 +77,7 @@ export function AddButton({
       <button
         type="button"
         onClick={add}
-        className={`btn action !min-h-10 !px-4 ${flash ? "btn-maroon" : "btn-gold"}`}
+        className={`btn action !min-h-10 !px-4 ${tone === "dark" ? (flash ? "bg-white text-ink" : "btn-sand") : flash ? "btn-sand" : "btn-dark"}`}
         aria-live="polite"
       >
         <AnimatePresence mode="wait" initial={false}>

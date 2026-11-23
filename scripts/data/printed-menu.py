@@ -160,23 +160,21 @@ CATS = [
  ]),
 ]
 
-# Item slug -> photo file slug in public/images/menu (restaurant photos from Ninja, or crops of the printed menu photo pages)
-PHOTO = {"shahi-bbq-platter": "bbq-mix-platter", "mixed-sabzi": "mixed-vegetables", "steamed-rice": "plain-steam-rice"}
+# Photos: representative Unsplash stock photos (see docs/photo-credits.md), one per dish slug in
+# public/images/menu, built by scripts/assets/stock-images.mjs. Dishes without a good match have no photo.
 FEATURED = {"shahi-chicken-biryani", "mutton-rogan-josh", "shahi-bbq-platter", "paneer-butter-masala", "murgh-mastaan", "mutton-maharaja", "tandoori-prawns", "gajar-ka-halwa"}
 
 root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-rep = json.load(open(os.path.join(root, "scripts/assets/menu-images-report.json")))
+rep = json.load(open(os.path.join(root, "scripts/assets/stock-images-report.json")))
 cats, items = [], []
 for ci, (cslug, cen, car, cden, cdar, rows) in enumerate(CATS):
     cats.append({"slug": cslug, "nameEn": cen, "nameAr": car, "descriptionEn": cden, "descriptionAr": cdar, "sortOrder": ci})
     for ii, (slug, en, ar, den, dar, variants) in enumerate(rows):
-        ph = PHOTO.get(slug, slug)
-        r = rep.get(ph, {})
         items.append({
             "slug": slug, "category": cslug, "nameEn": en, "nameAr": ar, "descriptionEn": den, "descriptionAr": dar,
-            "imageUrl": f"/images/menu/{ph}.webp" if r.get("photo") else None,
-            "cutoutUrl": f"/images/menu/cut/{ph}.webp" if r.get("cutout") else None,
-            "cutoutWhole": bool(r.get("whole")), "isFeatured": slug in FEATURED, "isPopular": False, "isAvailable": True,
+            "imageUrl": f"/images/menu/{slug}.webp" if slug in rep else None,
+            "cutoutUrl": None,
+            "cutoutWhole": False, "isFeatured": slug in FEATURED, "isPopular": False, "isAvailable": True,
             "sortOrder": ii, "source": SRC,
             "variants": [{"nameEn": a, "nameAr": b, "priceHalalas": round(p * 100), "calories": c, "sortOrder": n} for n, (a, b, p, c) in enumerate(variants)],
         })

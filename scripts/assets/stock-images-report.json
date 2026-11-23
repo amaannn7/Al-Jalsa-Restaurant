@@ -1,0 +1,716 @@
+{
+ "_site-buffet": {
+  "width": 3840,
+  "height": 2880,
+  "upscaled": null,
+  "kb": 684
+ },
+ "_site-catering": {
+  "width": 3840,
+  "height": 2880,
+  "upscaled": null,
+  "kb": 780
+ },
+ "_site-hero-2": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 3423
+ },
+ "_site-hero": {
+  "width": 3840,
+  "height": 2880,
+  "upscaled": null,
+  "kb": 2262
+ },
+ "aalo-gobi": {
+  "width": 3840,
+  "height": 2544,
+  "upscaled": null,
+  "kb": 1686
+ },
+ "achari-chicken": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 969
+ },
+ "achari-mutton": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 3440
+ },
+ "apollo-fish": {
+  "width": 2880,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1471
+ },
+ "apricot-pudding": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 1617
+ },
+ "assorted-naan-basket": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 794
+ },
+ "banjara-kabab": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 1948
+ },
+ "bbq-mix-chicken-platter": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1884
+ },
+ "beef-pulao": {
+  "width": 2160,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 601
+ },
+ "berry-bliss": {
+  "width": 2481,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 810
+ },
+ "bhuna-gosht-kalimirch": {
+  "width": 3840,
+  "height": 2136,
+  "upscaled": null,
+  "kb": 980
+ },
+ "bihari-kabab": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 488
+ },
+ "biryani-rice": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 1124
+ },
+ "butter-chicken": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 557
+ },
+ "butter-naan": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 1128
+ },
+ "chicken-65": {
+  "width": 3840,
+  "height": 2160,
+  "upscaled": null,
+  "kb": 613
+ },
+ "chicken-fry": {
+  "width": 3840,
+  "height": 2561,
+  "upscaled": null,
+  "kb": 1011
+ },
+ "chicken-hot-n-sour-soup": {
+  "width": 3840,
+  "height": 2160,
+  "upscaled": null,
+  "kb": 1171
+ },
+ "chicken-jelfrezi": {
+  "width": 3840,
+  "height": 3127,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 1249
+ },
+ "chicken-kabab-masala": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 754
+ },
+ "chicken-karahi": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 804
+ },
+ "chicken-lollipop": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 3256
+ },
+ "chicken-makhni-handi": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1288
+ },
+ "chicken-manchow-soup": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 1104
+ },
+ "chicken-popcorn": {
+  "width": 2880,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1217
+ },
+ "chicken-tandoori": {
+  "width": 2880,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1835
+ },
+ "chilli-chicken-paneer": {
+  "width": 3840,
+  "height": 2555,
+  "upscaled": null,
+  "kb": 780
+ },
+ "chinese-platter": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 668
+ },
+ "classic-lemonade": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 450
+ },
+ "coriander-naan": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 485
+ },
+ "corn-soup": {
+  "width": 2555,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1108
+ },
+ "cream-of-mushroom-soup": {
+  "width": 2563,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1017
+ },
+ "crispy-corn": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 851
+ },
+ "daal-chana": {
+  "width": 3840,
+  "height": 2494,
+  "upscaled": null,
+  "kb": 1167
+ },
+ "daal-makni": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 949
+ },
+ "daal-mash": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 351
+ },
+ "daal-tadka": {
+  "width": 3840,
+  "height": 2880,
+  "upscaled": null,
+  "kb": 877
+ },
+ "dynamite-chicken": {
+  "width": 2883,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 429
+ },
+ "dynamite-prawn": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1200
+ },
+ "fish-tikka": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 681
+ },
+ "fried-rice": {
+  "width": 3840,
+  "height": 2561,
+  "upscaled": null,
+  "kb": 876
+ },
+ "gajar-ka-halwa": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 706
+ },
+ "garlic-naan": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 2015
+ },
+ "green-salad": {
+  "width": 3459,
+  "height": 3840,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 850
+ },
+ "gulab-jamun": {
+  "width": 2555,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1498
+ },
+ "honey-chilli-potato": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 3386
+ },
+ "kalongi-naan": {
+  "width": 3072,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 860
+ },
+ "karak-tea": {
+  "width": 2563,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1343
+ },
+ "kung-pao-chicken": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 1338
+ },
+ "laccha-paratha": {
+  "width": 3840,
+  "height": 2563,
+  "upscaled": null,
+  "kb": 1146
+ },
+ "lahori-chana": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 1724
+ },
+ "lasooni-fish-tikka": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 1173
+ },
+ "lasooni-gosht": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 379
+ },
+ "lemon-mint": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 495
+ },
+ "lentil-soup": {
+  "width": 2559,
+  "height": 3840,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 457
+ },
+ "loose-prawn": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 905
+ },
+ "majestic-kaju-chicken": {
+  "width": 3840,
+  "height": 2531,
+  "upscaled": null,
+  "kb": 491
+ },
+ "malai-paneer-tikka": {
+  "width": 3840,
+  "height": 2883,
+  "upscaled": null,
+  "kb": 561
+ },
+ "manchurian": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 324
+ },
+ "mango-lassi": {
+  "width": 3840,
+  "height": 2559,
+  "upscaled": null,
+  "kb": 414
+ },
+ "matka-kheer": {
+  "width": 3073,
+  "height": 3840,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 789
+ },
+ "methi-chaman": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1009
+ },
+ "mixed-sabzi": {
+  "width": 3840,
+  "height": 2880,
+  "upscaled": null,
+  "kb": 612
+ },
+ "mongolian-chicken": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 3256
+ },
+ "mughlai-meetha-pan": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 2215
+ },
+ "multani-paneer-tikka": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 1851
+ },
+ "murgh-lajawab": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 400
+ },
+ "murgh-mastaan": {
+  "width": 3840,
+  "height": 2544,
+  "upscaled": null,
+  "kb": 1198
+ },
+ "mutton-dum-biryani": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 1018
+ },
+ "mutton-fry": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 957
+ },
+ "mutton-haleem": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 2336
+ },
+ "mutton-karahi": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 508
+ },
+ "mutton-maharaja": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 563
+ },
+ "mutton-makhni-handi": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 783
+ },
+ "mutton-marag": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 877
+ },
+ "mutton-rogan-josh": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 787
+ },
+ "mutton-sheekh-kabab": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 762
+ },
+ "mutton-white-karahi": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 675
+ },
+ "nalli-nihari": {
+  "width": 2611,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 2365
+ },
+ "nihari": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 494
+ },
+ "noodles": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1248
+ },
+ "palak-paneer": {
+  "width": 3840,
+  "height": 2556,
+  "upscaled": null,
+  "kb": 2098
+ },
+ "paneer-65": {
+  "width": 2561,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 2718
+ },
+ "paneer-butter-masala": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1693
+ },
+ "paneer-pakoda": {
+  "width": 3840,
+  "height": 2159,
+  "upscaled": null,
+  "kb": 690
+ },
+ "paneer-tikka-masala": {
+  "width": 3840,
+  "height": 2563,
+  "upscaled": null,
+  "kb": 867
+ },
+ "panko-chicken": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1381
+ },
+ "phuket-fish": {
+  "width": 3840,
+  "height": 2547,
+  "upscaled": null,
+  "kb": 889
+ },
+ "plain-naan": {
+  "width": 2880,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1232
+ },
+ "punjabi-sweet-lassi": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 1969
+ },
+ "reshmi-damka-gosht": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 587
+ },
+ "roghni-naan": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 570
+ },
+ "russian-salad": {
+  "width": 2588,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 816
+ },
+ "schezwan-rice": {
+  "width": 2879,
+  "height": 3840,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 726
+ },
+ "seafood-soup": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 660
+ },
+ "seekh-kabab-masala": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 572
+ },
+ "shahi-bbq-platter": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 933
+ },
+ "shahi-chicken-biryani": {
+  "width": 3840,
+  "height": 2508,
+  "upscaled": null,
+  "kb": 524
+ },
+ "shahi-jalfrezi": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 641
+ },
+ "shahi-tukda": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 458
+ },
+ "sikandari-kabab": {
+  "width": 3840,
+  "height": 2555,
+  "upscaled": null,
+  "kb": 1048
+ },
+ "spring-rolls": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 1580
+ },
+ "steamed-rice": {
+  "width": 3840,
+  "height": 2561,
+  "upscaled": null,
+  "kb": 108
+ },
+ "strawberry-lassi": {
+  "width": 2815,
+  "height": 3840,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 1148
+ },
+ "tandoori-prawns": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 828
+ },
+ "tangdi-kabab": {
+  "width": 3840,
+  "height": 2160,
+  "upscaled": null,
+  "kb": 1457
+ },
+ "tangdi-masala": {
+  "width": 3840,
+  "height": 1972,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 445
+ },
+ "tangy-peach-splash": {
+  "width": 2768,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1464
+ },
+ "tawa-murgh": {
+  "width": 3840,
+  "height": 3840,
+  "upscaled": "upscayl-standard-4x",
+  "kb": 2391
+ },
+ "tikka-masala": {
+  "width": 3840,
+  "height": 2560,
+  "upscaled": null,
+  "kb": 880
+ },
+ "tikka-roll": {
+  "width": 3840,
+  "height": 2161,
+  "upscaled": null,
+  "kb": 1381
+ },
+ "virgin-blue-lagoon": {
+  "width": 2560,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 1751
+ },
+ "watermelon-mint-burst": {
+  "width": 3536,
+  "height": 3840,
+  "upscaled": null,
+  "kb": 540
+ },
+ "wheat-tandoori-roti": {
+  "width": 3840,
+  "height": 2865,
+  "upscaled": null,
+  "kb": 1705
+ },
+ "zeera-rice": {
+  "width": 3840,
+  "height": 2797,
+  "upscaled": null,
+  "kb": 514
+ }
+}

@@ -76,21 +76,21 @@ export function SentPanel({ dict, url, onReset, children }: { dict: Dictionary; 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="border border-gold/40 bg-ink-2/80 p-8 text-center sm:p-12"
+        className="rounded-[22px] bg-linen p-8 text-center sm:p-12"
         role="status"
         aria-live="polite"
       >
-        <span className="mx-auto grid h-16 w-16 place-items-center rounded-full border border-gold text-gold">
+        <span className="mx-auto grid h-16 w-16 place-items-center rounded-full border border-bronze text-bronze">
           <IconCheck size={28} />
         </span>
-        <h3 className="font-display text-title mt-6 uppercase">{dict.forms.sentTitle}</h3>
-        <p className="mx-auto mt-4 max-w-md text-sand">{dict.forms.sentText}</p>
+        <h3 className="font-display text-title mt-6">{dict.forms.sentTitle}</h3>
+        <p className="mx-auto mt-4 max-w-md text-muted">{dict.forms.sentText}</p>
         {children}
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <a href={url} target="_blank" rel="noopener noreferrer" className="btn btn-gold action">
+          <a href={url} target="_blank" rel="noopener noreferrer" className="btn btn-dark action">
             <IconWhatsApp size={18} /> {dict.forms.openAgain}
           </a>
-          <button type="button" onClick={onReset} className="btn btn-line action">
+          <button type="button" onClick={onReset} className="btn btn-outline action">
             {dict.forms.sendAnother}
           </button>
         </div>

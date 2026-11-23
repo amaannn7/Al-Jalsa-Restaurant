@@ -10,9 +10,9 @@ const META = [
 ] as const;
 
 /** Renders only the accounts that are filled in the admin. */
-export function SocialLinks({ socials, label, className = "" }: { socials: Socials; label: string; className?: string }) {
+export function SocialLinks({ socials, label, className = "", tone = "dark" }: { socials: Socials; label: string; className?: string; tone?: "dark" | "light" }) {
   const items = META.filter((m) => socials[m.key]?.startsWith("http"));
-  if (!items.length) return <span className="diamond" aria-hidden />;
+  if (!items.length) return null;
   return (
     <ul className={`flex items-center gap-2 ${className}`} aria-label={label}>
       {items.map(({ key, name, Icon }) => (
@@ -22,7 +22,7 @@ export function SocialLinks({ socials, label, className = "" }: { socials: Socia
             target="_blank"
             rel="noopener noreferrer"
             aria-label={name}
-            className="grid h-10 w-10 place-items-center rounded-full text-ivory transition-colors hover:bg-ivory hover:text-ink"
+            className={`grid h-11 w-11 place-items-center rounded-full border transition-colors ${tone === "dark" ? "border-white/15 text-white hover:bg-white hover:text-ink" : "border-hair text-ink hover:bg-ink hover:text-white"}`}
           >
             <Icon size={18} />
           </a>

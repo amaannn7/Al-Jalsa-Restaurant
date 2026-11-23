@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 
-/** Review text clamped to six lines, with an in-place Read more / Show less when it is cut off. */
+/** Review text clamped to five lines, with an in-place Read more / Show less when it is cut off. */
 export function ReviewText({ text, lang, more, less }: { text: string; lang: string; more: string; less: string }) {
   const ref = useRef<HTMLQuoteElement>(null);
   const [open, setOpen] = useState(false);
@@ -18,11 +18,11 @@ export function ReviewText({ text, lang, more, less }: { text: string; lang: str
   }, []);
   return (
     <div>
-      <blockquote ref={ref} lang={lang} dir="auto" className={`font-dish whitespace-pre-line text-lg leading-relaxed text-ivory ${open ? "" : "line-clamp-6"}`}>
+      <blockquote ref={ref} lang={lang} dir="auto" className={`font-dish whitespace-pre-line text-[1.1rem] leading-relaxed text-ink ${open ? "" : "line-clamp-5"}`}>
         &ldquo;{text}&rdquo;
       </blockquote>
       {clamped || open ? (
-        <button type="button" aria-expanded={open} onClick={() => setOpen((v) => !v)} className="action link-underline mt-3 text-gold">
+        <button type="button" aria-expanded={open} onClick={() => setOpen((v) => !v)} className="action link-underline mt-1 inline-flex min-h-10 items-center text-bronze">
           {open ? less : more}
         </button>
       ) : null}

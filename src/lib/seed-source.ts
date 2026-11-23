@@ -31,16 +31,16 @@ export type SeedCategory = { slug: string; nameEn: string; nameAr: string; descr
 export const seedMenu = menu as { source: string; categories: SeedCategory[]; items: SeedItem[] };
 
 export const seedGallery: { slug: string; altEn: string; altAr: string }[] = [
-  { slug: "shahi-chicken-biryani", altEn: "Shahi chicken biryani in a clay pot", altAr: "شاهي دجاج برياني في وعاء فخاري" },
-  { slug: "chicken-tandoori", altEn: "Chicken tandoori with onion and lemon", altAr: "دجاج تندوري مع البصل والليمون" },
-  { slug: "garlic-naan", altEn: "Garlic naan with a dipping sauce", altAr: "نان بالثوم مع صلصة" },
-  { slug: "mutton-sheekh-kabab", altEn: "Mutton sheekh kabab on skewers", altAr: "شيش كباب لحم على الأسياخ" },
-  { slug: "gulab-jamun", altEn: "Gulab jamun in syrup", altAr: "جلاب جامن في القطر" },
-  { slug: "butter-chicken", altEn: "Butter chicken in a copper karahi", altAr: "دجاج بالزبدة في كراهي نحاسي" },
-  { slug: "tandoori-prawns", altEn: "Tandoori prawns with lemon", altAr: "روبيان تندوري مع الليمون" },
+  { slug: "mutton-rogan-josh", altEn: "Mutton rogan josh", altAr: "لحم روغن جوش" },
+  { slug: "tandoori-prawns", altEn: "Tandoori prawns", altAr: "روبيان تندوري" },
+  { slug: "shahi-chicken-biryani", altEn: "Shahi chicken biryani", altAr: "شاهي دجاج برياني" },
+  { slug: "chicken-karahi", altEn: "Chicken karahi", altAr: "كراهي دجاج" },
+  { slug: "gulab-jamun", altEn: "Gulab jamun", altAr: "جلاب جامن" },
+  { slug: "sikandari-kabab", altEn: "Sikandari kabab", altAr: "كباب سكندري" },
+  { slug: "mutton-sheekh-kabab", altEn: "Mutton sheekh kabab", altAr: "شيش كباب لحم" },
   { slug: "mutton-dum-biryani", altEn: "Mutton dum biryani", altAr: "لحم دوم برياني" },
-  { slug: "honey-chilli-potato", altEn: "Honey chilli potato with sesame", altAr: "بطاطا بالعسل والفلفل الحار مع السمسم" },
-  { slug: "spring-rolls", altEn: "Spring rolls with chilli sauce", altAr: "سبرنج رول مع صلصة الفلفل" },
+  { slug: "honey-chilli-potato", altEn: "Honey chilli potato", altAr: "بطاطا بالعسل والفلفل الحار" },
+  { slug: "spring-rolls", altEn: "Spring rolls", altAr: "سبرنج رول" },
 ];
 
 export function seedCategoriesData(): CategoryData[] {

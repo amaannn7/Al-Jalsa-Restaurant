@@ -1,26 +1,20 @@
-import { Bodoni_Moda, Cinzel, El_Messiri, Jost, Readex_Pro } from "next/font/google";
+import { DM_Sans, Newsreader, Noto_Naskh_Arabic, Readex_Pro } from "next/font/google";
 
-export const cinzel = Cinzel({ subsets: ["latin"], weight: ["700"], variable: "--font-cinzel", display: "swap" });
-export const bodoni = Bodoni_Moda({
+/** Headings: Newsreader (closest match to the reference's display serif). Body/UI: DM Sans. */
+export const newsreader = Newsreader({
   subsets: ["latin"],
-  weight: ["500"],
-  style: ["normal", "italic"],
-  variable: "--font-bodoni",
-  display: "swap",
-});
-export const jost = Jost({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-jost", display: "swap" });
-export const messiri = El_Messiri({
-  subsets: ["arabic", "latin"],
-  weight: ["600", "700"],
-  variable: "--font-messiri",
-  display: "swap",
-});
-export const readex = Readex_Pro({
-  subsets: ["arabic", "latin"],
   weight: ["400", "500"],
-  variable: "--font-readex",
+  style: ["normal"],
+  variable: "--font-newsreader",
   display: "swap",
 });
+export const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-dmsans", display: "swap" });
+/**
+ * Arabic headings (Naskh pairs with the serif) and Arabic body text. Readex is preloaded (it sets most
+ * Arabic text, so swapping it late shifts the layout); Naskh is not, to keep English pages light.
+ */
+export const naskh = Noto_Naskh_Arabic({ subsets: ["arabic"], weight: ["500", "600"], variable: "--font-naskh", display: "swap", preload: false });
+export const readex = Readex_Pro({ subsets: ["arabic"], weight: ["400", "500"], variable: "--font-readex", display: "swap" });
 
-export const latinFonts = `${cinzel.variable} ${bodoni.variable} ${jost.variable}`;
-export const arabicFonts = `${messiri.variable} ${readex.variable}`;
+export const latinFonts = `${newsreader.variable} ${dmSans.variable}`;
+export const arabicFonts = `${naskh.variable} ${readex.variable}`;

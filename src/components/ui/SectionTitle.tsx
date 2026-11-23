@@ -1,17 +1,16 @@
-import { SplitHeading } from "@/components/motion/SplitHeading";
+import type { ReactNode } from "react";
 
-/**
- * Reference 1's centred title between hairlines, using the logo's diamond.
- * `align="start"` gives a left (or right in Arabic) aligned variant.
- */
+/** Section heading: small bronze label, serif title, optional text; an action can sit at the end. */
 export function SectionTitle({
   title,
   eyebrow,
   text,
-  as = "h2",
-  align = "center",
+  as: Tag = "h2",
+  align = "start",
   id,
+  action,
   className = "",
+  tone = "light",
 }: {
   title: string;
   eyebrow?: string;
@@ -19,34 +18,29 @@ export function SectionTitle({
   as?: "h1" | "h2";
   align?: "center" | "start";
   id?: string;
+  action?: ReactNode;
   className?: string;
+  tone?: "light" | "dark";
 }) {
-  if (align === "start") {
-    return (
-      <div className={`px-5 sm:px-8 ${className}`}>
+  const center = align === "center";
+  return (
+    <div className={`flex flex-col gap-6 ${center ? "items-center text-center" : "md:flex-row md:items-end md:justify-between"} ${className}`}>
+      <div className={center ? "max-w-2xl" : "max-w-2xl"}>
         {eyebrow ? (
-          <p className="eyebrow mb-5 flex items-center gap-3">
-            <span className="diamond" aria-hidden /> {eyebrow}
+          <p data-reveal className={`eyebrow mb-4 ${tone === "dark" ? "!text-sand" : ""}`}>
+            {eyebrow}
           </p>
         ) : null}
-        <SplitHeading text={title} as={as} id={id} mode="chars" className="font-display text-display uppercase text-ivory" />
-        {text ? <p className="measure mt-6 text-sand">{text}</p> : null}
+        <Tag data-reveal id={id} className={`font-display text-display [text-wrap:balance] ${tone === "dark" ? "text-white" : "text-ink"}`}>
+          {title}
+        </Tag>
+        {text ? (
+          <p data-reveal className={`mt-4 max-w-[52ch] text-lg ${center ? "mx-auto" : ""} ${tone === "dark" ? "text-white/75" : "text-muted"}`}>
+            {text}
+          </p>
+        ) : null}
       </div>
-    );
-  }
-  return (
-    <div className={`px-5 text-center sm:px-8 ${className}`}>
-      {eyebrow ? <p className="eyebrow mb-5">{eyebrow}</p> : null}
-      <div className="rule mx-auto max-w-4xl gap-5 sm:gap-8">
-        <SplitHeading
-          text={title}
-          as={as}
-          id={id}
-          mode="chars"
-          className="font-display text-display shrink-0 px-1 uppercase text-ivory"
-        />
-      </div>
-      {text ? <p className="measure mx-auto mt-6 text-sand">{text}</p> : null}
+      {action ? <div data-reveal className="shrink-0">{action}</div> : null}
     </div>
   );
 }

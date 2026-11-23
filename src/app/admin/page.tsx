@@ -59,7 +59,7 @@ export default async function Overview({ searchParams }: PageProps<"/admin">) {
           <ul className="mt-4 grid gap-2">
             {todo.map((k) => (
               <li key={k} className="flex items-center gap-3 text-sand">
-                <span className="diamond !h-1.5 !w-1.5 text-gold" aria-hidden /> {LABELS[k] ?? k}
+                {LABELS[k] ?? k}
               </li>
             ))}
           </ul>

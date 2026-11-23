@@ -78,7 +78,7 @@ export function CateringForm({
       <TextArea id="requirements" label={f.requirements} placeholder={f.requirementsPlaceholder} className="sm:col-span-2" rows={4} />
       <div className="sm:col-span-2">
         <p className="meta mb-5">{f.cateringNotice}</p>
-        <button type="submit" className="btn btn-gold action w-full sm:w-auto" disabled={pending}>
+        <button type="submit" className="btn btn-dark action w-full sm:w-auto" disabled={pending}>
           <IconWhatsApp size={18} /> {pending ? f.sending : f.submitCatering}
         </button>
       </div>

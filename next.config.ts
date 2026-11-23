@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   // Admin uploads are resized in the browser first; Vercel caps request bodies at 4.5 MB.
   experimental: { serverActions: { bodySizeLimit: "4mb" } },
   images: {
-    qualities: [75, 85],
+    qualities: [75, 85, 88, 90],
     formats: ["image/avif", "image/webp"],
     remotePatterns: [{ protocol: "https", hostname: "*.public.blob.vercel-storage.com" }],
   },

@@ -50,8 +50,8 @@ export function MeetingForm({ locale, dict, whatsapp }: { locale: Locale; dict: 
         <legend className="field-label mb-3">{f.meetingMode}</legend>
         <div className="grid gap-2 sm:grid-cols-3">
           {(Object.keys(modes) as (keyof typeof modes)[]).map((m, i) => (
-            <label key={m} className="flex cursor-pointer items-center gap-3 border border-line px-4 py-3 transition-colors hover:border-ivory/40 has-[:checked]:border-gold has-[:checked]:bg-gold/10">
-              <input type="radio" name="mode" value={m} defaultChecked={i === 0} className="accent-[var(--color-gold)]" />
+            <label key={m} className="flex cursor-pointer items-center gap-3 rounded-[14px] border border-hair px-4 py-3 transition-colors hover:border-muted has-[:checked]:border-ink has-[:checked]:bg-linen">
+              <input type="radio" name="mode" value={m} defaultChecked={i === 0} className="accent-[var(--color-ink)]" />
               {modes[m]}
             </label>
           ))}
@@ -59,8 +59,8 @@ export function MeetingForm({ locale, dict, whatsapp }: { locale: Locale; dict: 
       </fieldset>
       <TextArea id="about" label={f.meetingAbout} required placeholder={f.meetingAboutPlaceholder} className="sm:col-span-2" rows={5} error={e("about")} />
       <div className="sm:col-span-2">
-        <p className="mb-5 border-s-2 border-gold ps-4 text-sand">{f.meetingNotice}</p>
-        <button type="submit" className="btn btn-gold action w-full sm:w-auto" disabled={pending}>
+        <p className="mb-5 border-s-2 border-bronze ps-4 text-muted">{f.meetingNotice}</p>
+        <button type="submit" className="btn btn-dark action w-full sm:w-auto" disabled={pending}>
           <IconWhatsApp size={18} /> {pending ? f.sending : f.submitMeeting}
         </button>
       </div>

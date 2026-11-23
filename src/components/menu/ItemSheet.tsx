@@ -8,7 +8,7 @@ import type { MenuItemData } from "@/lib/types";
 import { formatCalories, formatPrice } from "@/lib/money";
 import { useCart } from "@/store/cart";
 import { lockScroll } from "@/components/motion/scroll-lock";
-import { Plate } from "@/components/ui/Plate";
+import Image from "next/image";
 import { IconClose } from "@/components/ui/Icons";
 import { QuantityStepper } from "@/components/order/QuantityStepper";
 
@@ -19,7 +19,7 @@ export function ItemSheet({ locale, dict, item, onClose }: { locale: Locale; dic
     <AnimatePresence>
       {item ? (
         <>
-          <motion.div key="sheet-scrim" className="fixed inset-0 z-[70] bg-black/70" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} />
+          <motion.div key="sheet-scrim" className="fixed inset-0 z-[70] bg-black/60 backdrop-blur-[2px]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} />
           <motion.div
             key="sheet"
             className="fixed inset-x-0 bottom-0 z-[71] max-h-[92dvh] md:inset-0 md:m-auto md:h-fit md:max-w-4xl md:px-6"
@@ -98,32 +98,35 @@ function SheetBody({ locale, dict, item, onClose }: { locale: Locale; dict: Dict
       role="dialog"
       aria-modal="true"
       aria-labelledby="sheet-title"
-      className="stone relative grid max-h-[92dvh] overflow-y-auto rounded-t-md border border-line md:max-h-[86dvh] md:grid-cols-[0.95fr_1.05fr] md:rounded-sm"
-      data-lenis-prevent
+      className="relative grid max-h-[92dvh] overflow-y-auto rounded-t-[28px] bg-card text-ink md:max-h-[86dvh] md:grid-cols-[0.95fr_1.05fr] md:rounded-[28px]"
     >
       <button
         type="button"
         onClick={onClose}
-        className="absolute end-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-ivory/25 bg-ink/70 transition-colors hover:border-gold hover:text-gold"
+        className="absolute end-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/90 text-ink shadow-sm transition-colors hover:bg-ink hover:text-white"
         aria-label={dict.menu.close}
       >
         <IconClose size={18} />
       </button>
-      <div className="relative grid place-items-center overflow-hidden px-10 pb-2 pt-10 md:p-10">
-        <motion.div initial={{ rotate: -40, scale: 0.85 }} animate={{ rotate: 0, scale: 1 }} transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }} className="w-[min(70vw,380px)]">
-          <Plate item={item} name={name} sizes="380px" dust={2} />
-        </motion.div>
+      <div className="p-2.5 md:p-3">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-stone md:aspect-auto md:h-full md:min-h-[440px]">
+          {item.imageUrl ? (
+            <Image src={item.imageUrl} alt={name} fill sizes="(max-width: 768px) 100vw, 440px" quality={88} className="object-cover" />
+          ) : (
+            <span className="absolute inset-0 grid place-items-center text-muted">{dict.menu.noPhoto}</span>
+          )}
+        </div>
       </div>
       <div className="flex flex-col p-6 sm:p-8">
-        <h2 id="sheet-title" className="font-dish pe-12 text-[clamp(1.7rem,3vw,2.3rem)] leading-tight text-ivory">
+        <h2 id="sheet-title" className="font-dish pe-12 text-[clamp(1.7rem,3vw,2.3rem)] leading-tight text-ink">
           {name}
         </h2>
         {otherName ? (
-          <p lang={locale === "ar" ? "en" : "ar"} className="mt-1 text-gold-soft">
+          <p lang={locale === "ar" ? "en" : "ar"} className="mt-1 text-bronze">
             {otherName}
           </p>
         ) : null}
-        {desc ? <p className="mt-4 text-sand">{desc}</p> : null}
+        {desc ? <p className="mt-4 text-muted">{desc}</p> : null}
         {item.variants.length === 1 && formatCalories([item.variants[0].calories], locale) ? (
           <p className="meta mt-2">{formatCalories([item.variants[0].calories], locale)}</p>
         ) : null}
@@ -135,15 +138,15 @@ function SheetBody({ locale, dict, item, onClose }: { locale: Locale; dict: Dict
               {item.variants.map((v) => {
                 const on = v.id === variant?.id;
                 return (
-                  <label key={v.id} className={`flex cursor-pointer items-center justify-between gap-3 border px-4 py-3 transition-colors ${on ? "border-gold bg-gold/10" : "border-line hover:border-ivory/40"}`}>
+                  <label key={v.id} className={`flex cursor-pointer items-center justify-between gap-3 rounded-[14px] border px-4 py-3 transition-colors ${on ? "border-ink bg-linen" : "border-hair hover:border-muted"}`}>
                     <span className="flex items-center gap-3">
-                      <input type="radio" name="variant" className="accent-[var(--color-gold)]" checked={on} onChange={() => setVariantId(v.id)} />
+                      <input type="radio" name="variant" className="accent-[var(--color-ink)]" checked={on} onChange={() => setVariantId(v.id)} />
                       <span>
                         {locale === "ar" && v.nameAr ? v.nameAr : v.nameEn}
                         {v.calories != null ? <span className="meta block">{formatCalories([v.calories], locale)}</span> : null}
                       </span>
                     </span>
-                    <span className="text-gold">{v.priceHalalas == null ? dict.common.priceOnRequest : formatPrice(v.priceHalalas, locale)}</span>
+                    <span className="font-medium text-bronze">{v.priceHalalas == null ? dict.common.priceOnRequest : formatPrice(v.priceHalalas, locale)}</span>
                   </label>
                 );
               })}
@@ -168,7 +171,7 @@ function SheetBody({ locale, dict, item, onClose }: { locale: Locale; dict: Dict
         <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-8">
           <QuantityStepper value={qty} onChange={setQty} min={1} labels={{ decrease: dict.menu.decrease, increase: dict.menu.increase, quantity: dict.menu.quantity }} />
           {item.isAvailable && variant ? (
-            <button type="button" onClick={add} className="btn btn-gold action flex-1 justify-between sm:flex-none sm:gap-8">
+            <button type="button" onClick={add} className="btn btn-dark action flex-1 justify-between sm:flex-none sm:gap-8">
               <span>{dict.menu.addToOrder}</span>
               <span>{variant.priceHalalas == null ? dict.common.priceOnRequest : formatPrice(variant.priceHalalas * qty, locale)}</span>
             </button>

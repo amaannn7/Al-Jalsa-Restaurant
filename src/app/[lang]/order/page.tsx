@@ -25,8 +25,8 @@ export default async function OrderPage({ params }: PageProps<"/[lang]/order">) 
   const settings = await getSettings();
   return (
     <>
-      <PageHero eyebrow={dict.nav.order} title={dict.checkout.title} text={dict.checkout.lead} compact />
-      <div className="mx-auto max-w-[var(--container-site)] px-5 pb-28 sm:px-8">
+      <PageHero eyebrow={dict.nav.order} title={dict.checkout.title} text={dict.checkout.lead} image="/images/menu/shahi-chicken-biryani.webp" compact />
+      <div className="mx-auto max-w-[var(--container-site)] px-5 pb-24 pt-16 sm:px-8 lg:pt-20">
         <Checkout
           locale={lang}
           dict={dict}

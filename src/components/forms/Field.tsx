@@ -8,7 +8,7 @@ function Wrap({ id, label, error, hint, required, className = "", children }: Ba
       <label htmlFor={id} className="field-label">
         {label}
         {required ? (
-          <span className="text-gold" aria-hidden>
+          <span className="text-bronze" aria-hidden>
             {" "}
             *
           </span>
