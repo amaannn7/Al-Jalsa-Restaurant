@@ -1,9 +1,10 @@
 import "dotenv/config";
 import { defineConfig } from "prisma/config";
 
-// Migrations prefer the direct (unpooled) connection that Neon/Vercel provide.
-const url =
-  process.env.DATABASE_URL_UNPOOLED ?? process.env.DIRECT_URL ?? process.env.DATABASE_URL ?? "";
+import { directDatabaseUrl } from "./src/lib/db-url";
+
+// Migrations prefer the direct (unpooled) connection; works with Neon or Prisma Postgres variable names.
+const url = directDatabaseUrl() ?? "";
 
 export default defineConfig({
   schema: "prisma/schema.prisma",

@@ -29,8 +29,10 @@ Everything runs on free tiers: Vercel Hobby, Neon Postgres (free), Vercel Blob (
 1. **Put the code on GitHub.** Create a private repository and push this folder to it.
 2. **Import it in Vercel.** vercel.com → Add New → Project → choose the repository. The framework
    (Next.js) and build command (`npm run vercel-build`, from `vercel.json`) are detected automatically.
-3. **Add a database.** In the project: Storage → Create → **Neon** (Postgres) → Free plan → connect it
-   to the project. This adds `DATABASE_URL` and `DATABASE_URL_UNPOOLED` automatically.
+3. **Add a database.** In the project: Storage → Create → **Prisma Postgres** or **Neon** (both have a
+   free plan) → connect it to the project. Either works with no extra setup: the site reads
+   `DATABASE_URL` / `DATABASE_URL_UNPOOLED` (Neon) or `POSTGRES_URL` (Prisma Postgres) automatically
+   (see `src/lib/db-url.ts`). The `prisma+postgres://` value Prisma Postgres also adds is not used.
 4. **Add image storage.** Storage → Create → **Blob** → connect. This adds `BLOB_READ_WRITE_TOKEN`.
 5. **Add environment variables** (Settings → Environment Variables):
 

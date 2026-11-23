@@ -14,9 +14,10 @@ import { PrismaClient } from "../src/generated/prisma/client";
 import { contentDefaults } from "../src/content/defaults";
 import { settingsDefaults } from "../src/content/settings-defaults";
 import { seedGallery, seedMenu, seedReviews } from "../src/lib/seed-source";
+import { directDatabaseUrl } from "../src/lib/db-url";
 
 const prisma = new PrismaClient({
-  adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL }),
+  adapter: new PrismaPg({ connectionString: directDatabaseUrl() }),
 });
 
 async function seedMenuTables() {
